@@ -2460,24 +2460,6 @@ const products = [
     "badge": null
   },
   {
-    "id": "cai-bap-my-mq0n9cqc",
-    "name": "CAI BAP MY",
-    "brand": "Apple",
-    "category": "smartphones",
-    "price": 1100,
-    "originalPrice": 1000,
-    "image": "https://www.thegioididong.com/may-doi-tra/dtdd/samsung-galaxy-a57-8gb-256gb?pid=363397&isimei=1&type=2",
-    "images": [
-      "https://tinhte.vn/thread/nam-nay-dell-mang-den-computex-2026-hai-chiec-man-hinh-mot-chiec-phan-khuc-flagship-voi-tam-nen.4148658/"
-    ],
-    "rating": 4.5,
-    "reviews": 0,
-    "description": "Samsung Galaxy A57 8GB 256GB là mẫu điện thoại mới thuộc dòng Galaxy A, hướng đến người dùng phổ thông và học sinh sinh viên. Thiết bị gây chú ý với ngoại hình siêu mỏng, cấu hình ổn định cùng khả năng lưu trữ rộng rãi. Đây là sản phẩm phù hợp cho những ai cần một chiếc máy đa năng, hỗ trợ tốt từ việc học tập, giải trí đến chụp ảnh và quay video hằng ngày.\nBảng thông số kỹ thuật của Samsung Galaxy A57 8GB 256GB\n\nDưới đây là bảng tổng hợp chi tiết các thông số kỹ thuật của thiết bị để bạn dễ dàng tham khảo và so sánh trước khi mua.\nTiêu chí\tThông số chi tiết\nMàn hình\t6.7 inch, Super AMOLED Plus, Full HD+, 120 Hz\nVi xử lý\tExynos 1680 8 nhân\nRAM / Bộ nhớ trong\t8 GB / 256 GB",
-    "features": [],
-    "videoId": "",
-    "affiliateLink": "https://www.amazon.com/s?k=CAI%20BAP%20MY"
-  },
-  {
     "id": "cui-mia-mq0p8y0y",
     "name": "CUI MIA",
     "brand": "Apple",
