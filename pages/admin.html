@@ -266,7 +266,20 @@ table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
       var b={message:msg,content:btoa(unescape(encodeURIComponent(js))),branch:B};if(sha)b.sha=sha
       var r2=await fetch('https://api.github.com/repos/'+R+'/contents/'+F,{method:'PUT',headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(b)})
       if(r2.ok){var d2=await r2.json();sha=d2.content?d2.content.sha:null;t('Committed!','g')}
-      else{var e2=await r2.json();t('Error: '+(e2.message||r2.status),'r')}
+      else{
+        var e2=await r2.json()
+        // Retry once if SHA mismatch (stale SHA)
+        if(e2.message && e2.message.indexOf('does not match')>=0){
+          var r3=await fetch('https://api.github.com/repos/'+R+'/contents/'+F+'?ref='+B,{headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github.v3+json'}})
+          if(r3.ok){var d3=await r3.json();sha=d3.sha}
+          b.sha=sha
+          var r4=await fetch('https://api.github.com/repos/'+R+'/contents/'+F,{method:'PUT',headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(b)})
+          if(r4.ok){var d4=await r4.json();sha=d4.content?d4.content.sha:null;t('Committed!','g')}
+          else{var e4=await r4.json();t('Error: '+(e4.message||r4.status),'r')}
+        }else{
+          t('Error: '+(e2.message||r2.status),'r')
+        }
+      }
     }catch(e){t('Failed: '+e.message,'r')}
     finally{$('sbtn').disabled=false;$('sbtn').innerHTML='<i class="fas fa-save"></i> Save Product'}
   }
