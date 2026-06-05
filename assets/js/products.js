@@ -1,72 +1,7 @@
 // Affiliate Global
 const products = [
   {
-    "id": 1,
-    "name": "iPhone 16 Pro Max",
-    "brand": "Apple",
-    "category": "smartphones",
-    "price": 1499,
-    "originalPrice": 1599,
-    "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&h=400&fit=crop",
-    "images": [
-      "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1592286927505-1def25115558?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1610945415294-dfbb5b7b3e8d?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1601782591353-3e34032699a6?w=800&h=800&fit=crop"
-    ],
-    "rating": 4.8,
-    "reviews": 12453,
-    "description": "Apple's most advanced iPhone featuring the A18 Pro chip, 48MP Fusion camera system with 5x Telephoto, and a stunning 6.9-inch Super Retina XDR display with ProMotion.",
-    "features": [
-      "A18 Pro chip with 6-core GPU",
-      "48MP Fusion + 48MP Ultra Wide + 12MP 5x Telephoto",
-      "6.9\" Super Retina XDR OLED with ProMotion 120Hz",
-      "Titanium design — natural, desert, white, black",
-      "USB-C with Thunderbolt 4 support",
-      "iOS 20 with Apple Intelligence",
-      "Up to 33 hours video playback",
-      "Satellite SOS and Crash Detection"
-    ],
-    "specs": [
-      {
-        "label": "Display",
-        "value": "6.9\" Super Retina XDR OLED, 120Hz ProMotion"
-      },
-      {
-        "label": "Processor",
-        "value": "A18 Pro (3nm)"
-      },
-      {
-        "label": "RAM",
-        "value": "8GB"
-      },
-      {
-        "label": "Storage",
-        "value": "256GB / 512GB / 1TB"
-      },
-      {
-        "label": "Battery",
-        "value": "4685mAh, up to 33h video"
-      },
-      {
-        "label": "Camera",
-        "value": "48MP + 48MP + 12MP"
-      },
-      {
-        "label": "Weight",
-        "value": "227g"
-      },
-      {
-        "label": "OS",
-        "value": "iOS 20"
-      }
-    ],
-    "videoId": "qRw9z_nQmeQ",
-    "affiliateLink": "https://amazon.com/dp/EXAMPLE?tag=affiliateglobal-20",
-    "badge": "Best Seller"
-  },
-  {
-    "id": 2,
+    "id": "2",
     "name": "Samsung Galaxy S25 Ultra",
     "brand": "Samsung",
     "category": "smartphones",
@@ -131,7 +66,7 @@ const products = [
     "badge": "Best Seller"
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Google Pixel 10 Pro",
     "brand": "Google",
     "category": "smartphones",
@@ -196,7 +131,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "Xiaomi 15 Pro",
     "brand": "Xiaomi",
     "category": "smartphones",
@@ -261,7 +196,7 @@ const products = [
     "badge": "Sale"
   },
   {
-    "id": 5,
+    "id": "5",
     "name": "iPhone 16",
     "brand": "Apple",
     "category": "smartphones",
@@ -326,7 +261,7 @@ const products = [
     "badge": "New"
   },
   {
-    "id": 6,
+    "id": "6",
     "name": "Samsung Galaxy S25+",
     "brand": "Samsung",
     "category": "smartphones",
@@ -391,7 +326,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 7,
+    "id": "7",
     "name": "Google Pixel 10",
     "brand": "Google",
     "category": "smartphones",
@@ -456,7 +391,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 8,
+    "id": "8",
     "name": "MacBook Pro 16\" M4 Max",
     "brand": "Apple",
     "category": "laptops",
@@ -521,7 +456,7 @@ const products = [
     "badge": "Best Seller"
   },
   {
-    "id": 9,
+    "id": "9",
     "name": "Dell XPS 16 (2026)",
     "brand": "Dell",
     "category": "laptops",
@@ -586,7 +521,7 @@ const products = [
     "badge": "Sale"
   },
   {
-    "id": 10,
+    "id": "10",
     "name": "MacBook Air 15\" M4",
     "brand": "Apple",
     "category": "laptops",
@@ -651,7 +586,7 @@ const products = [
     "badge": "Best Seller"
   },
   {
-    "id": 11,
+    "id": "11",
     "name": "Lenovo ThinkPad X1 Carbon Gen 13",
     "brand": "Lenovo",
     "category": "laptops",
@@ -716,7 +651,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 12,
+    "id": "12",
     "name": "ASUS ROG Zephyrus G16 (2026)",
     "brand": "ASUS",
     "category": "laptops",
@@ -781,7 +716,7 @@ const products = [
     "badge": "New"
   },
   {
-    "id": 13,
+    "id": "13",
     "name": "HP Spectre x360 16 (2026)",
     "brand": "HP",
     "category": "laptops",
@@ -846,7 +781,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 14,
+    "id": "14",
     "name": "Samsung Galaxy Book5 Pro 360",
     "brand": "Samsung",
     "category": "laptops",
@@ -911,7 +846,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 15,
+    "id": "15",
     "name": "iPad Pro 13\" M4",
     "brand": "Apple",
     "category": "tablets",
@@ -976,7 +911,7 @@ const products = [
     "badge": "Best Seller"
   },
   {
-    "id": 16,
+    "id": "16",
     "name": "iPad Air 11\" M3",
     "brand": "Apple",
     "category": "tablets",
@@ -1041,7 +976,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 17,
+    "id": "17",
     "name": "Samsung Galaxy Tab S10 Ultra",
     "brand": "Samsung",
     "category": "tablets",
@@ -1106,7 +1041,7 @@ const products = [
     "badge": "Sale"
   },
   {
-    "id": 18,
+    "id": "18",
     "name": "iPad mini 7",
     "brand": "Apple",
     "category": "tablets",
@@ -1171,7 +1106,7 @@ const products = [
     "badge": "New"
   },
   {
-    "id": 19,
+    "id": "19",
     "name": "Google Pixel Tablet 2",
     "brand": "Google",
     "category": "tablets",
@@ -1236,7 +1171,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 20,
+    "id": "20",
     "name": "AirPods Pro 3",
     "brand": "Apple",
     "category": "audio",
@@ -1301,7 +1236,7 @@ const products = [
     "badge": "Best Seller"
   },
   {
-    "id": 21,
+    "id": "21",
     "name": "Sony WH-1000XM6",
     "brand": "Sony",
     "category": "audio",
@@ -1366,7 +1301,7 @@ const products = [
     "badge": "Best Seller"
   },
   {
-    "id": 22,
+    "id": "22",
     "name": "Bose QuietComfort Ultra",
     "brand": "Bose",
     "category": "audio",
@@ -1431,7 +1366,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 23,
+    "id": "23",
     "name": "Samsung Galaxy Buds3 Pro",
     "brand": "Samsung",
     "category": "audio",
@@ -1496,7 +1431,7 @@ const products = [
     "badge": "New"
   },
   {
-    "id": 24,
+    "id": "24",
     "name": "Google Pixel Buds Pro 2",
     "brand": "Google",
     "category": "audio",
@@ -1561,7 +1496,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 25,
+    "id": "25",
     "name": "Sony WF-1000XM6",
     "brand": "Sony",
     "category": "audio",
@@ -1626,7 +1561,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 26,
+    "id": "26",
     "name": "Apple Watch Ultra 3",
     "brand": "Apple",
     "category": "wearables",
@@ -1691,7 +1626,7 @@ const products = [
     "badge": "New"
   },
   {
-    "id": 27,
+    "id": "27",
     "name": "Apple Watch Series 10",
     "brand": "Apple",
     "category": "wearables",
@@ -1756,7 +1691,7 @@ const products = [
     "badge": "Best Seller"
   },
   {
-    "id": 28,
+    "id": "28",
     "name": "Samsung Galaxy Watch7 Ultra",
     "brand": "Samsung",
     "category": "wearables",
@@ -1821,7 +1756,7 @@ const products = [
     "badge": "New"
   },
   {
-    "id": 29,
+    "id": "29",
     "name": "Garmin Fenix 8 Solar",
     "brand": "Garmin",
     "category": "wearables",
@@ -1886,7 +1821,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 30,
+    "id": "30",
     "name": "Google Pixel Watch 3",
     "brand": "Google",
     "category": "wearables",
@@ -1951,7 +1886,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 31,
+    "id": "31",
     "name": "Samsung Galaxy Ring 2",
     "brand": "Samsung",
     "category": "wearables",
@@ -2016,7 +1951,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 32,
+    "id": "32",
     "name": "Apple Magic Keyboard for iPad Pro M4",
     "brand": "Apple",
     "category": "accessories",
@@ -2081,7 +2016,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 33,
+    "id": "33",
     "name": "Samsung Galaxy Buds3",
     "brand": "Samsung",
     "category": "accessories",
@@ -2146,7 +2081,7 @@ const products = [
     "badge": "Sale"
   },
   {
-    "id": 34,
+    "id": "34",
     "name": "Apple AirTag 4-Pack",
     "brand": "Apple",
     "category": "accessories",
@@ -2211,7 +2146,7 @@ const products = [
     "badge": "Best Seller"
   },
   {
-    "id": 35,
+    "id": "35",
     "name": "Belkin BoostCharge Pro 3-in-1",
     "brand": "Apple",
     "category": "accessories",
@@ -2276,7 +2211,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 36,
+    "id": "36",
     "name": "Samsung Galaxy Watch7 Ultra / 47mm Titanium Band",
     "brand": "Samsung",
     "category": "accessories",
@@ -2331,7 +2266,7 @@ const products = [
     "badge": null
   },
   {
-    "id": 37,
+    "id": "37",
     "name": "Samsung Galaxy Book5 Pro 360 / 65W USB-C Charger",
     "brand": "Samsung",
     "category": "accessories",
@@ -2395,7 +2330,7 @@ const products = [
     "badge": "Sale"
   },
   {
-    "id": 38,
+    "id": "38",
     "name": "OMOTON 12.9\" iPad Pro Keyboard Case",
     "brand": "Apple",
     "category": "accessories",
@@ -2463,16 +2398,16 @@ const products = [
     "id": "cui-mia-mq0p8y0y",
     "name": "CUI MIA",
     "brand": "Apple",
-    "cat": "smartphones",
+    "category": "smartphones",
     "price": 100,
-    "old": 99,
-    "img": "https://chat.deepseek.com/",
+    "originalPrice": 99,
+    "image": "https://chat.deepseek.com/",
     "images": [
       "https://fal.ai/"
     ],
     "rating": 4.5,
-    "rev": 0,
-    "desc": "",
+    "reviews": 0,
+    "description": "",
     "features": [],
     "badge": ""
   }
