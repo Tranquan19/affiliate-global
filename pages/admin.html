@@ -204,7 +204,13 @@ table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
     {id:'sony-wh1000xm6',name:'Sony WH-1000XM6',brand:'Sony',cat:'audio',price:349,img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',rating:4.7,rev:678},
     {id:'google-pixel-10',name:'Google Pixel 10 Pro',brand:'Google',cat:'smartphones',price:999,img:'https://images.unsplash.com/photo-1598327105666-5b893f1a5f2a?w=400',rating:4.5,rev:234},
     {id:'watch-ultra-3',name:'Apple Watch Ultra 3',brand:'Apple',cat:'wearables',price:899,img:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',rating:4.8,rev:345,badge:'New'},
-    {id:'xiaomi-15-ultra',name:'Xiaomi 15 Ultra',brand:'Xiaomi',cat:'smartphones',price:899,old:999,img:'https://images.unsplash.com/photo-1598327105666-5b893f1a5f2a?w=400',rating:4.6,rev:189,badge:'Sale'}
+    {id:'xiaomi-15-ultra',name:'Xiaomi 15 Ultra',brand:'Xiaomi',cat:'smartphones',price:899,old:999,img:'https://images.unsplash.com/photo-1598327105666-5b893f1a5f2a?w=400',rating:4.6,rev:189,badge:'Sale'},
+    // AI Tools
+    {id:'jasper-ai',name:'Jasper AI',brand:'Jasper',cat:'ai-tools',price:49,img:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400',rating:4.8,rev:1234,badge:'Best Seller',affiliateLink:'#'},
+    {id:'writesonic',name:'WriteSonic',brand:'WriteSonic',cat:'ai-tools',price:19,img:'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400',rating:4.6,rev:892,badge:'Best Seller',affiliateLink:'#'},
+    {id:'synthesia',name:'Synthesia',brand:'Synthesia',cat:'ai-tools',price:29,img:'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400',rating:4.7,rev:567,badge:'New',affiliateLink:'#'},
+    {id:'notion-ai',name:'Notion AI',brand:'Notion',cat:'ai-tools',price:20,img:'https://images.unsplash.com/photo-1686191128892-3e1f4f6f72f6?w=400',rating:4.9,rev:2345,badge:'Best Seller',affiliateLink:'#'},
+    {id:'pictory-ai',name:'Pictory AI',brand:'Pictory',cat:'ai-tools',price:19,img:'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400',rating:4.5,rev:345,badge:'',affiliateLink:'#'}
   ]}
   // GITHUB
   function ut(){
@@ -230,7 +236,7 @@ table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
             if(x.reviews && !x.rev)x.rev=x.reviews
             if(typeof x.id==='number')x.id=String(x.id)
           })
-          products=p;render();t('Loaded '+products.length+' products','g');return}}
+          products=p;render();t('Loaded '+products.length+' products','g');saveL();return}}
     }catch(e){}
     loadLocal()
   }
