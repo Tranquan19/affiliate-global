@@ -2476,6 +2476,23 @@ const products = [
     "features": [],
     "videoId": "",
     "affiliateLink": "https://www.amazon.com/s?k=CAI%20BAP%20MY"
+  },
+  {
+    "id": "cui-mia-mq0p8y0y",
+    "name": "CUI MIA",
+    "brand": "Apple",
+    "cat": "smartphones",
+    "price": 100,
+    "old": 99,
+    "img": "https://chat.deepseek.com/",
+    "images": [
+      "https://fal.ai/"
+    ],
+    "rating": 4.5,
+    "rev": 0,
+    "desc": "",
+    "features": [],
+    "badge": ""
   }
 ];
 
