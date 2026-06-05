@@ -1,160 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Category — Affiliate Global</title>
-  <meta name="description" content="Browse tech products by category at Affiliate Global.">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Category — Affiliate Global</title>
+<meta name="description" content="Browse tech products by category at Affiliate Global.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--bg:#eaeded;--white:#fff;--dark:#0f1111;--blue:#007185;--red:#b12704;--orange:#c45500;--green:#067d62;--yellow:#febd69;--text:#0f1111;--text-light:#565959;--border:#ddd;--shadow:0 2px 5px rgba(0,0,0,0.05);--radius:8px;--font:'Amazon Ember',Arial,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
+a{color:var(--blue);text-decoration:none}
+a:hover{color:var(--orange);text-decoration:underline}
+.container{max-width:1280px;margin:0 auto;padding:0 16px}
+
+/* TOP BAR */
+.top-bar{background:#131921;color:#fff;padding:10px 0;position:sticky;top:0;z-index:100}
+.top-bar .container{display:flex;align-items:center;gap:16px}
+.logo{font-size:22px;font-weight:700;color:#fff;display:flex;align-items:center;gap:6px}
+.logo span{color:var(--yellow)}
+.search-bar{flex:1;display:flex;max-width:600px;margin:0 auto}
+.search-bar select{padding:8px;border:none;background:#eee;border-radius:4px 0 0 4px;font-size:13px;cursor:pointer}
+.search-bar input{flex:1;padding:8px 12px;border:none;font-size:14px;outline:none}
+.search-bar button{background:var(--yellow);border:none;padding:0 14px;border-radius:0 4px 4px 0;cursor:pointer;font-size:16px;color:#333}
+.search-bar button:hover{background:#f3a847}
+.top-links{display:flex;gap:10px;align-items:center}
+.top-links a{color:#fff;font-size:12px;text-align:center;padding:4px 8px;border-radius:3px}
+.top-links a:hover{background:rgba(255,255,255,0.1);text-decoration:none}
+.top-links a small{display:block;font-size:10px;color:#ccc}
+.top-links a strong{font-size:13px}
+.cart-link{position:relative}
+.cart-count{position:absolute;top:-4px;right:0;background:var(--orange);color:#fff;font-size:11px;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
+
+/* NAV */
+.nav-bar{background:#232f3e;padding:0}
+.nav-bar .container{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.nav-bar .container::-webkit-scrollbar{display:none}
+.nav-bar a{color:#fff;padding:8px 14px;font-size:13px;white-space:nowrap;display:flex;align-items:center;gap:4px}
+.nav-bar a:hover{background:rgba(255,255,255,0.08);text-decoration:none}
+.nav-bar a i{font-size:14px}
+
+/* HERO */
+.hero{background:linear-gradient(to bottom,#232f3e,#0f1111);padding:16px 0;text-align:center}
+.hero h1{color:#fff;font-size:22px;font-weight:400;margin-bottom:4px}
+.hero h1 strong{color:var(--yellow)}
+
+/* SECTIONS */
+.section{padding:20px 0}
+.section-title{font-size:20px;font-weight:600;margin-bottom:16px;color:var(--dark);display:flex;align-items:center;gap:8px}
+.section-title a{font-size:14px;font-weight:400;color:var(--blue);margin-left:auto}
+
+/* CATEGORY CHIPS */
+.cat-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.cat-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500;color:var(--text);background:#fff;border:1px solid var(--border);cursor:pointer;transition:all 0.2s;text-decoration:none}
+.cat-chip:hover{box-shadow:0 2px 8px rgba(0,0,0,0.08);text-decoration:none;border-color:var(--blue)}
+.cat-chip.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.cat-chip i{font-size:14px}
+
+/* PRODUCT GRID */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.product-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:var(--shadow);transition:all 0.2s;display:flex;flex-direction:column}
+.product-card:hover{box-shadow:0 5px 15px rgba(0,0,0,0.1);transform:translateY(-2px)}
+.product-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:20px;background:#fafafa;position:relative}
+.product-img img{max-width:100%;max-height:100%;object-fit:contain;transition:transform 0.3s}
+.product-card:hover .product-img img{transform:scale(1.05)}
+.badge{position:absolute;top:10px;left:10px;padding:3px 10px;border-radius:3px;font-size:11px;font-weight:700;color:#fff}
+.badge-sale{background:var(--red)}
+.badge-new{background:var(--green)}
+.badge-best{background:var(--blue)}
+.product-body{padding:12px 14px 14px;flex:1;display:flex;flex-direction:column}
+.product-name{font-size:14px;font-weight:500;color:var(--dark);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:40px;line-height:1.4;margin-bottom:4px}
+.product-name:hover{color:var(--orange)}
+.rating{font-size:12px;color:var(--text-light);margin-bottom:4px;display:flex;align-items:center;gap:4px}
+.rating i{color:#f5a623;font-size:11px}
+.price-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap}
+.price-current{font-size:20px;font-weight:700;color:var(--dark)}
+.price-old{font-size:13px;color:var(--text-light);text-decoration:line-through}
+.price-off{font-size:11px;color:var(--red);font-weight:600}
+.product-footer{margin-top:auto;display:flex;gap:8px}
+.btn-buy{flex:1;background:var(--yellow);color:#111;border:none;padding:8px;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;text-align:center;font-family:var(--font);display:inline-block;text-decoration:none}
+.btn-buy:hover{background:#f3a847;text-decoration:none}
+.btn-detail{background:#fff;color:var(--blue);border:1px solid var(--blue);padding:8px;border-radius:4px;font-size:13px;cursor:pointer;text-align:center;font-family:var(--font);display:inline-block;text-decoration:none}
+.btn-detail:hover{background:#f0f8ff;text-decoration:none}
+
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:60px 20px;grid-column:1/-1}
+.empty-state i{font-size:48px;color:var(--text-light);margin-bottom:16px}
+.empty-state h3{font-size:18px;color:var(--dark);margin-bottom:8px}
+.empty-state p{color:var(--text-light);font-size:14px}
+
+/* FOOTER */
+.footer{background:#232f3e;color:#ccc;padding:32px 0 0;margin-top:32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+.footer h4{color:#fff;font-size:15px;margin-bottom:12px}
+.footer a,.footer p{color:#ccc;font-size:13px;margin-bottom:4px;display:block}
+.footer a:hover{color:#fff}
+.footer-bottom{border-top:1px solid #3a4553;padding:16px 0;margin-top:24px;text-align:center;font-size:12px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .top-bar .container{flex-wrap:wrap}
+  .search-bar{order:3;flex:1 1 100%;max-width:100%}
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .nav-bar a{font-size:12px;padding:8px 10px}
+  .top-links a span{display:none}
+}
+@media(max-width:480px){
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .product-body{padding:8px 10px}
+  .price-current{font-size:17px}
+  .cat-chips{gap:6px}
+  .cat-chip{padding:5px 10px;font-size:12px}
+}
+</style>
 </head>
 <body>
 
-<!-- DISCLAIMER -->
-<div class="disclaimer" id="disclaimerBanner">
+<!-- TOP BAR -->
+<div class="top-bar">
   <div class="container">
-    <i class="fas fa-info-circle"></i>
-    <span>We earn a commission from qualifying purchases at no extra cost to you. <a href="affiliate-disclosure.html">Full Disclosure</a></span>
-    <button class="disclaimer-close"><i class="fas fa-times"></i></button>
+    <div class="logo"><i class="fas fa-globe"></i>Affiliate<span>Global</span></div>
+    <div class="search-bar">
+      <select><option>All</option><option>Electronics</option><option>Phones</option><option>Laptops</option></select>
+      <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
+      <button id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="top-links">
+      <a href="../pages/contact.html"><small>Hello</small><strong>Contact</strong></a>
+      <a href="#" id="cartBtn" class="cart-link"><i class="fas fa-shopping-cart" style="font-size:20px"></i><span class="cart-count" id="cartCount">0</span></a>
+    </div>
   </div>
 </div>
 
-<!-- NAV BAR -->
-<nav class="nav-bar">
+<!-- NAV -->
+<div class="nav-bar">
   <div class="container">
-    <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
-    <a href="../index.html" class="nav-logo"><i class="fas fa-globe"></i> AffiliateGlobal</a>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="category.html?cat=smartphones" class="active">Smartphones</a></li>
-      <li><a href="category.html?cat=laptops">Laptops</a></li>
-      <li><a href="category.html?cat=tablets">Tablets</a></li>
-      <li><a href="category.html?cat=audio">Audio</a></li>
-      <li><a href="category.html?cat=wearables">Wearables</a></li>
-      <li><a href="deals.html">Deals</a></li>
-    </ul>
-    <div class="nav-icons">
-      <a href="#" id="searchToggle"><i class="fas fa-search"></i></a>
-      <a href="#" id="compareBtn"><i class="fas fa-sliders-h"></i><span class="nav-badge" id="compareBadge">0</span></a>
-    </div>
+    <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="category.html?cat=smartphones"><i class="fas fa-mobile-alt"></i> Smartphones</a>
+    <a href="category.html?cat=laptops"><i class="fas fa-laptop"></i> Laptops</a>
+    <a href="category.html?cat=tablets"><i class="fas fa-tablet-alt"></i> Tablets</a>
+    <a href="category.html?cat=audio"><i class="fas fa-headphones"></i> Audio</a>
+    <a href="category.html?cat=wearables"><i class="fas fa-clock"></i> Wearables</a>
+    <a href="category.html?cat=accessories"><i class="fas fa-plug"></i> Accessories</a>
+    <a href="deals.html"><i class="fas fa-fire"></i> Today's Deals</a>
   </div>
-  <div class="nav-search">
-    <div class="container" style="display:flex;align-items:center;height:100%;">
-      <form id="searchForm" style="display:flex;flex:1;align-items:center;">
-        <i class="fas fa-search" style="color:rgba(255,255,255,0.4);font-size:14px;"></i>
-        <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off" style="margin-left:8px;">
-      </form>
-      <button class="nav-search-close" id="searchClose"><i class="fas fa-times"></i></button>
-    </div>
-  </div>
-</nav>
-
-<!-- MOBILE NAV -->
-<div class="mobile-nav-overlay" id="mobileOverlay"></div>
-<div class="mobile-nav" id="mobileNav">
-  <div class="mobile-nav-header"><span><i class="fas fa-globe" style="color:var(--blue-accent);margin-right:6px;"></i>Menu</span><button id="mobileClose"><i class="fas fa-times"></i></button></div>
-  <div class="mobile-nav-item"><a href="../index.html">Home</a></div>
-  <div class="mobile-nav-item"><a href="category.html?cat=smartphones">Smartphones</a></div>
-  <div class="mobile-nav-item"><a href="category.html?cat=laptops">Laptops</a></div>
-  <div class="mobile-nav-item"><a href="category.html?cat=tablets">Tablets</a></div>
-  <div class="mobile-nav-item"><a href="category.html?cat=audio">Audio</a></div>
-  <div class="mobile-nav-item"><a href="category.html?cat=wearables">Wearables</a></div>
-  <div class="mobile-nav-item"><a href="category.html?cat=accessories">Accessories</a></div>
-  <div class="mobile-nav-item"><a href="deals.html">Best Deals</a></div>
-  <div class="mobile-nav-item"><a href="contact.html">Contact</a></div>
 </div>
 
-<!-- MAIN -->
-<main>
-  <div class="breadcrumbs">
-    <div class="container">
-      <a href="../index.html">Home</a>
-      <span>/</span>
-      <span id="catTitle">Category</span>
-    </div>
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <h1 id="heroHeading"><i class="fas fa-tag"></i> <strong>Products</strong></h1>
   </div>
+</div>
 
-  <section class="section section-white" style="padding-top:0;">
-    <div class="container">
-      <div style="padding:24px 0;">
-        <h1 class="section-title" id="catHeading">Products</h1>
-        <p class="section-subtitle" style="margin-bottom:0;"><span id="catCount"></span></p>
-      </div>
-      <div class="product-grid" id="categoryGrid"></div>
+<!-- PRODUCTS -->
+<div class="section">
+  <div class="container">
+    <!-- Category chips -->
+    <div class="cat-chips">
+      <a href="category.html?cat=smartphones" class="cat-chip" data-cat="smartphones"><i class="fas fa-mobile-alt"></i> Smartphones</a>
+      <a href="category.html?cat=laptops" class="cat-chip" data-cat="laptops"><i class="fas fa-laptop"></i> Laptops</a>
+      <a href="category.html?cat=tablets" class="cat-chip" data-cat="tablets"><i class="fas fa-tablet-alt"></i> Tablets</a>
+      <a href="category.html?cat=audio" class="cat-chip" data-cat="audio"><i class="fas fa-headphones"></i> Audio</a>
+      <a href="category.html?cat=wearables" class="cat-chip" data-cat="wearables"><i class="fas fa-clock"></i> Wearables</a>
+      <a href="category.html?cat=accessories" class="cat-chip" data-cat="accessories"><i class="fas fa-plug"></i> Accessories</a>
+      <a href="category.html?cat=apple" class="cat-chip" data-cat="apple"><i class="fab fa-apple"></i> Apple</a>
+      <a href="category.html?cat=samsung" class="cat-chip" data-cat="samsung"><i class="fas fa-star"></i> Samsung</a>
+      <a href="category.html?cat=xiaomi" class="cat-chip" data-cat="xiaomi"><i class="fas fa-star"></i> Xiaomi</a>
+      <a href="category.html?cat=google" class="cat-chip" data-cat="google"><i class="fab fa-google"></i> Google</a>
+      <a href="category.html?cat=sony" class="cat-chip" data-cat="sony"><i class="fas fa-star"></i> Sony</a>
+      <a href="category.html?cat=bose" class="cat-chip" data-cat="bose"><i class="fas fa-star"></i> Bose</a>
     </div>
-  </section>
-</main>
+
+    <h2 class="section-title" id="catHeading">All Products <span id="catCount" style="font-size:14px;font-weight:400;color:var(--text-light)"></span></h2>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</div>
 
 <!-- FOOTER -->
-<footer class="footer">
+<div class="footer">
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-logo"><a href="../index.html"><i class="fas fa-globe" style="color:var(--blue-accent);"></i> AffiliateGlobal</a></div>
+      <div>
+        <div class="logo" style="font-size:18px;margin-bottom:8px"><i class="fas fa-globe"></i> Affiliate<span>Global</span></div>
         <p>Your trusted source for tech reviews, buying guides, and the best deals from top retailers worldwide.</p>
-        <div class="footer-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
-        </div>
       </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <a href="../index.html">Home</a>
+      <div>
+        <h4>Shop</h4>
         <a href="deals.html">Best Deals</a>
         <a href="category.html?cat=smartphones">Smartphones</a>
         <a href="category.html?cat=laptops">Laptops</a>
         <a href="category.html?cat=tablets">Tablets</a>
         <a href="category.html?cat=audio">Audio</a>
       </div>
-      <div class="footer-col">
-        <h4>Brands</h4>
-        <a href="category.html?cat=apple">Apple</a>
-        <a href="category.html?cat=samsung">Samsung</a>
-        <a href="category.html?cat=xiaomi">Xiaomi</a>
-        <a href="category.html?cat=google">Google</a>
-        <a href="category.html?cat=sony">Sony</a>
-        <a href="category.html?cat=bose">Bose</a>
+      <div>
+        <h4>Company</h4>
+        <a href="contact.html">Contact Us</a>
+        <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
       </div>
-      <div class="footer-col">
+      <div>
         <h4>Contact</h4>
-        <p><i class="fas fa-user"></i> Mr. Quan</p>
+        <p>Mr. Quan</p>
         <p><i class="fas fa-phone"></i> +84 972 956 137</p>
         <p><i class="fas fa-envelope"></i> trangiaphatco@gmail.com</p>
-        <p><i class="fas fa-clock"></i> Mon-Sat: 8:00-18:00 (GMT+7)</p>
-        <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px;">Contact Us</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Affiliate Global. All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="affiliate-disclosure.html">Disclosure</a>
-      </div>
+      <p>&copy; 2026 Affiliate Global. As an Amazon Associate we earn from qualifying purchases.</p>
     </div>
-  </div>
-</footer>
-
-<!-- SIDEBAR -->
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <h3><i class="fas fa-sliders-h" style="color:var(--blue-accent);"></i> Compare</h3>
-    <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
-  </div>
-  <div class="sidebar-items" id="sidebarItems"><p class="sidebar-empty">Your comparison list is empty.</p></div>
-  <div class="sidebar-footer">
-    <a href="deals.html" class="btn btn-primary btn-block">Browse Products</a>
   </div>
 </div>
 
-<!-- BACK TO TOP -->
-<button class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></button>
+<script>
+var PRODUCTS = [
+  {id:"iphone16-pro-max",name:"iPhone 16 Pro Max",brand:"Apple",cat:"smartphones",price:1199,old:1299,img:"https://images.unsplash.com/photo-1695048133142-3a8a4b9b3b9b?w=400",rating:4.8,rev:1245,badge:"Best Seller",link:"https://www.amazon.com/s?k=iPhone+16+Pro+Max"},
+  {id:"samsung-galaxy-s25-ultra",name:"Samsung Galaxy S25 Ultra",brand:"Samsung",cat:"smartphones",price:1299,old:1399,img:"https://images.unsplash.com/photo-1592286927505-1a2513b5d2e5?w=400",rating:4.7,rev:892,badge:"New",link:"https://www.amazon.com/s?k=Galaxy+S25+Ultra"},
+  {id:"macbook-pro-m4",name:"MacBook Pro M4 Max",brand:"Apple",cat:"laptops",price:2499,old:2699,img:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400",rating:4.9,rev:756,badge:"Best Seller",link:"https://www.amazon.com/s?k=MacBook+Pro+M4+Max"},
+  {id:"dell-xps-16",name:"Dell XPS 16",brand:"Dell",cat:"laptops",price:1899,old:2099,img:"https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400",rating:4.6,rev:432,badge:"Sale",link:"https://www.amazon.com/s?k=Dell+XPS+16"},
+  {id:"ipad-pro-m4",name:'iPad Pro M4 13"',brand:"Apple",cat:"tablets",price:1299,img:"https://images.unsplash.com/photo-1546868871-af0de0ae72c3?w=400",rating:4.8,rev:567,badge:"New",link:"https://www.amazon.com/s?k=iPad+Pro+M4"},
+  {id:"airpods-pro-3",name:"AirPods Pro 3",brand:"Apple",cat:"audio",price:249,img:"https://images.unsplash.com/photo-1583394838336-f7c6e6f6c8b6?w=400",rating:4.7,rev:1234,badge:"Best Seller",link:"https://www.amazon.com/s?k=AirPods+Pro+3"},
+  {id:"sony-wh1000xm6",name:"Sony WH-1000XM6",brand:"Sony",cat:"audio",price:349,img:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",rating:4.7,rev:678,link:"https://www.amazon.com/s?k=Sony+WH-1000XM6"},
+  {id:"google-pixel-10-pro",name:"Google Pixel 10 Pro",brand:"Google",cat:"smartphones",price:999,img:"https://images.unsplash.com/photo-1598327105666-5b893f1a5f2a?w=400",rating:4.5,rev:234,link:"https://www.amazon.com/s?k=Google+Pixel+10+Pro"},
+  {id:"apple-watch-ultra-3",name:"Apple Watch Ultra 3",brand:"Apple",cat:"wearables",price:899,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400",rating:4.8,rev:345,badge:"New",link:"https://www.amazon.com/s?k=Apple+Watch+Ultra+3"},
+  {id:"xiaomi-15-ultra",name:"Xiaomi 15 Ultra",brand:"Xiaomi",cat:"smartphones",price:899,old:999,img:"https://images.unsplash.com/photo-1598327105666-5b893f1a5f2a?w=400",rating:4.6,rev:189,badge:"Sale",link:"https://www.amazon.com/s?k=Xiaomi+15+Ultra"},
+  {id:"samsung-galaxy-tab-s10",name:"Galaxy Tab S10 Ultra",brand:"Samsung",cat:"tablets",price:1099,img:"https://images.unsplash.com/photo-1546868871-af0de0ae72c3?w=400",rating:4.6,rev:234,link:"https://www.amazon.com/s?k=Galaxy+Tab+S10+Ultra"},
+  {id:"bose-qc-ultra",name:"Bose QC Ultra Earbuds",brand:"Bose",cat:"audio",price:299,img:"https://images.unsplash.com/photo-1484704849700-f032a568e002?w=400",rating:4.5,rev:567,badge:"Best Seller",link:"https://www.amazon.com/s?k=Bose+QuietComfort+Ultra+Earbuds"}
+];
 
-<script src="../assets/js/products.js"></script>
-<script src="../assets/js/main.js"></script>
+var CATEGORY_ICONS = {
+  smartphones:'fa-mobile-alt',laptops:'fa-laptop',tablets:'fa-tablet-alt',
+  audio:'fa-headphones',wearables:'fa-clock',accessories:'fa-plug',
+  apple:'fab fa-apple',samsung:'fa-star',xiaomi:'fa-star',
+  google:'fab fa-google',sony:'fa-star',bose:'fa-star'
+};
+
+function renderProducts(list) {
+  var grid = document.getElementById('productGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  if (!list || list.length === 0) {
+    grid.innerHTML = '<div class="empty-state"><i class="fas fa-box-open"></i><h3>No products in this category</h3><p>Check back soon or browse other categories.</p></div>';
+    return;
+  }
+  list.forEach(function(p) {
+    var badge = '';
+    if (p.badge) {
+      var cls = p.badge === 'Sale' ? 'badge-sale' : p.badge === 'New' ? 'badge-new' : 'badge-best';
+      badge = '<span class="badge ' + cls + '">' + p.badge + '</span>';
+    }
+    var stars = ''; for (var i = 1; i <= 5; i++) stars += '<i class="fas fa-star' + (i > p.rating ? (i - 0.5 <= p.rating ? '-half-alt' : '') : '') + '"></i>';
+    var off = p.old ? Math.round((1 - p.price / p.old) * 100) : 0;
+    var card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = '<div class="product-img">' + badge + '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy"></div>' +
+      '<div class="product-body">' +
+      '<a href="../pages/product.html?id=' + p.id + '" class="product-name">' + p.name + '</a>' +
+      '<div class="rating">' + stars + ' <span>' + p.rating + ' (' + (p.rev >= 1000 ? Math.round(p.rev/1000) + 'k' : p.rev) + ')</span></div>' +
+      '<div class="price-row">' +
+      '<span class="price-current">$' + p.price.toLocaleString() + '</span>' +
+      (p.old ? '<span class="price-old">$' + p.old.toLocaleString() + '</span>' : '') +
+      (p.old ? '<span class="price-off">-' + off + '%</span>' : '') +
+      '</div>' +
+      '<div class="product-footer">' +
+      '<a href="' + p.link + '" target="_blank" class="btn-buy"><i class="fas fa-shopping-cart"></i> Buy Now</a>' +
+      '<a href="../pages/product.html?id=' + p.id + '" class="btn-detail">Details</a>' +
+      '</div></div>';
+    grid.appendChild(card);
+  });
+}
+
+// Load category
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var cat = params.get('cat');
+  var heading = document.getElementById('catHeading');
+  var heroHeading = document.getElementById('heroHeading');
+  var count = document.getElementById('catCount');
+
+  // Highlight active chip
+  if (cat) {
+    var chips = document.querySelectorAll('.cat-chip');
+    chips.forEach(function(c) {
+      if (c.dataset.cat === cat) c.classList.add('active');
+    });
+  }
+
+  var filtered;
+  if (cat) {
+    // Filter by category OR brand
+    filtered = PRODUCTS.filter(function(p) {
+      return p.cat === cat || p.brand.toLowerCase() === cat;
+    });
+    var name = cat.charAt(0).toUpperCase() + cat.slice(1);
+    if (heading) heading.innerHTML = name + ' <span id="catCount" style="font-size:14px;font-weight:400;color:var(--text-light)"></span>';
+    if (heroHeading) {
+      var icon = CATEGORY_ICONS[cat] || 'fa-tag';
+      heroHeading.innerHTML = '<i class="' + icon + '"></i> <strong>' + name + '</strong>';
+    }
+  } else {
+    filtered = PRODUCTS;
+    if (heading) heading.innerHTML = 'All Products <span id="catCount" style="font-size:14px;font-weight:400;color:var(--text-light)"></span>';
+    if (heroHeading) heroHeading.innerHTML = '<i class="fas fa-tag"></i> <strong>All Products</strong>';
+  }
+
+  if (count) count.textContent = '(' + filtered.length + ' product' + (filtered.length !== 1 ? 's' : '') + ')';
+  renderProducts(filtered);
+})();
+
+// Search from this page
+document.getElementById('searchBtn').onclick = function(e) {
+  e.preventDefault();
+  var q = document.getElementById('searchInput').value.trim();
+  if (q) window.location.href = 'deals.html?search=' + encodeURIComponent(q);
+};
+document.getElementById('searchInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') document.getElementById('searchBtn').click();
+});
+</script>
 </body>
 </html>

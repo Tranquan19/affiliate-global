@@ -1,229 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us — Affiliate Global</title>
-  <meta name="description" content="Contact Affiliate Global. Get in touch for support, inquiries, or partnership opportunities.">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Affiliate Global</title>
+<meta name="description" content="Contact Affiliate Global. Get in touch for support, inquiries, or partnership opportunities.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--bg:#eaeded;--white:#fff;--dark:#0f1111;--blue:#007185;--red:#b12704;--orange:#c45500;--green:#067d62;--yellow:#febd69;--text:#0f1111;--text-light:#565959;--border:#ddd;--shadow:0 2px 5px rgba(0,0,0,0.05);--radius:8px;--font:'Amazon Ember',Arial,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
+a{color:var(--blue);text-decoration:none}
+a:hover{color:var(--orange);text-decoration:underline}
+.container{max-width:1280px;margin:0 auto;padding:0 16px}
+
+/* TOP BAR */
+.top-bar{background:#131921;color:#fff;padding:10px 0;position:sticky;top:0;z-index:100}
+.top-bar .container{display:flex;align-items:center;gap:16px}
+.logo{font-size:22px;font-weight:700;color:#fff;display:flex;align-items:center;gap:6px}
+.logo span{color:var(--yellow)}
+.search-bar{flex:1;display:flex;max-width:600px;margin:0 auto}
+.search-bar select{padding:8px;border:none;background:#eee;border-radius:4px 0 0 4px;font-size:13px;cursor:pointer}
+.search-bar input{flex:1;padding:8px 12px;border:none;font-size:14px;outline:none}
+.search-bar button{background:var(--yellow);border:none;padding:0 14px;border-radius:0 4px 4px 0;cursor:pointer;font-size:16px;color:#333}
+.search-bar button:hover{background:#f3a847}
+.top-links{display:flex;gap:10px;align-items:center}
+.top-links a{color:#fff;font-size:12px;text-align:center;padding:4px 8px;border-radius:3px}
+.top-links a:hover{background:rgba(255,255,255,0.1);text-decoration:none}
+.top-links a small{display:block;font-size:10px;color:#ccc}
+.top-links a strong{font-size:13px}
+.cart-link{position:relative}
+.cart-count{position:absolute;top:-4px;right:0;background:var(--orange);color:#fff;font-size:11px;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
+
+/* NAV */
+.nav-bar{background:#232f3e;padding:0}
+.nav-bar .container{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.nav-bar .container::-webkit-scrollbar{display:none}
+.nav-bar a{color:#fff;padding:8px 14px;font-size:13px;white-space:nowrap;display:flex;align-items:center;gap:4px}
+.nav-bar a:hover{background:rgba(255,255,255,0.08);text-decoration:none}
+.nav-bar a i{font-size:14px}
+
+/* HERO */
+.hero{background:linear-gradient(to bottom,#232f3e,#0f1111);padding:16px 0;text-align:center}
+.hero h1{color:#fff;font-size:22px;font-weight:400;margin-bottom:4px}
+.hero h1 strong{color:var(--yellow)}
+
+/* SECTIONS */
+.section{padding:20px 0}
+.section-title{font-size:20px;font-weight:600;margin-bottom:16px;color:var(--dark);display:flex;align-items:center;gap:8px}
+
+/* CONTACT GRID */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+
+/* CONTACT CARDS */
+.contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start}
+.contact-card{background:#fff;border-radius:8px;padding:20px;text-align:center;box-shadow:var(--shadow);transition:transform 0.2s}
+.contact-card:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.contact-card i{font-size:28px;color:var(--blue);margin-bottom:8px}
+.contact-card h3{font-size:14px;color:var(--text-light);margin-bottom:6px;font-weight:500}
+.contact-card p,.contact-card a{font-size:14px;font-weight:600;color:var(--dark)}
+.contact-card a:hover{color:var(--orange)}
+.contact-card.phone i{color:var(--green)}
+.contact-card.email i{color:var(--red)}
+.contact-card.hours i{color:var(--orange)}
+
+/* CONTACT FORM */
+.contact-form-wrap{background:#fff;border-radius:8px;padding:24px;box-shadow:var(--shadow)}
+.contact-form-wrap h2{font-size:18px;margin-bottom:16px;color:var(--dark)}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.form-group input,.form-group textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:4px;font-size:14px;font-family:var(--font);outline:none;transition:border 0.2s;background:#fff}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,113,133,0.1)}
+.form-group textarea{resize:vertical;min-height:100px}
+.btn-submit{background:var(--yellow);color:#111;border:none;padding:10px 24px;border-radius:4px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);display:inline-flex;align-items:center;gap:8px;width:100%;justify-content:center;transition:background 0.2s}
+.btn-submit:hover{background:#f3a847}
+.btn-submit:disabled{opacity:0.6;cursor:not-allowed}
+
+/* MAP SECTION */
+.map-section{background:#fff;border-radius:8px;padding:24px;box-shadow:var(--shadow)}
+.map-section h2{font-size:18px;margin-bottom:16px;color:var(--dark)}
+.map-section h2 i{color:var(--red)}
+.map-box{border-radius:8px;overflow:hidden}
+.map-box iframe{width:100%;height:350px;border:0;display:block}
+
+/* INFO BANNER */
+.info-banner{background:linear-gradient(135deg,#232f3e,#0f1111);border-radius:8px;padding:24px;margin-bottom:24px;color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.info-banner h2{font-size:20px;margin-bottom:4px}
+.info-banner h2 i{color:var(--yellow)}
+.info-banner p{color:#ccc;font-size:14px}
+
+/* FOOTER */
+.footer{background:#232f3e;color:#ccc;padding:32px 0 0;margin-top:32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+.footer h4{color:#fff;font-size:15px;margin-bottom:12px}
+.footer a,.footer p{color:#ccc;font-size:13px;margin-bottom:4px;display:block}
+.footer a:hover{color:#fff}
+.footer-bottom{border-top:1px solid #3a4553;padding:16px 0;margin-top:24px;text-align:center;font-size:12px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .top-bar .container{flex-wrap:wrap}
+  .search-bar{order:3;flex:1 1 100%;max-width:100%}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .nav-bar a{font-size:12px;padding:8px 10px}
+  .top-links a span{display:none}
+  .contact-cards{grid-template-columns:1fr 1fr}
+  .map-box iframe{height:250px}
+}
+@media(max-width:480px){
+  .contact-cards{grid-template-columns:1fr}
+  .contact-form-wrap{padding:16px}
+  .map-section{padding:16px}
+}
+</style>
 </head>
 <body>
 
-<!-- DISCLAIMER -->
-<div class="disclaimer" id="disclaimerBanner">
+<!-- TOP BAR -->
+<div class="top-bar">
   <div class="container">
-    <i class="fas fa-info-circle"></i>
-    <span>We earn a commission from qualifying purchases at no extra cost to you. <a href="affiliate-disclosure.html">Full Disclosure</a></span>
-    <button class="disclaimer-close"><i class="fas fa-times"></i></button>
+    <div class="logo"><i class="fas fa-globe"></i>Affiliate<span>Global</span></div>
+    <div class="search-bar">
+      <select><option>All</option><option>Electronics</option><option>Phones</option><option>Laptops</option></select>
+      <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
+      <button id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="top-links">
+      <a href="../pages/contact.html"><small>Hello</small><strong>Contact</strong></a>
+      <a href="#" id="cartBtn" class="cart-link"><i class="fas fa-shopping-cart" style="font-size:20px"></i><span class="cart-count" id="cartCount">0</span></a>
+    </div>
   </div>
 </div>
 
-<!-- NAV BAR -->
-<nav class="nav-bar">
+<!-- NAV -->
+<div class="nav-bar">
   <div class="container">
-    <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
-    <a href="../index.html" class="nav-logo"><i class="fas fa-globe"></i> AffiliateGlobal</a>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="category.html?cat=smartphones">Smartphones</a></li>
-      <li><a href="category.html?cat=laptops">Laptops</a></li>
-      <li><a href="category.html?cat=tablets">Tablets</a></li>
-      <li><a href="category.html?cat=audio">Audio</a></li>
-      <li><a href="category.html?cat=wearables">Wearables</a></li>
-      <li><a href="deals.html">Deals</a></li>
-    </ul>
-    <div class="nav-icons">
-      <a href="#" id="searchToggle"><i class="fas fa-search"></i></a>
-      <a href="#" id="compareBtn"><i class="fas fa-sliders-h"></i><span class="nav-badge" id="compareBadge">0</span></a>
-    </div>
+    <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="category.html?cat=smartphones"><i class="fas fa-mobile-alt"></i> Smartphones</a>
+    <a href="category.html?cat=laptops"><i class="fas fa-laptop"></i> Laptops</a>
+    <a href="category.html?cat=tablets"><i class="fas fa-tablet-alt"></i> Tablets</a>
+    <a href="category.html?cat=audio"><i class="fas fa-headphones"></i> Audio</a>
+    <a href="category.html?cat=wearables"><i class="fas fa-clock"></i> Wearables</a>
+    <a href="category.html?cat=accessories"><i class="fas fa-plug"></i> Accessories</a>
+    <a href="deals.html"><i class="fas fa-fire"></i> Today's Deals</a>
   </div>
-  <div class="nav-search">
-    <div class="container" style="display:flex;align-items:center;height:100%;">
-      <form id="searchForm" style="display:flex;flex:1;align-items:center;">
-        <i class="fas fa-search" style="color:rgba(255,255,255,0.4);font-size:14px;"></i>
-        <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off" style="margin-left:8px;">
-      </form>
-      <button class="nav-search-close" id="searchClose"><i class="fas fa-times"></i></button>
-    </div>
-  </div>
-</nav>
-
-<!-- MOBILE NAV -->
-<div class="mobile-nav-overlay" id="mobileOverlay"></div>
-<div class="mobile-nav" id="mobileNav">
-  <div class="mobile-nav-header"><span><i class="fas fa-globe" style="color:var(--blue-accent);margin-right:6px;"></i>Menu</span><button id="mobileClose"><i class="fas fa-times"></i></button></div>
-  <div class="mobile-nav-item"><a href="../index.html">Home</a></div>
-  <div class="mobile-nav-item"><a href="category.html?cat=smartphones">Smartphones</a></div>
-  <div class="mobile-nav-item"><a href="category.html?cat=laptops">Laptops</a></div>
-  <div class="mobile-nav-item"><a href="category.html?cat=tablets">Tablets</a></div>
-  <div class="mobile-nav-item"><a href="category.html?cat=audio">Audio</a></div>
-  <div class="mobile-nav-item"><a href="category.html?cat=wearables">Wearables</a></div>
-  <div class="mobile-nav-item"><a href="category.html?cat=accessories">Accessories</a></div>
-  <div class="mobile-nav-item"><a href="deals.html">Best Deals</a></div>
-  <div class="mobile-nav-item"><a href="contact.html">Contact</a></div>
 </div>
 
-<!-- MAIN -->
-<main>
-  <div class="breadcrumbs">
-    <div class="container">
-      <a href="../index.html">Home</a>
-      <span>/</span>
-      <span>Contact Us</span>
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <h1><i class="fas fa-envelope"></i> Get in <strong>Touch</strong></h1>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="section">
+  <div class="container">
+    <!-- Info banner -->
+    <div class="info-banner">
+      <div>
+        <h2><i class="fas fa-headset"></i> We're Here to Help</h2>
+        <p>Have a question, feedback, or partnership idea? We'd love to hear from you.</p>
+      </div>
+    </div>
+
+    <!-- Contact grid: cards + form -->
+    <div class="contact-grid">
+      <!-- Left: contact cards -->
+      <div class="contact-cards">
+        <div class="contact-card">
+          <i class="fas fa-user"></i>
+          <h3>Contact Person</h3>
+          <p>Mr. Quan</p>
+        </div>
+        <div class="contact-card phone">
+          <i class="fas fa-phone"></i>
+          <h3>Phone</h3>
+          <p><a href="tel:+84972956137">+84 972 956 137</a></p>
+        </div>
+        <div class="contact-card email">
+          <i class="fas fa-envelope"></i>
+          <h3>Email</h3>
+          <p><a href="mailto:trangiaphatco@gmail.com">trangiaphatco@gmail.com</a></p>
+        </div>
+        <div class="contact-card hours">
+          <i class="fas fa-clock"></i>
+          <h3>Business Hours</h3>
+          <p>Mon – Sat: 8:00 – 18:00 (GMT+7)</p>
+        </div>
+      </div>
+
+      <!-- Right: contact form -->
+      <div class="contact-form-wrap">
+        <h2>Send Us a Message</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="contactName">Full Name</label>
+            <input type="text" id="contactName" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Email Address</label>
+            <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="contactSubject">Subject</label>
+            <input type="text" id="contactSubject" name="subject" placeholder="How can we help?" required>
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" name="message" rows="6" placeholder="Write your message here..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div class="map-section">
+      <h2><i class="fas fa-map-marker-alt"></i> Our Location — Ho Chi Minh City</h2>
+      <div class="map-box">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.425859251643!2d106.69920307481693!3d10.776201989367193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f47ad1c7eef%3A0x27b8b56fa1a2ac81!2sHo%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2s!4v1700000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ho Chi Minh City Map"></iframe>
+      </div>
     </div>
   </div>
-
-  <section class="section section-white" style="padding-top:0;">
-    <div class="container">
-      <div style="padding:24px 0;">
-        <h1 class="section-title">Get in Touch</h1>
-        <p class="section-subtitle" style="margin-bottom:0;">Have a question, feedback, or partnership idea? We'd love to hear from you.</p>
-      </div>
-
-      <div class="contact-wrap">
-        <div class="contact-cards">
-          <div class="contact-card">
-            <i class="fas fa-user"></i>
-            <h3>Contact Person</h3>
-            <p>Mr. Quan</p>
-          </div>
-          <div class="contact-card">
-            <i class="fas fa-phone"></i>
-            <h3>Phone</h3>
-            <p><a href="tel:+84972956137">+84 972 956 137</a></p>
-          </div>
-          <div class="contact-card">
-            <i class="fas fa-envelope"></i>
-            <h3>Email</h3>
-            <p><a href="mailto:trangiaphatco@gmail.com">trangiaphatco@gmail.com</a></p>
-          </div>
-          <div class="contact-card">
-            <i class="fas fa-clock"></i>
-            <h3>Business Hours</h3>
-            <p>Mon – Sat: 8:00 – 18:00 (GMT+7)</p>
-          </div>
-        </div>
-
-        <div class="contact-form-wrap">
-          <h2>Send Us a Message</h2>
-          <form id="contactForm">
-            <div class="form-group">
-              <label for="contactName">Full Name</label>
-              <input type="text" id="contactName" name="name" placeholder="Your full name" required>
-            </div>
-            <div class="form-group">
-              <label for="contactEmail">Email Address</label>
-              <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required>
-            </div>
-            <div class="form-group">
-              <label for="contactSubject">Subject</label>
-              <input type="text" id="contactSubject" name="subject" placeholder="How can we help?" required>
-            </div>
-            <div class="form-group">
-              <label for="contactMessage">Message</label>
-              <textarea id="contactMessage" name="message" rows="6" placeholder="Write your message here..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Send Message <i class="fas fa-paper-plane"></i></button>
-          </form>
-        </div>
-      </div>
-
-      <div class="contact-map">
-        <h2>Our Location</h2>
-        <div class="map-box">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.425859251643!2d106.69920307481693!3d10.776201989367193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f47ad1c7eef%3A0x27b8b56fa1a2ac81!2sHo%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2s!4v1700000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
+</div>
 
 <!-- FOOTER -->
-<footer class="footer">
+<div class="footer">
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-logo"><a href="../index.html"><i class="fas fa-globe" style="color:var(--blue-accent);"></i> AffiliateGlobal</a></div>
+      <div>
+        <div class="logo" style="font-size:18px;margin-bottom:8px"><i class="fas fa-globe"></i> Affiliate<span>Global</span></div>
         <p>Your trusted source for tech reviews, buying guides, and the best deals from top retailers worldwide.</p>
-        <div class="footer-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
-        </div>
       </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <a href="../index.html">Home</a>
+      <div>
+        <h4>Shop</h4>
         <a href="deals.html">Best Deals</a>
         <a href="category.html?cat=smartphones">Smartphones</a>
         <a href="category.html?cat=laptops">Laptops</a>
         <a href="category.html?cat=tablets">Tablets</a>
         <a href="category.html?cat=audio">Audio</a>
       </div>
-      <div class="footer-col">
-        <h4>Brands</h4>
-        <a href="category.html?cat=apple">Apple</a>
-        <a href="category.html?cat=samsung">Samsung</a>
-        <a href="category.html?cat=xiaomi">Xiaomi</a>
-        <a href="category.html?cat=google">Google</a>
-        <a href="category.html?cat=sony">Sony</a>
-        <a href="category.html?cat=bose">Bose</a>
+      <div>
+        <h4>Company</h4>
+        <a href="contact.html">Contact Us</a>
+        <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
       </div>
-      <div class="footer-col">
+      <div>
         <h4>Contact</h4>
-        <p><i class="fas fa-user"></i> Mr. Quan</p>
+        <p>Mr. Quan</p>
         <p><i class="fas fa-phone"></i> +84 972 956 137</p>
         <p><i class="fas fa-envelope"></i> trangiaphatco@gmail.com</p>
-        <p><i class="fas fa-clock"></i> Mon-Sat: 8:00-18:00 (GMT+7)</p>
-        <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px;">Contact Us</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Affiliate Global. All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="affiliate-disclosure.html">Disclosure</a>
-      </div>
+      <p>&copy; 2026 Affiliate Global. As an Amazon Associate we earn from qualifying purchases.</p>
     </div>
-  </div>
-</footer>
-
-<!-- SIDEBAR -->
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <h3><i class="fas fa-sliders-h" style="color:var(--blue-accent);"></i> Compare</h3>
-    <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
-  </div>
-  <div class="sidebar-items" id="sidebarItems"><p class="sidebar-empty">Your comparison list is empty.</p></div>
-  <div class="sidebar-footer">
-    <a href="deals.html" class="btn btn-primary btn-block">Browse Products</a>
   </div>
 </div>
 
-<!-- BACK TO TOP -->
-<button class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></button>
-
-<script src="../assets/js/products.js"></script>
-<script src="../assets/js/main.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+// Search from contact page
+document.getElementById('searchBtn').onclick = function(e) {
+  e.preventDefault();
+  var q = document.getElementById('searchInput').value.trim();
+  if (q) window.location.href = 'deals.html?search=' + encodeURIComponent(q);
+};
+document.getElementById('searchInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') document.getElementById('searchBtn').click();
+});
+
+// Contact form
+document.addEventListener('DOMContentLoaded', function() {
   var form = document.getElementById('contactForm');
   if (form) {
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
       var btn = form.querySelector('button[type="submit"]');
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
       btn.disabled = true;
-      setTimeout(function () {
+      setTimeout(function() {
         btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
         btn.style.background = '#34c759';
         form.reset();
-        setTimeout(function () {
+        setTimeout(function() {
           btn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
           btn.disabled = false;
           btn.style.background = '';
