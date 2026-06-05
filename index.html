@@ -254,7 +254,7 @@ function renderProducts() {
     var off = p.old ? Math.round((1 - p.price / p.old) * 100) : 0;
     var card = document.createElement('div');
     card.className = 'product-card';
-    card.innerHTML = '<div class="product-img">' + badge + '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy"></div>' +
+    card.innerHTML = '<a href="pages/product.html?id=' + p.id + '" class="product-img">' + badge + '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy"></a>' +
       '<div class="product-body">' +
       '<a href="pages/product.html?id=' + p.id + '" class="product-name">' + p.name + '</a>' +
       '<div class="rating">' + stars + ' <span>' + p.rating + ' (' + (p.rev >= 1000 ? Math.round(p.rev/1000) + 'k' : p.rev) + ')</span></div>' +

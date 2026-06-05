@@ -1,541 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Affiliate Global</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        .admin-card { background:#fff; border:1px solid var(--border); border-radius:8px; padding:24px; margin:16px 0; }
-        .admin-table { width:100%; border-collapse:collapse; font-size:13px; }
-        .admin-table th { background:#fafafa; padding:10px 12px; text-align:left; font-weight:600; border-bottom:2px solid var(--border); }
-        .admin-table td { padding:10px 12px; border-bottom:1px solid var(--border-light); vertical-align:middle; }
-        .admin-table tr:hover td { background:#fafafa; }
-        .admin-table img { width:40px;height:40px;object-fit:cover;border-radius:4px; }
-        .table-wrap { overflow-x:auto; }
-        .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-        .form-grid .full { grid-column:1/-1; }
-        .form-group { margin-bottom:12px; }
-        .form-group label { display:block; font-size:13px; font-weight:500; margin-bottom:4px; color:var(--text); }
-        .form-group input,.form-group select,.form-group textarea { width:100%; padding:9px 12px; border:1px solid var(--border); border-radius:4px; font-size:14px; outline:none; }
-        .form-group input:focus,.form-group select:focus,.form-group textarea:focus { border-color:var(--red); }
-        .form-group textarea { resize:vertical; min-height:80px; font-size:13px; }
-        .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:600; align-items:center; justify-content:center; padding:20px; }
-        .modal.active { display:flex; }
-        .modal-content { background:#fff; border-radius:8px; max-width:700px; width:100%; max-height:90vh; overflow-y:auto; padding:24px; }
-        .toast { position:fixed; bottom:70px; left:50%; transform:translateX(-50%); padding:10px 24px; border-radius:4px; font-size:14px; z-index:999; color:#fff; }
-        .toast.success { background:#00a650; }
-        .toast.error { background:#ef4444; }
-        .toast.info { background:#333; }
-        .token-status { display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:4px 12px;border-radius:4px; }
-        .token-status.ok { background:#d1fae5;color:#00a650; }
-        .token-status.no { background:#fee2e2;color:#ef4444; }
-        .gh-section { display:flex;align-items:center;gap:12px;flex-wrap:wrap; }
-        @media(max-width:768px){ .form-grid { grid-template-columns:1fr; } }
-        .btn:disabled { opacity:0.5; cursor:not-allowed; }
-        .badge-preview { display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600;color:#fff; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - Affiliate Global</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#eaeded;color:#111;font-size:14px;line-height:1.5}
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
+.top{background:#131921;color:#fff;padding:10px 0}
+.top .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:20px;font-weight:700}
+.logo span{color:#febd69}
+.top a{color:#fff;font-size:13px}
+.card{background:#fff;border-radius:8px;padding:20px;margin:16px 0;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+.card h2{font-size:18px;margin-bottom:12px}
+.card h3{font-size:15px;margin-bottom:8px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#f5f5f5;padding:10px 12px;text-align:left;font-weight:600;border-bottom:2px solid #ddd}
+td{padding:10px 12px;border-bottom:1px solid #eee;vertical-align:middle}
+tr:hover td{background:#f9f9f9}
+table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
+.wrap{overflow-x:auto}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f2 .w{grid-column:1/-1}
+.fg{margin-bottom:10px}
+.fg label{display:block;font-size:13px;font-weight:500;margin-bottom:3px}
+.fg input,.fg select,.fg textarea{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;outline:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#007185}
+.fg textarea{resize:vertical;min-height:70px;font-size:13px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;font-family:inherit}
+.btn-p{background:#ffd814;color:#111}
+.btn-p:hover{background:#f7ca00}
+.btn-o{background:#fff;color:#007185;border:1px solid #007185}
+.btn-o:hover{background:#f0f8ff}
+.btn-r{background:#ef4444;color:#fff}
+.btn-r:hover{background:#dc2626}
+.btn-s{background:#007185;color:#fff}
+.btn-s:hover{background:#005f6b}
+.btn-sm{padding:5px 10px;font-size:12px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:600;align-items:center;justify-content:center;padding:20px}
+.modal.a{display:flex}
+.mc{background:#fff;border-radius:8px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;padding:24px}
+.mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.mh h3{margin:0;font-size:17px}
+.close{background:none;border:none;font-size:20px;cursor:pointer;color:#999}
+.toast{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);padding:10px 24px;border-radius:4px;font-size:14px;z-index:999;color:#fff}
+.toast.g{background:#00a650}
+.toast.r{background:#ef4444}
+.toast.i{background:#333}
+.bdg{display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600;color:#fff}
+.ac{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.login{max-width:380px;margin:80px auto;text-align:center}
+.login h2{margin-bottom:6px}
+.login p{color:#666;margin-bottom:16px;font-size:13px}
+.login input{width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:4px;font-size:15px;margin-bottom:10px}
+.login .btn{width:100%;justify-content:center}
+.gh{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.gh input{flex:1;min-width:200px;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:13px}
+.st{display:inline-flex;align-items:center;gap:4px;font-size:12px;padding:3px 10px;border-radius:4px}
+.st.g{background:#d1fae5;color:#00a650}
+.st.r{background:#fee2e2;color:#ef4444}
+.footer{background:#232f3e;color:#ccc;padding:20px 0;margin-top:30px;text-align:center;font-size:13px}
+.footer a{color:#ccc}
+@media(max-width:768px){.f2{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-<div class="top-bar"><div class="container">
-    <div><i class="fas fa-shield-alt"></i> Admin Panel - Affiliate Global</div>
-    <div><a href="../index.html" style="color:#fff;"><i class="fas fa-home"></i> View Site</a></div>
-</div></div>
 
-<header class="header"><div class="container">
-    <a href="../index.html" class="logo">
-        <span class="logo-icon"><i class="fas fa-globe"></i></span>
-        <span class="logo-text">Affiliate<span class="logo-highlight">Global</span> <span style="font-size:12px;opacity:0.7;">Admin</span></span>
-    </a>
-    <div style="flex:1;"></div>
-    <div class="header-actions">
-        <a href="../index.html" class="action-btn"><i class="fas fa-home"></i><span class="action-label">Site</span></a>
-        <a href="#" class="action-btn" id="logoutBtn" style="display:none;"><i class="fas fa-sign-out-alt"></i><span class="action-label">Logout</span></a>
-    </div>
-</div></header>
+<div class="top">
+  <div class="container">
+    <div class="logo"><i class="fas fa-globe"></i> Affiliate<span>Global</span> <span style="font-size:11px;opacity:.7">Admin</span></div>
+    <div><a href="../index.html"><i class="fas fa-home"></i> View Site</a></div>
+  </div>
+</div>
 
-<div class="container" style="padding:20px 12px;">
-    <!-- LOGIN -->
-    <div id="loginScreen" class="admin-card" style="max-width:400px;margin:60px auto;text-align:center;">
-        <h2 style="margin-bottom:8px;"><i class="fas fa-lock"></i> Admin Login</h2>
-        <p style="color:#666;margin-bottom:20px;">Enter password to manage products</p>
-        <input type="password" id="pwdInput" placeholder="Password" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:4px;font-size:15px;margin-bottom:10px;">
-        <p id="loginError" style="color:red;font-size:13px;display:none;">Wrong password</p>
-        <button class="btn btn-primary" id="loginBtn" style="width:100%;justify-content:center;">Login</button>
-    </div>
+<div class="container" style="padding:20px 12px;min-height:70vh">
 
-    <!-- DASHBOARD -->
-    <div id="dashboard" style="display:none;">
-        <!-- GitHub Token -->
-        <div class="admin-card">
-            <div class="gh-section">
-                <div style="flex:1;">
-                    <h3 style="margin:0 0 4px;"><i class="fab fa-github"></i> GitHub Auto-Commit</h3>
-                    <p style="color:#666;font-size:13px;margin:0;">
-                        <span id="tokenStatus" class="token-status no"><i class="fas fa-times-circle"></i> No token</span>
-                        <span style="margin-left:12px;" id="repoInfo">Repo: Tranquan19/affiliate-global</span>
-                    </p>
-                </div>
-                <div style="display:flex;gap:8px;">
-                    <input type="password" id="tokenInput" placeholder="Paste GitHub token..." style="padding:9px 14px;border:1px solid #ddd;border-radius:4px;font-size:14px;width:320px;max-width:100%;">
-                    <button class="btn btn-primary btn-sm" id="setTokenBtn"><i class="fas fa-link"></i> Set</button>
-                    <button class="btn btn-outline btn-sm" id="clearTokenBtn" style="display:none;"><i class="fas fa-unlink"></i> Clear</button>
-                </div>
-            </div>
+  <!-- LOGIN -->
+  <div id="login" class="card login">
+    <h2><i class="fas fa-lock"></i> Admin Login</h2>
+    <p>Enter password to manage products</p>
+    <input type="password" id="pwd" placeholder="Password">
+    <p id="lerr" style="color:#ef4444;font-size:13px;display:none;">Wrong password</p>
+    <button class="btn btn-p" id="lbtn">Login</button>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dash" style="display:none">
+    <!-- GITHUB -->
+    <div class="card">
+      <div class="gh">
+        <div style="flex:1">
+          <h3><i class="fab fa-github"></i> GitHub Auto-Commit</h3>
+          <p style="color:#666;font-size:12px;margin:2px 0 0"><span id="ts" class="st r"><i class="fas fa-times-circle"></i> No token</span> <span style="margin-left:8px">Repo: Tranquan19/affiliate-global</span></p>
         </div>
-
-        <!-- Product Manager -->
-        <div class="admin-card">
-            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-                <div>
-                    <h2 style="margin:0;"><i class="fas fa-boxes"></i> Products</h2>
-                    <p style="color:#666;font-size:13px;margin:4px 0 0;"><span id="pCount">0</span> products</p>
-                </div>
-                <button class="btn btn-primary" id="addBtn"><i class="fas fa-plus"></i> Add Product</button>
-            </div>
-        </div>
-
-        <div class="admin-card" style="padding:12px 24px;">
-            <div class="table-wrap">
-                <table class="admin-table">
-                    <thead><tr>
-                        <th style="width:50px;">Img</th><th>Name</th><th>Brand</th><th>Category</th><th style="width:90px;">Price</th><th>Badge</th><th style="width:100px;">Actions</th>
-                    </tr></thead>
-                    <tbody id="tableBody"></tbody>
-                </table>
-            </div>
-        </div>
+        <input type="password" id="tok" placeholder="Paste GitHub token...">
+        <button class="btn btn-p btn-sm" id="stok">Set</button>
+        <button class="btn btn-o btn-sm" id="ctok" style="display:none">Clear</button>
+      </div>
     </div>
+
+    <!-- PRODUCTS -->
+    <div class="card">
+      <div class="ac">
+        <div>
+          <h2 style="margin:0"><i class="fas fa-boxes"></i> Products</h2>
+          <p style="color:#666;font-size:12px;margin:2px 0 0"><span id="pc">0</span> products</p>
+        </div>
+        <button class="btn btn-p" id="addb"><i class="fas fa-plus"></i> Add Product</button>
+      </div>
+    </div>
+
+    <div class="card" style="padding:12px 20px">
+      <div class="wrap">
+        <table>
+          <thead><tr>
+            <th style="width:44px">Img</th><th>Name</th><th>Brand</th><th>Category</th><th style="width:85px">Price</th><th>Badge</th><th style="width:90px">Actions</th>
+          </tr></thead>
+          <tbody id="tb"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- MODAL -->
-<div class="modal" id="productModal">
-    <div class="modal-content">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-            <h3 style="margin:0;" id="modalTitle">Add Product</h3>
-            <button id="closeModalBtn" style="background:none;border:none;font-size:22px;cursor:pointer;">&times;</button>
+<div class="modal" id="pm">
+  <div class="mc">
+    <div class="mh"><h3 id="mt">Add Product</h3><button class="close" id="cmb">&times;</button></div>
+    <form id="pf">
+      <input type="hidden" id="ei">
+      <div class="f2">
+        <div class="fg"><label>Name *</label><input type="text" id="fn" required></div>
+        <div class="fg"><label>Brand</label><input type="text" id="fb" value="Apple"></div>
+        <div class="fg"><label>Category *</label>
+          <select id="fc">
+            <option value="smartphones">Smartphones</option><option value="laptops">Laptops</option>
+            <option value="tablets">Tablets</option><option value="audio">Audio</option>
+            <option value="wearables">Wearables</option><option value="accessories">Accessories</option>
+          </select>
         </div>
-        <form id="productForm">
-            <input type="hidden" id="editId">
-            <div class="form-grid">
-                <div class="form-group"><label>Product Name *</label><input type="text" id="fName" required></div>
-                <div class="form-group"><label>Brand</label><input type="text" id="fBrand" value="Apple"></div>
-                <div class="form-group"><label>Category *</label>
-                    <select id="fCategory">
-                        <option value="smartphones">Smartphones</option><option value="laptops">Laptops</option>
-                        <option value="tablets">Tablets</option><option value="audio">Audio</option>
-                        <option value="wearables">Wearables</option><option value="accessories">Accessories</option>
-                    </select>
-                </div>
-                <div class="form-group"><label>Badge</label>
-                    <select id="fBadge">
-                        <option value="">None</option><option value="Best Seller">Best Seller</option>
-                        <option value="New">New</option><option value="Sale">Sale</option>
-                    </select>
-                </div>
-                <div class="form-group"><label>Price ($) *</label><input type="number" id="fPrice" step="0.01" min="0" required></div>
-                <div class="form-group"><label>Original Price ($)</label><input type="number" id="fOriginal" step="0.01" min="0" value="0"></div>
-                <div class="form-group full"><label>Image URL *</label><input type="url" id="fImage" placeholder="https://images.unsplash.com/photo-..."></div>
-                <div class="form-group full"><label>Additional Images (one per line)</label><textarea id="fImages" rows="3" placeholder="https://images.unsplash.com/photo-1..."></textarea></div>
-                <div class="form-group full"><label>Description</label><textarea id="fDesc" rows="3"></textarea></div>
-                <div class="form-group full"><label>Features (one per line)</label><textarea id="fFeatures" rows="4" placeholder="Feature 1..."></textarea></div>
-            </div>
-            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px;">
-                <button type="button" class="btn btn-outline" id="cancelBtn">Cancel</button>
-                <button type="submit" class="btn btn-primary" id="saveBtn"><i class="fas fa-save"></i> Save <span id="saveHint"></span></button>
-            </div>
-        </form>
-    </div>
+        <div class="fg"><label>Badge</label>
+          <select id="fba">
+            <option value="">None</option><option value="Best Seller">Best Seller</option>
+            <option value="New">New</option><option value="Sale">Sale</option>
+          </select>
+        </div>
+        <div class="fg"><label>Price ($) *</label><input type="number" id="fp" step="0.01" min="0" required></div>
+        <div class="fg"><label>Original ($)</label><input type="number" id="fo" step="0.01" min="0" value="0"></div>
+        <div class="fg w"><label>Image URL *</label><input type="url" id="fi" placeholder="https://images.unsplash.com/photo-..."></div>
+        <div class="fg w"><label>More Images (one per line)</label><textarea id="fim" rows="2" placeholder="https://..."></textarea></div>
+        <div class="fg w"><label>Description</label><textarea id="fd" rows="2"></textarea></div>
+        <div class="fg w"><label>Features (one per line)</label><textarea id="ff" rows="3"></textarea></div>
+      </div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">
+        <button type="button" class="btn btn-o" id="cab">Cancel</button>
+        <button type="submit" class="btn btn-s" id="sbtn"><i class="fas fa-save"></i> Save Product</button>
+      </div>
+    </form>
+  </div>
 </div>
 
-<!-- DELETE MODAL -->
-<div class="modal" id="deleteModal">
-    <div class="modal-content" style="max-width:400px;">
-        <h3 style="margin-bottom:12px;">Delete Product</h3>
-        <p id="deleteMsg" style="margin-bottom:20px;">Are you sure?</p>
-        <div style="display:flex;gap:8px;justify-content:flex-end;">
-            <button class="btn btn-outline" id="cancelDelBtn">Cancel</button>
-            <button class="btn btn-primary" id="confirmDelBtn" style="background:#ef4444;"><i class="fas fa-trash"></i> Delete</button>
-        </div>
+<!-- DELETE -->
+<div class="modal" id="dm">
+  <div class="mc" style="max-width:380px">
+    <h3 style="margin-bottom:12px">Delete Product</h3>
+    <p id="dmsg" style="margin-bottom:20px">Are you sure?</p>
+    <div style="display:flex;gap:8px;justify-content:flex-end">
+      <button class="btn btn-o" id="cdb">Cancel</button>
+      <button class="btn btn-r" id="ddb"><i class="fas fa-trash"></i> Delete</button>
     </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <p>&copy; 2026 Affiliate Global Admin &middot; <a href="../index.html">Home</a> &middot; <a href="affiliate-disclosure.html">Disclosure</a></p>
+  </div>
 </div>
 
 <script>
-(function() {
-    'use strict';
+(function(){
+  const G = 'ag_github_token', R = 'Tranquan19/affiliate-global', B = 'main', F = 'assets/js/products.js';
 
-    // === CONFIG ===
-    const REPO = 'Tranquan19/affiliate-global';
-    const BRANCH = 'main';
-    const FILE_PATH = 'assets/js/products.js';
-    const STORAGE_KEY = 'ag_products';
+  var products = [], delId = null, token = localStorage.getItem(G)||'', sha = null;
 
-    // === DEFAULT PRODUCTS ===
-    var DEFAULT_PRODUCTS = [
-        {id:"iphone16-pro-max",name:"iPhone 16 Pro Max",brand:"Apple",category:"smartphones",price:1199,originalPrice:1299,image:"https://images.unsplash.com/photo-1695048133142-3a8a4b9b3b9b?w=400&h=400&fit=crop",rating:4.8,reviews:1245,description:"A18 Pro chip, 48MP Fusion camera system.",features:["A18 Pro chip","48MP Fusion camera","Titanium design","ProMotion XDR display"],affiliateLink:"https://www.amazon.com/s?k=iPhone+16+Pro+Max"},
-        {id:"samsung-galaxy-s25-ultra",name:"Samsung Galaxy S25 Ultra",brand:"Samsung",category:"smartphones",price:1299,originalPrice:1399,image:"https://images.unsplash.com/photo-1592286927505-1a2513b5d2e5?w=400&h=400&fit=crop",rating:4.7,reviews:892,description:"200MP camera, S Pen, Galaxy AI.",features:["200MP camera","S Pen","Snapdragon 8 Elite","5000mAh battery"],affiliateLink:"https://www.amazon.com/s?k=Galaxy+S25+Ultra"},
-        {id:"macbook-pro-m4",name:"MacBook Pro M4 Max",brand:"Apple",category:"laptops",price:2499,originalPrice:2699,image:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=400&fit=crop",rating:4.9,reviews:756,description:"M4 Max, Liquid Retina XDR, 24h battery.",features:["M4 Max 16-core CPU","Liquid Retina XDR","24h battery","Thunderbolt 5"],affiliateLink:"https://www.amazon.com/s?k=MacBook+Pro+M4+Max"},
-        {id:"dell-xps-16",name:"Dell XPS 16",brand:"Dell",category:"laptops",price:1899,originalPrice:2099,image:"https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=400&fit=crop",rating:4.6,reviews:432,description:"Intel Core Ultra, OLED display.",features:["Intel Core Ultra","4K OLED","32GB RAM","1TB SSD"],affiliateLink:"https://www.amazon.com/s?k=Dell+XPS+16"},
-        {id:"ipad-pro-m4",name:'iPad Pro M4 13"',brand:"Apple",category:"tablets",price:1299,image:"https://images.unsplash.com/photo-1546868871-af0de0ae72c3?w=400&h=400&fit=crop",rating:4.8,reviews:567,description:"Ultra XDR, M4, Apple Pencil Pro.",features:["M4 10-core GPU","Ultra Retina XDR","Apple Pencil Pro","Face ID"],affiliateLink:"https://www.amazon.com/s?k=iPad+Pro+M4"},
-        {id:"airpods-pro-3",name:"AirPods Pro 3",brand:"Apple",category:"audio",price:249,image:"https://images.unsplash.com/photo-1583394838336-f7c6e6f6c8b6?w=400&h=400&fit=crop",rating:4.7,reviews:1234,description:"Adaptive Audio, USB-C.",features:["Active Noise Cancellation","USB-C","Spatial Audio","30h battery"],affiliateLink:"https://www.amazon.com/s?k=AirPods+Pro+3"},
-        {id:"google-pixel-10-pro",name:"Google Pixel 10 Pro",brand:"Google",category:"smartphones",price:999,image:"https://images.unsplash.com/photo-1598327105666-5b893f1a5f2a?w=400&h=400&fit=crop",rating:4.5,reviews:234,description:"Tensor G6, Gemini AI.",features:["Tensor G6","50MP camera","Gemini AI","24h battery"],affiliateLink:"https://www.amazon.com/s?k=Google+Pixel+10+Pro"},
-        {id:"sony-wh1000xm6",name:"Sony WH-1000XM6",brand:"Sony",category:"audio",price:349,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop",rating:4.7,reviews:678,description:"Industry-leading noise cancellation.",features:["Noise cancellation","DSEE Extreme","40h battery","Multipoint"],affiliateLink:"https://www.amazon.com/s?k=Sony+WH-1000XM6"}
-    ];
+  function $(i){return document.getElementById(i)}
 
-    // === STATE ===
-    var products = [];
-    var deleteId = null;
-    var githubToken = localStorage.getItem('ag_github_token') || '';
-    var fileSha = null;
+  function e(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
 
-    function $(id) { return document.getElementById(id); }
+  function t(m,c){var x=document.createElement('div');x.className='toast '+(c||'i');x.textContent=m;document.body.appendChild(x);setTimeout(function(){x.style.opacity='0';x.style.transition='opacity 0.3s';setTimeout(function(){x.remove()},300)},3000)}
 
-    function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  function di(c){return c==='smartphones'?'https://images.unsplash.com/photo-1598327105666-5b893f1a5f2a?w=400':c==='laptops'?'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400':c==='tablets'?'https://images.unsplash.com/photo-1546868871-af0de0ae72c3?w=400':c==='audio'?'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400':c==='wearables'?'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400':'https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=400'}
 
-    function toast(msg, type) {
-        var t = document.createElement('div');
-        t.className = 'toast ' + (type || 'info');
-        t.textContent = msg;
-        document.body.appendChild(t);
-        setTimeout(function() { t.style.opacity = '0'; t.style.transition = 'opacity 0.3s'; setTimeout(function() { t.remove(); }, 300); }, 3000);
+  function gid(n){return n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').substring(0,40)+'-'+Date.now().toString(36)}
+
+  function D(){return[
+    {id:'iphone16-pro-max',name:'iPhone 16 Pro Max',brand:'Apple',cat:'smartphones',price:1199,old:1299,img:'https://images.unsplash.com/photo-1695048133142-3a8a4b9b3b9b?w=400',rating:4.8,rev:1245,badge:'Best Seller'},
+    {id:'samsung-s25-ultra',name:'Samsung Galaxy S25 Ultra',brand:'Samsung',cat:'smartphones',price:1299,old:1399,img:'https://images.unsplash.com/photo-1592286927505-1a2513b5d2e5?w=400',rating:4.7,rev:892,badge:'New'},
+    {id:'macbook-pro-m4',name:'MacBook Pro M4 Max',brand:'Apple',cat:'laptops',price:2499,old:2699,img:'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400',rating:4.9,rev:756,badge:'Best Seller'},
+    {id:'dell-xps-16',name:'Dell XPS 16',brand:'Dell',cat:'laptops',price:1899,old:2099,img:'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400',rating:4.6,rev:432,badge:'Sale'},
+    {id:'ipad-pro-m4',name:'iPad Pro M4 13"',brand:'Apple',cat:'tablets',price:1299,img:'https://images.unsplash.com/photo-1546868871-af0de0ae72c3?w=400',rating:4.8,rev:567,badge:'New'},
+    {id:'airpods-pro-3',name:'AirPods Pro 3',brand:'Apple',cat:'audio',price:249,img:'https://images.unsplash.com/photo-1583394838336-f7c6e6f6c8b6?w=400',rating:4.7,rev:1234,badge:'Best Seller'},
+    {id:'sony-wh1000xm6',name:'Sony WH-1000XM6',brand:'Sony',cat:'audio',price:349,img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',rating:4.7,rev:678},
+    {id:'google-pixel-10',name:'Google Pixel 10 Pro',brand:'Google',cat:'smartphones',price:999,img:'https://images.unsplash.com/photo-1598327105666-5b893f1a5f2a?w=400',rating:4.5,rev:234},
+    {id:'watch-ultra-3',name:'Apple Watch Ultra 3',brand:'Apple',cat:'wearables',price:899,img:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',rating:4.8,rev:345,badge:'New'},
+    {id:'xiaomi-15-ultra',name:'Xiaomi 15 Ultra',brand:'Xiaomi',cat:'smartphones',price:899,old:999,img:'https://images.unsplash.com/photo-1598327105666-5b893f1a5f2a?w=400',rating:4.6,rev:189,badge:'Sale'}
+  ]}
+
+  // GITHUB
+  function ut(){
+    var s=$('ts')
+    if(token){s.className='st g';s.innerHTML='<i class="fas fa-check-circle"></i> Token set';$('ctok').style.display='';$('stok').textContent='Update'}
+    else{s.className='st r';s.innerHTML='<i class="fas fa-times-circle"></i> No token';$('ctok').style.display='none';$('stok').textContent='Set'}
+  }
+
+  async function fg(){
+    if(!token) return
+    try{
+      var r=await fetch('https://api.github.com/repos/'+R+'/contents/'+F+'?ref='+B,{headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github.v3+json'}})
+      if(!r.ok){t('GitHub: '+r.status,'r');return}
+      var d=await r.json();sha=d.sha
+      var rx=await fetch(d.download_url),tx=await rx.text()
+      var m=tx.match(/const\s+products\s*=\s*(\[[\s\S]*?\]);/)
+      if(m){var p=JSON.parse(m[1]);if(p.length){products=p;render();t('Loaded '+products.length+' products','g');return}}
+    }catch(e){}
+    loadLocal()
+  }
+
+  async function cm(msg){
+    if(!token) return
+    $('sbtn').disabled=true;$('sbtn').innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...'
+    try{
+      sha=null
+      var r=await fetch('https://api.github.com/repos/'+R+'/contents/'+F+'?ref='+B,{headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github.v3+json'}})
+      if(r.ok){var d=await r.json();sha=d.sha}
+      var js='// Affiliate Global\nconst products = '+JSON.stringify(products,null,2)+';\n\nfunction getProductById(id){return products.find(function(p){return p.id===id})||null}\nfunction getProductsByCategory(cat){return products.filter(function(p){return p.category===cat})}\n'
+      var b={message:msg,content:btoa(unescape(encodeURIComponent(js))),branch:B};if(sha)b.sha=sha
+      var r2=await fetch('https://api.github.com/repos/'+R+'/contents/'+F,{method:'PUT',headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(b)})
+      if(r2.ok){var d2=await r2.json();sha=d2.content?d2.content.sha:null;t('Committed!','g')}
+      else{var e2=await r2.json();t('Error: '+(e2.message||r2.status),'r')}
+    }catch(e){t('Failed: '+e.message,'r')}
+    finally{$('sbtn').disabled=false;$('sbtn').innerHTML='<i class="fas fa-save"></i> Save Product'}
+  }
+
+  // LOCAL
+  function loadLocal(){
+    try{var s=localStorage.getItem('ag_products');products=s?JSON.parse(s):D()}catch(e){products=D()}
+    render()
+  }
+
+  function saveL(){localStorage.setItem('ag_products',JSON.stringify(products))}
+
+  async function sc(msg){saveL();render();if(token) await cm(msg);else t('Saved locally','i')}
+
+  // RENDER
+  function render(){
+    var tb=$('tb');$('pc').textContent=products.length
+    if(!products.length){tb.innerHTML='<tr><td colspan="7" style="text-align:center;padding:40px;color:#999">No products</td></tr>';return}
+    tb.innerHTML=''
+    products.forEach(function(p){
+      var b=p.badge?'<span class="bdg" style="background:'+(p.badge==='Sale'?'#c45500':p.badge==='New'?'#067d62':'#007185')+'">'+e(p.badge)+'</span>':'-'
+      var tr=document.createElement('tr')
+      tr.innerHTML='<td><img src="'+(p.img||di(p.cat||p.category))+'" loading="lazy"></td>'+
+        '<td><strong>'+e(p.name)+'</strong><br><small style="color:#999">'+e(p.id)+'</small></td>'+
+        '<td>'+e(p.brand)+'</td>'+
+        '<td>'+(p.cat||p.category)+'</td>'+
+        '<td style="color:#b12704;font-weight:600">$'+(p.price||0).toLocaleString()+'</td>'+
+        '<td>'+b+'</td>'+
+        '<td><button class="btn btn-p btn-sm eb" data-id="'+e(p.id)+'"><i class="fas fa-edit"></i></button> '+
+        '<button class="btn btn-r btn-sm db" data-id="'+e(p.id)+'"><i class="fas fa-trash"></i></button></td>'
+      tb.appendChild(tr)
+    })
+    tb.querySelectorAll('.eb').forEach(function(b){b.onclick=function(){edit(b.dataset.id)}})
+    tb.querySelectorAll('.db').forEach(function(b){b.onclick=function(){del(b.dataset.id)}})
+  }
+
+  function edit(id){
+    var p=products.find(function(x){return x.id===id});if(!p)return
+    $('mt').textContent='Edit Product';$('ei').value=p.id
+    $('fn').value=p.name||'';$('fb').value=p.brand||'';$('fc').value=p.cat||p.category||'smartphones'
+    $('fp').value=p.price||'';$('fo').value=p.old||0
+    $('fi').value=p.img||'';$('fim').value=(p.images||[]).join('\n')
+    $('fd').value=p.desc||p.description||'';$('ff').value=(p.features||[]).join('\n')
+    $('fba').value=p.badge||''
+    $('pm').classList.add('a')
+  }
+
+  function del(id){
+    delId=id;var p=products.find(function(x){return x.id===id})
+    $('dmsg').textContent='Delete "'+(p?p.name:id)+'"?'
+    $('dm').classList.add('a')
+  }
+
+  // INIT
+  function init(){
+    loadLocal();ut()
+    if(sessionStorage.getItem('ag_ad')){
+      $('login').style.display='none';$('dash').style.display='block'
+      if(token) fg()
     }
 
-    function getDefaultImg(cat) {
-        var m = {smartphones:'https://images.unsplash.com/photo-1598327105666-5b893f1a5f2a?w=400&h=400&fit=crop',laptops:'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=400&fit=crop',tablets:'https://images.unsplash.com/photo-1546868871-af0de0ae72c3?w=400&h=400&fit=crop',audio:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',wearables:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop',accessories:'https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=400&h=400&fit=crop'};
-        return m[cat] || m.smartphones;
+    var pwd='admin123'
+    $('lbtn').onclick=function(){
+      if($('pwd').value===pwd){
+        sessionStorage.setItem('ag_ad','1')
+        $('login').style.display='none';$('dash').style.display='block'
+        if(token) fg()
+      }else{$('lerr').style.display='block'}
+    }
+    $('pwd').onkeydown=function(e){if(e.key==='Enter')$('lbtn').click()}
+
+    // Token
+    $('stok').onclick=function(){
+      var t=$('tok').value.trim();if(!t){t('Enter token','r');return}
+      token=t;localStorage.setItem(G,t);ut();$('tok').value='';t('Token saved','g');fg()
+    }
+    $('ctok').onclick=function(){token='';localStorage.removeItem(G);sha=null;ut();t('Token cleared','i')}
+
+    // Add
+    $('addb').onclick=function(){
+      $('mt').textContent='Add New Product';$('ei').value='';$('pf').reset();$('fo').value=0
+      $('pm').classList.add('a')
     }
 
-    function genId(name) {
-        return name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').substring(0,40) + '-' + Date.now().toString(36);
+    // Modal close
+    function cm(){var m=$('pm');m.classList.remove('a')}
+    $('cmb').onclick=cm;$('cab').onclick=cm;$('pm').onclick=function(e){if(e.target===this)cm()}
+    function cm2(){var m=$('dm');m.classList.remove('a')}
+    $('cdb').onclick=cm2;$('dm').onclick=function(e){if(e.target===this)cm2()}
+
+    // Delete confirm
+    $('ddb').onclick=async function(){
+      if(!delId) return
+      var n=(products.find(function(p){return p.id===delId})||{}).name||delId
+      products=products.filter(function(p){return p.id!==delId})
+      delId=null;$('dm').classList.remove('a')
+      await sc('Delete: '+n)
     }
 
-    // === GITHUB API ===
-    function updateTokenUI() {
-        var s = $('tokenStatus');
-        if (githubToken) {
-            s.className = 'token-status ok';
-            s.innerHTML = '<i class=\"fas fa-check-circle\"></i> Token set';
-            $('clearTokenBtn').style.display = '';
-            $('setTokenBtn').textContent = 'Update';
-            $('saveHint').textContent = '& auto-commit to GitHub';
-        } else {
-            s.className = 'token-status no';
-            s.innerHTML = '<i class=\"fas fa-times-circle\"></i> No token (local only)';
-            $('clearTokenBtn').style.display = 'none';
-            $('setTokenBtn').textContent = 'Set';
-            $('saveHint').textContent = '(local only)';
-        }
+    // Form submit
+    $('pf').onsubmit=async function(e){
+      e.preventDefault()
+      var ei=$('ei').value,fn=$('fn').value.trim();if(!fn){t('Name required','r');return}
+      var cat=$('fc').value
+      var prd={
+        id:ei||gid(fn),name:fn,brand:$('fb').value.trim()||'Generic',cat:cat,
+        price:parseFloat($('fp').value)||0,
+        old:parseFloat($('fo').value)||0,
+        img:$('fi').value.trim()||di(cat),
+        images:$('fim').value.split('\n').map(function(s){return s.trim()}).filter(Boolean),
+        rating:ei?(products.find(function(x){return x.id===ei})||{}).rating||4.5:4.5,
+        rev:ei?(products.find(function(x){return x.id===ei})||{}).rev||0:0,
+        desc:$('fd').value.trim(),
+        features:$('ff').value.split('\n').map(function(s){return s.trim()}).filter(Boolean),
+        badge:$('fba').value||''
+      }
+      if(!prd.old)delete prd.old
+      if(!prd.price)prd.price=0
+      if(prd.images.length&&!prd.img)prd.img=prd.images[0]
+      if(ei){products=products.map(function(p){return p.id===ei?prd:p});await sc('Update: '+prd.name)}
+      else{products.push(prd);await sc('Add: '+prd.name)}
+      $('pm').classList.remove('a')
     }
+  }
 
-    async function fetchFromGitHub() {
-        if (!githubToken) return false;
-        try {
-            var url = 'https://api.github.com/repos/' + REPO + '/contents/' + FILE_PATH + '?ref=' + BRANCH;
-            var res = await fetch(url, {
-                headers: {
-                    'Authorization': 'Bearer ' + githubToken,
-                    'Accept': 'application/vnd.github.v3+json'
-                }
-            });
-            if (!res.ok) {
-                if (res.status === 401) { toast('Token invalid or expired', 'error'); githubToken = ''; localStorage.removeItem('ag_github_token'); updateTokenUI(); return false; }
-                if (res.status === 404) { toast('File not found on GitHub', 'error'); return false; }
-                toast('GitHub error: ' + res.status, 'error');
-                return false;
-            }
-            var data = await res.json();
-            fileSha = data.sha;
-            
-            var raw = await fetch(data.download_url);
-            var text = await raw.text();
-            
-            // Parse products from the JS file
-            var match = text.match(/const\s+products\s*=\s*(\[[\s\S]*?\]);/);
-            if (match) {
-                try {
-                    var parsed = JSON.parse(match[1]);
-                    if (Array.isArray(parsed) && parsed.length) {
-                        products = parsed;
-                        localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
-                        renderTable();
-                        toast('Loaded ' + products.length + ' products from GitHub', 'success');
-                        return true;
-                    }
-                } catch(e) { console.log('Parse error, using local'); }
-            }
-        } catch(e) {
-            console.log('GitHub fetch error:', e);
-        }
-        return false;
-    }
-
-    async function commitToGitHub(msg) {
-        if (!githubToken) return false;
-        $('saveBtn').disabled = true;
-        $('saveBtn').innerHTML = '<i class=\"fas fa-spinner fa-spin\"></i> Committing...';
-        
-        try {
-            // Always fetch fresh SHA before committing
-            var url = 'https://api.github.com/repos/' + REPO + '/contents/' + FILE_PATH + '?ref=' + BRANCH;
-            var res = await fetch(url, {
-                headers: {
-                    'Authorization': 'Bearer ' + githubToken,
-                    'Accept': 'application/vnd.github.v3+json'
-                }
-            });
-            if (res.ok) {
-                var data = await res.json();
-                fileSha = data.sha;
-            }
-
-            // Generate JS content
-            var js = '// Affiliate Global - Auto-generated \\n' + new Date().toISOString().split('T')[0] + '\\n\\nconst products = ' + JSON.stringify(products, null, 2) + ';\\n\\nfunction getProductById(id) {\\n  return products.find(function(p) { return p.id === id; }) || null;\\n}\\n\\nfunction getProductsByCategory(cat) {\\n  return products.filter(function(p) { return p.category === cat; });\\n}\\n';
-            
-            var commitUrl = 'https://api.github.com/repos/' + REPO + '/contents/' + FILE_PATH;
-            var body = {
-                message: msg,
-                content: btoa(unescape(encodeURIComponent(js))),
-                branch: BRANCH
-            };
-            if (fileSha) body.sha = fileSha;
-
-            var res2 = await fetch(commitUrl, {
-                method: 'PUT',
-                headers: {
-                    'Authorization': 'Bearer ' + githubToken,
-                    'Accept': 'application/vnd.github.v3+json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(body)
-            });
-
-            if (res2.ok) {
-                var result = await res2.json();
-                fileSha = result.content ? result.content.sha : null;
-                toast('Committed to GitHub!', 'success');
-                return true;
-            } else {
-                var err = await res2.json();
-                toast('Commit error: ' + (err.message || res2.status), 'error');
-                return false;
-            }
-        } catch(e) {
-            toast('Commit failed: ' + e.message, 'error');
-            return false;
-        } finally {
-            $('saveBtn').disabled = false;
-            $('saveBtn').innerHTML = '<i class=\"fas fa-save\"></i> Save <span id=\"saveHint\"></span>';
-            updateSaveHint();
-        }
-    }
-
-    function updateSaveHint() {
-        var h = $('saveHint');
-        if (githubToken) h.textContent = '& auto-commit to GitHub'; else h.textContent = '(local only)';
-    }
-
-    // === CRUD ===
-    function loadProducts() {
-        try {
-            var s = localStorage.getItem(STORAGE_KEY);
-            if (s) { products = JSON.parse(s); }
-            else { products = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS)); }
-        } catch(e) { products = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS)); }
-    }
-
-    function saveLocal() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
-    }
-
-    async function saveAndCommit(msg) {
-        saveLocal();
-        renderTable();
-        if (githubToken) {
-            await commitToGitHub(msg);
-        } else {
-            toast('Saved locally. Set GitHub token to auto-commit.', 'info');
-        }
-    }
-
-    function renderTable() {
-        var tbody = $('tableBody');
-        $('pCount').textContent = products.length;
-        if (!products.length) {
-            tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px;color:#999;">No products</td></tr>';
-            return;
-        }
-        tbody.innerHTML = '';
-        products.forEach(function(p) {
-            var bdg = '-';
-            if (p.badge) {
-                var clr = p.badge === 'Sale' ? '#f7941e' : p.badge === 'New' ? '#00a650' : '#d70018';
-                bdg = '<span class="badge-preview" style="background:' + clr + '">' + esc(p.badge) + '</span>';
-            }
-            var tr = document.createElement('tr');
-            tr.innerHTML = '<td><img src="' + esc(p.image || getDefaultImg(p.category)) + '"></td>' +
-                '<td><strong>' + esc(p.name) + '</strong><br><small style="color:#999;">' + esc(p.id) + '</small></td>' +
-                '<td>' + esc(p.brand) + '</td>' +
-                '<td>' + esc(p.category) + '</td>' +
-                '<td style="color:#d70018;font-weight:600;">$' + Number(p.price).toLocaleString() + '</td>' +
-                '<td>' + bdg + '</td>' +
-                '<td><button class="e-btn btn btn-sm btn-primary" style="padding:5px 10px;font-size:12px;margin-right:4px;" data-id="' + esc(p.id) + '"><i class="fas fa-edit"></i></button>' +
-                '<button class="d-btn btn btn-sm" style="background:#ef4444;color:#fff;border:none;padding:5px 10px;border-radius:4px;cursor:pointer;font-size:12px;" data-id="' + esc(p.id) + '"><i class="fas fa-trash"></i></button></td>';
-            tbody.appendChild(tr);
-        });
-        tbody.querySelectorAll('.e-btn').forEach(function(b) { b.onclick = function() { editProduct(b.dataset.id); }; });
-        tbody.querySelectorAll('.d-btn').forEach(function(b) { b.onclick = function() { deleteProduct(b.dataset.id); }; });
-    }
-
-    function editProduct(id) {
-        var p = products.find(function(x) { return x.id === id; });
-        if (!p) return;
-        $('modalTitle').textContent = 'Edit Product';
-        $('editId').value = p.id;
-        $('fName').value = p.name || '';
-        $('fBrand').value = p.brand || '';
-        $('fCategory').value = p.category || 'smartphones';
-        $('fPrice').value = p.price || '';
-        $('fOriginal').value = p.originalPrice || 0;
-        $('fImage').value = p.image || '';
-        $('fImages').value = (p.images || []).join('\\n');
-        $('fDesc').value = p.description || '';
-        $('fFeatures').value = (p.features || []).join('\\n');
-        $('fBadge').value = p.badge || '';
-        $('productModal').classList.add('active');
-    }
-
-    function deleteProduct(id) {
-        deleteId = id;
-        var p = products.find(function(x) { return x.id === id; });
-        $('deleteMsg').textContent = 'Delete "' + (p ? p.name : id) + '"?';
-        $('deleteModal').classList.add('active');
-    }
-
-    // === INIT ===
-    function init() {
-        loadProducts();
-        renderTable();
-        updateTokenUI();
-        updateSaveHint();
-
-        // Login
-        var PASSWORD = 'admin123';
-        $('loginBtn').onclick = function() {
-            if ($('pwdInput').value === PASSWORD) {
-                sessionStorage.setItem('ag_admin', '1');
-                $('loginScreen').style.display = 'none';
-                $('dashboard').style.display = 'block';
-                $('logoutBtn').style.display = '';
-                // If token exists, try loading from GitHub
-                if (githubToken) { fetchFromGitHub(); }
-            } else {
-                $('loginError').style.display = 'block';
-            }
-        };
-        $('pwdInput').onkeydown = function(e) { if (e.key === 'Enter') $('loginBtn').click(); };
-
-        if (sessionStorage.getItem('ag_admin')) {
-            $('loginScreen').style.display = 'none';
-            $('dashboard').style.display = 'block';
-            $('logoutBtn').style.display = '';
-            if (githubToken) { fetchFromGitHub(); }
-        }
-
-        // Logout
-        $('logoutBtn').onclick = function(e) {
-            e.preventDefault();
-            sessionStorage.removeItem('ag_admin');
-            $('dashboard').style.display = 'none';
-            $('loginScreen').style.display = 'block';
-            $('pwdInput').value = '';
-            $('logoutBtn').style.display = 'none';
-        };
-
-        // GitHub Token
-        $('setTokenBtn').onclick = function() {
-            var t = $('tokenInput').value.trim();
-            if (!t) { toast('Enter a GitHub token', 'error'); return; }
-            githubToken = t;
-            localStorage.setItem('ag_github_token', t);
-            updateTokenUI();
-            $('tokenInput').value = '';
-            toast('Token saved!', 'success');
-            fetchFromGitHub();
-        };
-        $('clearTokenBtn').onclick = function() {
-            githubToken = '';
-            localStorage.removeItem('ag_github_token');
-            fileSha = null;
-            updateTokenUI();
-            toast('Token cleared', 'info');
-        };
-
-        // Add product
-        $('addBtn').onclick = function() {
-            $('modalTitle').textContent = 'Add New Product';
-            $('editId').value = '';
-            $('productForm').reset();
-            $('fOriginal').value = 0;
-            $('productModal').classList.add('active');
-        };
-
-        // Modal close
-        $('closeModalBtn').onclick = function() { $('productModal').classList.remove('active'); };
-        $('cancelBtn').onclick = function() { $('productModal').classList.remove('active'); };
-        $('productModal').onclick = function(e) { if (e.target === this) this.classList.remove('active'); };
-        $('cancelDelBtn').onclick = function() { $('deleteModal').classList.remove('active'); };
-        $('deleteModal').onclick = function(e) { if (e.target === this) this.classList.remove('active'); };
-
-        // Confirm delete
-        $('confirmDelBtn').onclick = async function() {
-            if (!deleteId) return;
-            var name = (products.find(function(p) { return p.id === deleteId; }) || {}).name || deleteId;
-            products = products.filter(function(p) { return p.id !== deleteId; });
-            deleteId = null;
-            $('deleteModal').classList.remove('active');
-            await saveAndCommit('Delete product: ' + name);
-        };
-
-        // Form submit
-        $('productForm').onsubmit = async function(e) {
-            e.preventDefault();
-            var editId = $('editId').value;
-            var name = $('fName').value.trim();
-            if (!name) { toast('Name required', 'error'); return; }
-            var cat = $('fCategory').value;
-            var product = {
-                id: editId || genId(name),
-                name: name,
-                brand: $('fBrand').value.trim() || 'Generic',
-                category: cat,
-                price: parseFloat($('fPrice').value) || 0,
-                originalPrice: parseFloat($('fOriginal').value) || 0,
-                image: $('fImage').value.trim() || getDefaultImg(cat),
-                images: $('fImages').value.split('\n').map(function(s) { return s.trim(); }).filter(Boolean),
-                rating: editId ? (products.find(function(x) { return x.id === editId; }) || {}).rating || 4.5 : 4.5,
-                reviews: editId ? (products.find(function(x) { return x.id === editId; }) || {}).reviews || 0 : 0,
-                description: $('fDesc').value.trim(),
-                features: $('fFeatures').value.split('\n').map(function(s) { return s.trim(); }).filter(Boolean),
-                videoId: '',
-                affiliateLink: 'https://www.amazon.com/s?k=' + encodeURIComponent(name)
-            };
-            if (!product.originalPrice) delete product.originalPrice;
-            if (product.images.length && !product.image) product.image = product.images[0];
-
-            if (editId) {
-                products = products.map(function(p) { return p.id === editId ? product : p; });
-                await saveAndCommit('Update product: ' + product.name);
-            } else {
-                products.push(product);
-                await saveAndCommit('Add product: ' + product.name);
-            }
-            $('productModal').classList.remove('active');
-        };
-    }
-
-    document.addEventListener('DOMContentLoaded', init);
-})();
+  document.addEventListener('DOMContentLoaded',init)
+})()
 </script>
 </body>
 </html>
