@@ -1,232 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category - Affiliate Global</title>
-    <meta name="description" content="Browse tech products by category at Affiliate Global. Find the best deals on smartphones, laptops, tablets, audio, wearables and accessories.">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category — Affiliate Global</title>
+  <meta name="description" content="Browse tech products by category at Affiliate Global.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="top-bar">
-    <div class="container">
-        <div>
-            <i class="fas fa-phone"></i> +84 972 956 137
-            <a href="mailto:trangiaphatco@gmail.com"><i class="fas fa-envelope"></i> trangiaphatco@gmail.com</a>
-        </div>
-        <div>
-            <a href="contact.html"><i class="fas fa-headset"></i> Support</a>
-            <a href="#"><i class="fas fa-truck"></i> Track Order</a>
-        </div>
-    </div>
+<!-- DISCLAIMER -->
+<div class="disclaimer" id="disclaimerBanner">
+  <div class="container">
+    <i class="fas fa-info-circle"></i>
+    <span>We earn a commission from qualifying purchases at no extra cost to you. <a href="affiliate-disclosure.html">Full Disclosure</a></span>
+    <button class="disclaimer-close"><i class="fas fa-times"></i></button>
+  </div>
 </div>
 
-<!-- HEADER -->
-<header class="header">
-    <div class="container">
-        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-        <a href="../index.html" class="logo">
-            <span class="logo-icon"><i class="fas fa-globe"></i></span>
-            <span class="logo-text">Affiliate<span class="logo-highlight">Global</span></span>
-        </a>
-        <div class="search-bar">
-            <form id="searchForm">
-                <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
-                <button type="submit"><i class="fas fa-search"></i></button>
-            </form>
-            <div class="search-suggestions" id="searchSuggestions"></div>
-        </div>
-        <div class="header-actions">
-            <a href="#" class="action-btn" id="cartBtn">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="badge" id="cartCount">0</span>
-                <span class="action-label">Compare</span>
-            </a>
-            <a href="contact.html" class="action-btn">
-                <i class="fas fa-user"></i>
-                <span class="action-label">Contact</span>
-            </a>
-        </div>
+<!-- NAV BAR -->
+<nav class="nav-bar">
+  <div class="container">
+    <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+    <a href="../index.html" class="nav-logo"><i class="fas fa-globe"></i> AffiliateGlobal</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="category.html?cat=smartphones" class="active">Smartphones</a></li>
+      <li><a href="category.html?cat=laptops">Laptops</a></li>
+      <li><a href="category.html?cat=tablets">Tablets</a></li>
+      <li><a href="category.html?cat=audio">Audio</a></li>
+      <li><a href="category.html?cat=wearables">Wearables</a></li>
+      <li><a href="deals.html">Deals</a></li>
+    </ul>
+    <div class="nav-icons">
+      <a href="#" id="searchToggle"><i class="fas fa-search"></i></a>
+      <a href="#" id="compareBtn"><i class="fas fa-sliders-h"></i><span class="nav-badge" id="compareBadge">0</span></a>
     </div>
-</header>
-
-<!-- NAV -->
-<nav class="nav" id="mainNav">
-    <div class="container">
-        <div class="nav-item"><a href="../index.html"><i class="fas fa-home"></i> Home</a></div>
-        <div class="nav-item dropdown-hover">
-            <a href="category.html?cat=smartphones"><i class="fas fa-mobile-alt"></i> Smartphones <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-menu">
-                <div class="dropdown-grid">
-                    <div class="dropdown-col">
-                        <h4>Apple</h4>
-                        <a href="category.html?cat=iphone">iPhone 16 Series</a>
-                        <a href="category.html?cat=iphone">iPhone 15 Series</a>
-                        <a href="category.html?cat=iphone">iPhone 14 Series</a>
-                        <a href="category.html?cat=iphone">iPhone SE</a>
-                    </div>
-                    <div class="dropdown-col">
-                        <h4>Samsung</h4>
-                        <a href="category.html?cat=samsung">Galaxy S25 Series</a>
-                        <a href="category.html?cat=samsung">Galaxy Z Fold/Flip</a>
-                        <a href="category.html?cat=samsung">Galaxy A Series</a>
-                    </div>
-                    <div class="dropdown-col">
-                        <h4>Others</h4>
-                        <a href="category.html?cat=xiaomi">Xiaomi</a>
-                        <a href="category.html?cat=google">Google Pixel</a>
-                        <a href="category.html?cat=oneplus">OnePlus</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="nav-item dropdown-hover">
-            <a href="category.html?cat=laptops"><i class="fas fa-laptop"></i> Laptops <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-menu">
-                <div class="dropdown-grid">
-                    <div class="dropdown-col">
-                        <h4>Apple</h4>
-                        <a href="category.html?cat=macbook">MacBook Pro M4</a>
-                        <a href="category.html?cat=macbook">MacBook Air M3</a>
-                    </div>
-                    <div class="dropdown-col">
-                        <h4>Windows</h4>
-                        <a href="category.html?cat=dell">Dell XPS / Inspiron</a>
-                        <a href="category.html?cat=lenovo">Lenovo ThinkPad</a>
-                        <a href="category.html?cat=hp">HP Spectre / Pavilion</a>
-                        <a href="category.html?cat=asus">ASUS ROG / ZenBook</a>
-                    </div>
-                    <div class="dropdown-col">
-                        <h4>Gaming</h4>
-                        <a href="category.html?cat=gaming">Razer / MSI / Alienware</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="nav-item"><a href="category.html?cat=tablets"><i class="fas fa-tablet-alt"></i> Tablets</a></div>
-        <div class="nav-item"><a href="category.html?cat=audio"><i class="fas fa-headphones"></i> Audio</a></div>
-        <div class="nav-item"><a href="category.html?cat=wearables"><i class="fas fa-clock"></i> Wearables</a></div>
-        <div class="nav-item"><a href="category.html?cat=accessories"><i class="fas fa-plug"></i> Accessories</a></div>
-        <div class="nav-item"><a href="deals.html"><i class="fas fa-fire"></i> Best Deals</a></div>
+  </div>
+  <div class="nav-search">
+    <div class="container" style="display:flex;align-items:center;height:100%;">
+      <form id="searchForm" style="display:flex;flex:1;align-items:center;">
+        <i class="fas fa-search" style="color:rgba(255,255,255,0.4);font-size:14px;"></i>
+        <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off" style="margin-left:8px;">
+      </form>
+      <button class="nav-search-close" id="searchClose"><i class="fas fa-times"></i></button>
     </div>
+  </div>
 </nav>
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav-overlay" id="mobileOverlay"></div>
 <div class="mobile-nav" id="mobileNav">
-    <div class="mobile-nav-header">
-        <span>Menu</span>
-        <button id="closeMenu"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="mobile-nav-item"><a href="../index.html"><i class="fas fa-home"></i> Home</a></div>
-    <div class="mobile-nav-item"><a href="category.html?cat=smartphones"><i class="fas fa-mobile-alt"></i> Smartphones</a></div>
-    <div class="mobile-nav-item"><a href="category.html?cat=laptops"><i class="fas fa-laptop"></i> Laptops</a></div>
-    <div class="mobile-nav-item"><a href="category.html?cat=tablets"><i class="fas fa-tablet-alt"></i> Tablets</a></div>
-    <div class="mobile-nav-item"><a href="category.html?cat=audio"><i class="fas fa-headphones"></i> Audio</a></div>
-    <div class="mobile-nav-item"><a href="category.html?cat=wearables"><i class="fas fa-clock"></i> Wearables</a></div>
-    <div class="mobile-nav-item"><a href="category.html?cat=accessories"><i class="fas fa-plug"></i> Accessories</a></div>
-    <div class="mobile-nav-item"><a href="deals.html"><i class="fas fa-fire"></i> Best Deals</a></div>
-    <div class="mobile-nav-item"><a href="contact.html"><i class="fas fa-headset"></i> Contact</a></div>
+  <div class="mobile-nav-header"><span><i class="fas fa-globe" style="color:var(--blue-accent);margin-right:6px;"></i>Menu</span><button id="mobileClose"><i class="fas fa-times"></i></button></div>
+  <div class="mobile-nav-item"><a href="../index.html">Home</a></div>
+  <div class="mobile-nav-item"><a href="category.html?cat=smartphones">Smartphones</a></div>
+  <div class="mobile-nav-item"><a href="category.html?cat=laptops">Laptops</a></div>
+  <div class="mobile-nav-item"><a href="category.html?cat=tablets">Tablets</a></div>
+  <div class="mobile-nav-item"><a href="category.html?cat=audio">Audio</a></div>
+  <div class="mobile-nav-item"><a href="category.html?cat=wearables">Wearables</a></div>
+  <div class="mobile-nav-item"><a href="category.html?cat=accessories">Accessories</a></div>
+  <div class="mobile-nav-item"><a href="deals.html">Best Deals</a></div>
+  <div class="mobile-nav-item"><a href="contact.html">Contact</a></div>
 </div>
 
-<!-- MAIN CONTENT -->
-<main class="main-content">
+<!-- MAIN -->
+<main>
+  <div class="breadcrumbs">
     <div class="container">
-        <nav class="breadcrumbs">
-            <a href="../index.html">Home</a>
-            <span>/</span>
-            <span id="catTitle">Category</span>
-        </nav>
-        <h1 id="categoryHeading">Products</h1>
-        <div class="product-grid" id="categoryProducts"></div>
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <span id="catTitle">Category</span>
     </div>
+  </div>
+
+  <section class="section section-white" style="padding-top:0;">
+    <div class="container">
+      <div style="padding:24px 0;">
+        <h1 class="section-title" id="catHeading">Products</h1>
+        <p class="section-subtitle" style="margin-bottom:0;"><span id="catCount"></span></p>
+      </div>
+      <div class="product-grid" id="categoryGrid"></div>
+    </div>
+  </section>
 </main>
 
 <!-- FOOTER -->
 <footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div class="footer-logo">
-                    <span class="logo-icon"><i class="fas fa-globe"></i></span>
-                    <span class="logo-text">Affiliate<span class="logo-highlight">Global</span></span>
-                </div>
-                <p>Your trusted source for tech reviews, buying guides, and the best deals from top retailers worldwide. We help you make informed purchasing decisions.</p>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <a href="../index.html">Home</a>
-                <a href="deals.html">Best Deals</a>
-                <a href="category.html?cat=smartphones">Smartphones</a>
-                <a href="category.html?cat=laptops">Laptops</a>
-                <a href="category.html?cat=tablets">Tablets</a>
-                <a href="category.html?cat=audio">Audio</a>
-            </div>
-            <div class="footer-col">
-                <h4>Brands</h4>
-                <a href="category.html?cat=apple">Apple</a>
-                <a href="category.html?cat=samsung">Samsung</a>
-                <a href="category.html?cat=xiaomi">Xiaomi</a>
-                <a href="category.html?cat=google">Google</a>
-                <a href="category.html?cat=sony">Sony</a>
-                <a href="category.html?cat=bose">Bose</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p><i class="fas fa-user"></i> Mr. Quan</p>
-                <p><i class="fas fa-phone"></i> +84 972 956 137</p>
-                <p><i class="fas fa-envelope"></i> trangiaphatco@gmail.com</p>
-                <p><i class="fas fa-clock"></i> Mon-Sat: 8:00-18:00 (GMT+7)</p>
-                <a href="contact.html" class="btn btn-sm btn-primary" style="margin-top:8px;">Contact Us</a>
-            </div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo"><a href="../index.html"><i class="fas fa-globe" style="color:var(--blue-accent);"></i> AffiliateGlobal</a></div>
+        <p>Your trusted source for tech reviews, buying guides, and the best deals from top retailers worldwide.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Affiliate Global. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="privacy.html">Privacy</a>
-                <a href="terms.html">Terms</a>
-                <a href="affiliate-disclosure.html">Disclosure</a>
-            </div>
-        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="../index.html">Home</a>
+        <a href="deals.html">Best Deals</a>
+        <a href="category.html?cat=smartphones">Smartphones</a>
+        <a href="category.html?cat=laptops">Laptops</a>
+        <a href="category.html?cat=tablets">Tablets</a>
+        <a href="category.html?cat=audio">Audio</a>
+      </div>
+      <div class="footer-col">
+        <h4>Brands</h4>
+        <a href="category.html?cat=apple">Apple</a>
+        <a href="category.html?cat=samsung">Samsung</a>
+        <a href="category.html?cat=xiaomi">Xiaomi</a>
+        <a href="category.html?cat=google">Google</a>
+        <a href="category.html?cat=sony">Sony</a>
+        <a href="category.html?cat=bose">Bose</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="fas fa-user"></i> Mr. Quan</p>
+        <p><i class="fas fa-phone"></i> +84 972 956 137</p>
+        <p><i class="fas fa-envelope"></i> trangiaphatco@gmail.com</p>
+        <p><i class="fas fa-clock"></i> Mon-Sat: 8:00-18:00 (GMT+7)</p>
+        <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:8px;">Contact Us</a>
+      </div>
     </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Affiliate Global. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="affiliate-disclosure.html">Disclosure</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<!-- CART SIDEBAR -->
-<div class="cart-overlay" id="cartOverlay"></div>
-<div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header">
-        <h3>Compare Products</h3>
-        <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="cart-items" id="cartItems">
-        <p class="cart-empty">Your comparison list is empty.</p>
-    </div>
-    <div class="cart-footer">
-        <a href="deals.html" class="btn btn-primary btn-block">Browse Products</a>
-    </div>
-</div>
-
-<!-- DISCLAIMER -->
-<div class="disclaimer" id="disclaimerBanner">
-    <div class="container">
-        <i class="fas fa-info-circle"></i>
-        <span>We earn a commission from qualifying purchases at no extra cost to you. <a href="affiliate-disclosure.html">Full Disclosure</a></span>
-        <button class="close-disclaimer" onclick="this.parentElement.parentElement.style.display='none'"><i class="fas fa-times"></i></button>
-    </div>
+<!-- SIDEBAR -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h3><i class="fas fa-sliders-h" style="color:var(--blue-accent);"></i> Compare</h3>
+    <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="sidebar-items" id="sidebarItems"><p class="sidebar-empty">Your comparison list is empty.</p></div>
+  <div class="sidebar-footer">
+    <a href="deals.html" class="btn btn-primary btn-block">Browse Products</a>
+  </div>
 </div>
 
 <!-- BACK TO TOP -->
-<button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+<button class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></button>
 
 <script src="../assets/js/products.js"></script>
 <script src="../assets/js/main.js"></script>

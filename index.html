@@ -1,423 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Affiliate Global - Best Tech Deals & Reviews</title>
-    <meta name="description" content="Affiliate Global - Your trusted source for the best tech deals, product reviews, and buying guides. Smartphones, laptops, accessories and more.">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affiliate Global — Best Tech Deals & Reviews</title>
+  <meta name="description" content="Your trusted source for the best tech deals, expert reviews, and buying guides. Smartphones, laptops, tablets, audio, and more.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="top-bar">
-    <div class="container">
-        <div>
-            <i class="fas fa-phone"></i> +84 972 956 137
-            <a href="mailto:trangiaphatco@gmail.com"><i class="fas fa-envelope"></i> trangiaphatco@gmail.com</a>
-        </div>
-        <div>
-            <a href="pages/contact.html"><i class="fas fa-headset"></i> Support</a>
-            <a href="#"><i class="fas fa-truck"></i> Track Order</a>
-        </div>
-    </div>
+<!-- ====== DISCLAIMER ====== -->
+<div class="disclaimer" id="disclaimerBanner">
+  <div class="container">
+    <i class="fas fa-info-circle"></i>
+    <span>We earn a commission from qualifying purchases at no extra cost to you. <a href="pages/affiliate-disclosure.html">Full Disclosure</a></span>
+    <button class="disclaimer-close"><i class="fas fa-times"></i></button>
+  </div>
 </div>
 
-<!-- HEADER -->
-<header class="header">
-    <div class="container">
-        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-        <a href="index.html" class="logo">
-            <span class="logo-icon"><i class="fas fa-globe"></i></span>
-            <span class="logo-text">Affiliate<span class="logo-highlight">Global</span></span>
-        </a>
-        <div class="search-bar">
-            <form id="searchForm">
-                <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
-                <button type="submit"><i class="fas fa-search"></i></button>
-            </form>
-            <div class="search-suggestions" id="searchSuggestions"></div>
-        </div>
-        <div class="header-actions">
-            <a href="#" class="action-btn" id="cartBtn">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="badge" id="cartCount">0</span>
-                <span class="action-label">Compare</span>
-            </a>
-            <a href="pages/contact.html" class="action-btn">
-                <i class="fas fa-user"></i>
-                <span class="action-label">Contact</span>
-            </a>
-        </div>
-    </div>
-</header>
+<!-- ====== NAV BAR ====== -->
+<nav class="nav-bar">
+  <div class="container">
+    <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
 
-<!-- NAV -->
-<nav class="nav" id="mainNav">
-    <div class="container">
-        <div class="nav-item"><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></div>
-        <div class="nav-item dropdown-hover">
-            <a href="pages/category.html?cat=smartphones"><i class="fas fa-mobile-alt"></i> Smartphones <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-menu">
-                <div class="dropdown-grid">
-                    <div class="dropdown-col">
-                        <h4>Apple</h4>
-                        <a href="pages/category.html?cat=iphone">iPhone 16 Series</a>
-                        <a href="pages/category.html?cat=iphone">iPhone 15 Series</a>
-                        <a href="pages/category.html?cat=iphone">iPhone 14 Series</a>
-                        <a href="pages/category.html?cat=iphone">iPhone SE</a>
-                    </div>
-                    <div class="dropdown-col">
-                        <h4>Samsung</h4>
-                        <a href="pages/category.html?cat=samsung">Galaxy S25 Series</a>
-                        <a href="pages/category.html?cat=samsung">Galaxy Z Fold/Flip</a>
-                        <a href="pages/category.html?cat=samsung">Galaxy A Series</a>
-                    </div>
-                    <div class="dropdown-col">
-                        <h4>Others</h4>
-                        <a href="pages/category.html?cat=xiaomi">Xiaomi</a>
-                        <a href="pages/category.html?cat=google">Google Pixel</a>
-                        <a href="pages/category.html?cat=oneplus">OnePlus</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="nav-item dropdown-hover">
-            <a href="pages/category.html?cat=laptops"><i class="fas fa-laptop"></i> Laptops <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-menu">
-                <div class="dropdown-grid">
-                    <div class="dropdown-col">
-                        <h4>Apple</h4>
-                        <a href="pages/category.html?cat=macbook">MacBook Pro M4</a>
-                        <a href="pages/category.html?cat=macbook">MacBook Air M3</a>
-                    </div>
-                    <div class="dropdown-col">
-                        <h4>Windows</h4>
-                        <a href="pages/category.html?cat=dell">Dell XPS / Inspiron</a>
-                        <a href="pages/category.html?cat=lenovo">Lenovo ThinkPad</a>
-                        <a href="pages/category.html?cat=hp">HP Spectre / Pavilion</a>
-                        <a href="pages/category.html?cat=asus">ASUS ROG / ZenBook</a>
-                    </div>
-                    <div class="dropdown-col">
-                        <h4>Gaming</h4>
-                        <a href="pages/category.html?cat=gaming">Razer / MSI / Alienware</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="nav-item"><a href="pages/category.html?cat=tablets"><i class="fas fa-tablet-alt"></i> Tablets</a></div>
-        <div class="nav-item"><a href="pages/category.html?cat=audio"><i class="fas fa-headphones"></i> Audio</a></div>
-        <div class="nav-item"><a href="pages/category.html?cat=wearables"><i class="fas fa-clock"></i> Wearables</a></div>
-        <div class="nav-item"><a href="pages/category.html?cat=accessories"><i class="fas fa-plug"></i> Accessories</a></div>
-        <div class="nav-item"><a href="pages/deals.html"><i class="fas fa-fire"></i> Best Deals</a></div>
+    <a href="index.html" class="nav-logo">
+      <i class="fas fa-globe"></i> AffiliateGlobal
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="active"><i class="fas fa-home"></i>Home</a></li>
+      <li><a href="pages/category.html?cat=smartphones">Smartphones</a></li>
+      <li><a href="pages/category.html?cat=laptops">Laptops</a></li>
+      <li><a href="pages/category.html?cat=tablets">Tablets</a></li>
+      <li><a href="pages/category.html?cat=audio">Audio</a></li>
+      <li><a href="pages/category.html?cat=wearables">Wearables</a></li>
+      <li><a href="pages/deals.html">Deals</a></li>
+    </ul>
+
+    <div class="nav-icons">
+      <a href="#" id="searchToggle"><i class="fas fa-search"></i></a>
+      <a href="#" id="compareBtn">
+        <i class="fas fa-sliders-h"></i>
+        <span class="nav-badge" id="compareBadge">0</span>
+      </a>
     </div>
+  </div>
+
+  <!-- Expanded search -->
+  <div class="nav-search" id="navSearch">
+    <div class="container" style="display:flex;align-items:center;height:100%;">
+      <form id="searchForm" style="display:flex;flex:1;align-items:center;">
+        <i class="fas fa-search" style="color:rgba(255,255,255,0.4);font-size:14px;"></i>
+        <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off" style="margin-left:8px;">
+      </form>
+      <button class="nav-search-close" id="searchClose"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
 </nav>
 
-<!-- MOBILE NAV -->
+<!-- ====== MOBILE NAV ====== -->
 <div class="mobile-nav-overlay" id="mobileOverlay"></div>
 <div class="mobile-nav" id="mobileNav">
-    <div class="mobile-nav-header">
-        <span>Menu</span>
-        <button id="closeMenu"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="mobile-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></div>
-    <div class="mobile-nav-item"><a href="pages/category.html?cat=smartphones"><i class="fas fa-mobile-alt"></i> Smartphones</a></div>
-    <div class="mobile-nav-item"><a href="pages/category.html?cat=laptops"><i class="fas fa-laptop"></i> Laptops</a></div>
-    <div class="mobile-nav-item"><a href="pages/category.html?cat=tablets"><i class="fas fa-tablet-alt"></i> Tablets</a></div>
-    <div class="mobile-nav-item"><a href="pages/category.html?cat=audio"><i class="fas fa-headphones"></i> Audio</a></div>
-    <div class="mobile-nav-item"><a href="pages/category.html?cat=wearables"><i class="fas fa-clock"></i> Wearables</a></div>
-    <div class="mobile-nav-item"><a href="pages/category.html?cat=accessories"><i class="fas fa-plug"></i> Accessories</a></div>
-    <div class="mobile-nav-item"><a href="pages/deals.html"><i class="fas fa-fire"></i> Best Deals</a></div>
-    <div class="mobile-nav-item"><a href="pages/contact.html"><i class="fas fa-headset"></i> Contact</a></div>
+  <div class="mobile-nav-header">
+    <span><i class="fas fa-globe" style="color:var(--blue-accent);margin-right:6px;"></i>Menu</span>
+    <button id="mobileClose"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="mobile-nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></div>
+  <div class="mobile-nav-item"><a href="pages/category.html?cat=smartphones"><i class="fas fa-mobile-alt"></i> Smartphones</a></div>
+  <div class="mobile-nav-item"><a href="pages/category.html?cat=laptops"><i class="fas fa-laptop"></i> Laptops</a></div>
+  <div class="mobile-nav-item"><a href="pages/category.html?cat=tablets"><i class="fas fa-tablet-alt"></i> Tablets</a></div>
+  <div class="mobile-nav-item"><a href="pages/category.html?cat=audio"><i class="fas fa-headphones"></i> Audio</a></div>
+  <div class="mobile-nav-item"><a href="pages/category.html?cat=wearables"><i class="fas fa-clock"></i> Wearables</a></div>
+  <div class="mobile-nav-item"><a href="pages/category.html?cat=accessories"><i class="fas fa-plug"></i> Accessories</a></div>
+  <div class="mobile-nav-item"><a href="pages/deals.html"><i class="fas fa-fire"></i> Best Deals</a></div>
+  <div class="mobile-nav-item"><a href="pages/contact.html"><i class="fas fa-headset"></i> Contact</a></div>
 </div>
 
-<!-- HERO SLIDER -->
+<!-- ====== HERO SLIDER ====== -->
 <section class="hero">
-    <div class="container">
-        <div class="hero-slider" id="heroSlider">
-            <div class="slide active">
-                <div class="slide-content">
-                    <h1>Best Tech Deals 2026</h1>
-                    <p>Save up to 40% on the latest smartphones, laptops, and gadgets. Expert reviews, best prices from trusted retailers.</p>
-                    <a href="pages/deals.html" class="btn btn-primary">Shop Now <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="slide-content">
-                    <h1>iPhone 16 Pro Max</h1>
-                    <p>A18 Pro chip, 48MP camera system, Titanium design. Find the best deals from top retailers.</p>
-                    <a href="pages/product.html?id=iphone16-pro-max" class="btn btn-primary">View Deals <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="slide-content">
-                    <h1>MacBook Pro M4</h1>
-                    <p>M4 chip, up to 24 hours battery, Liquid Retina XDR display. Top-rated by experts worldwide.</p>
-                    <a href="pages/product.html?id=macbook-pro-m4" class="btn btn-primary">View Deals <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="slider-controls">
-                <button class="slider-dot active" data-slide="0"></button>
-                <button class="slider-dot" data-slide="1"></button>
-                <button class="slider-dot" data-slide="2"></button>
-            </div>
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active">
+      <div class="hero-slide-content">
+        <p style="font-size:14px;color:var(--blue-accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Summer Sale 2026</p>
+        <h2>Best Tech Deals</h2>
+        <p>Save up to 40% on the latest smartphones, laptops, and gadgets. Expert reviews, best prices from trusted retailers.</p>
+        <div class="btn-group">
+          <a href="pages/deals.html" class="btn btn-primary">Shop Now <i class="fas fa-arrow-right"></i></a>
+          <a href="pages/category.html?cat=smartphones" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3);color:var(--blue-link-dark);">Browse Categories</a>
         </div>
+      </div>
     </div>
+    <div class="hero-slide">
+      <div class="hero-slide-content">
+        <p style="font-size:14px;color:var(--blue-accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Flagship Power</p>
+        <h2>iPhone 16 Pro Max</h2>
+        <p>A18 Pro chip, 48MP Fusion camera system, Titanium design — the most advanced iPhone ever.</p>
+        <div class="btn-group">
+          <a href="pages/product.html?id=1" class="btn btn-primary">View Deals <i class="fas fa-arrow-right"></i></a>
+          <a href="pages/category.html?cat=smartphones" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3);color:var(--blue-link-dark);">All Smartphones</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-content">
+        <p style="font-size:14px;color:var(--blue-accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Pro Performance</p>
+        <h2>MacBook Pro M4 Max</h2>
+        <p>M4 Max chip, up to 22 hours battery, Liquid Retina XDR display — the ultimate pro laptop.</p>
+        <div class="btn-group">
+          <a href="pages/product.html?id=8" class="btn btn-primary">View Deals <i class="fas fa-arrow-right"></i></a>
+          <a href="pages/category.html?cat=laptops" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3);color:var(--blue-link-dark);">All Laptops</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-dots">
+      <button class="hero-dot active" data-slide="0"></button>
+      <button class="hero-dot" data-slide="1"></button>
+      <button class="hero-dot" data-slide="2"></button>
+    </div>
+  </div>
 </section>
 
-<!-- CATEGORIES -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title" style="margin-bottom:16px;">Shop by Category</h2>
-        <div class="category-grid">
-            <a href="pages/category.html?cat=smartphones" class="category-card">
-                <div class="icon"><i class="fas fa-mobile-alt"></i></div>
-                <h3>Smartphones</h3>
-                <p>iPhone, Samsung, Xiaomi</p>
-                <span class="count">2,450+</span>
-            </a>
-            <a href="pages/category.html?cat=laptops" class="category-card">
-                <div class="icon"><i class="fas fa-laptop"></i></div>
-                <h3>Laptops</h3>
-                <p>MacBook, Dell, ASUS, HP</p>
-                <span class="count">1,890+</span>
-            </a>
-            <a href="pages/category.html?cat=tablets" class="category-card">
-                <div class="icon"><i class="fas fa-tablet-alt"></i></div>
-                <h3>Tablets</h3>
-                <p>iPad, Galaxy Tab, Xiaomi</p>
-                <span class="count">680+</span>
-            </a>
-            <a href="pages/category.html?cat=audio" class="category-card">
-                <div class="icon"><i class="fas fa-headphones"></i></div>
-                <h3>Audio</h3>
-                <p>Headphones, speakers, earbuds</p>
-                <span class="count">1,200+</span>
-            </a>
-            <a href="pages/category.html?cat=wearables" class="category-card">
-                <div class="icon"><i class="fas fa-clock"></i></div>
-                <h3>Wearables</h3>
-                <p>Watch, ring, fitness tracker</p>
-                <span class="count">450+</span>
-            </a>
-            <a href="pages/category.html?cat=accessories" class="category-card">
-                <div class="icon"><i class="fas fa-plug"></i></div>
-                <h3>Accessories</h3>
-                <p>Chargers, cases, cables</p>
-                <span class="count">3,200+</span>
-            </a>
-        </div>
+<!-- ====== CATEGORIES ====== -->
+<section class="section section-light">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Shop by Category</h2>
+      <p class="section-subtitle">Find exactly what you need from our curated selection of top-rated products.</p>
     </div>
+    <div class="cat-grid">
+      <a href="pages/category.html?cat=smartphones" class="cat-card">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Smartphones</h3>
+        <p>iPhone, Samsung, Google, Xiaomi</p>
+      </a>
+      <a href="pages/category.html?cat=laptops" class="cat-card">
+        <i class="fas fa-laptop"></i>
+        <h3>Laptops</h3>
+        <p>MacBook, Dell, ASUS, HP, Lenovo</p>
+      </a>
+      <a href="pages/category.html?cat=tablets" class="cat-card">
+        <i class="fas fa-tablet-alt"></i>
+        <h3>Tablets</h3>
+        <p>iPad, Galaxy Tab, Surface Pro</p>
+      </a>
+      <a href="pages/category.html?cat=audio" class="cat-card">
+        <i class="fas fa-headphones"></i>
+        <h3>Audio</h3>
+        <p>Headphones, earbuds, speakers</p>
+      </a>
+      <a href="pages/category.html?cat=wearables" class="cat-card">
+        <i class="fas fa-clock"></i>
+        <h3>Wearables</h3>
+        <p>Smartwatches, fitness trackers</p>
+      </a>
+      <a href="pages/category.html?cat=accessories" class="cat-card">
+        <i class="fas fa-plug"></i>
+        <h3>Accessories</h3>
+        <p>Chargers, cases, cables</p>
+      </a>
+    </div>
+  </div>
 </section>
 
-<!-- FEATURED PRODUCTS -->
-<section class="section">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Featured Products</h2>
-            <div class="section-nav">
-                <button class="active" data-tab="all">All</button>
-                <button data-tab="phones">Phones</button>
-                <button data-tab="laptops">Laptops</button>
-                <button data-tab="tablets">Tablets</button>
-                <button data-tab="audio">Audio</button>
-            </div>
-        </div>
-        <div class="product-grid" id="featuredProducts"></div>
-        <div style="text-align:center;margin-top:20px;">
-            <a href="pages/deals.html" class="btn btn-outline">View All Products <i class="fas fa-arrow-right"></i></a>
-        </div>
+<!-- ====== FEATURED PRODUCTS (dark bg) ====== -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Featured Products</h2>
+      <p class="section-subtitle">Top-rated tech handpicked by our experts, with the best prices from trusted retailers.</p>
     </div>
+    <div class="tab-filters">
+      <button class="active" data-tab="all">All</button>
+      <button data-tab="phones">Phones</button>
+      <button data-tab="laptops">Laptops</button>
+      <button data-tab="tablets">Tablets</button>
+      <button data-tab="audio">Audio</button>
+    </div>
+    <div class="product-grid" id="featuredGrid"></div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="pages/deals.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3);color:var(--blue-link-dark);">View All Products <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
 </section>
 
-<!-- DEAL BANNER -->
-<section class="section">
-    <div class="container">
-        <div class="deal-banner">
-            <div class="deal-tag">Limited Time</div>
-            <h2>Summer Sale 2026</h2>
-            <p>Up to 50% off on selected items. Prices updated daily from our partner stores.</p>
-            <div class="countdown" id="countdown">
-                <div><span class="num" id="days">00</span><span class="label">Days</span></div>
-                <div><span class="num" id="hours">00</span><span class="label">Hours</span></div>
-                <div><span class="num" id="minutes">00</span><span class="label">Mins</span></div>
-                <div><span class="num" id="seconds">00</span><span class="label">Secs</span></div>
-            </div>
-            <a href="pages/deals.html" class="btn btn-light">Shop Deals <i class="fas fa-arrow-right"></i></a>
-        </div>
+<!-- ====== VALUE PROPS (light bg) ====== -->
+<section class="section section-light">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Why Affiliate Global?</h2>
+      <p class="section-subtitle">We make it easy to find the best tech at the best prices.</p>
     </div>
+    <div class="val-grid">
+      <div class="val-card">
+        <i class="fas fa-check-circle"></i>
+        <h4>Expert Reviews</h4>
+        <p>Tested and verified by tech professionals</p>
+      </div>
+      <div class="val-card">
+        <i class="fas fa-tags"></i>
+        <h4>Best Prices</h4>
+        <p>Compare deals from top retailers worldwide</p>
+      </div>
+      <div class="val-card">
+        <i class="fas fa-shield-alt"></i>
+        <h4>Trusted Partners</h4>
+        <p>Amazon, Best Buy, B&amp;H, and more</p>
+      </div>
+      <div class="val-card">
+        <i class="fas fa-sync-alt"></i>
+        <h4>Daily Updates</h4>
+        <p>Prices and availability refreshed daily</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- FEATURES -->
-<section class="section">
-    <div class="container">
-        <div class="features-grid">
-            <div class="feature-item">
-                <i class="fas fa-check-circle"></i>
-                <h4>Expert Reviews</h4>
-                <p>Tested by tech professionals</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-tags"></i>
-                <h4>Best Prices</h4>
-                <p>Compare from top retailers</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-shield-alt"></i>
-                <h4>Trusted Partners</h4>
-                <p>Amazon, Best Buy, B&H</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-sync-alt"></i>
-                <h4>Daily Updates</h4>
-                <p>Prices refreshed daily</p>
-            </div>
-        </div>
+<!-- ====== REVIEWS ====== -->
+<section class="section section-white">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Latest Reviews & Guides</h2>
+      <p class="section-subtitle">In-depth analysis and honest reviews to help you decide.</p>
     </div>
+    <div class="rev-grid">
+      <div class="rev-card">
+        <h3><a href="pages/product.html?id=1">iPhone 16 Pro Max Review: Is It Worth the Upgrade?</a></h3>
+        <p>A18 Pro chip, 48MP Fusion camera, all-day battery. Full analysis of Apple's 2026 flagship.</p>
+        <div class="rev-meta">
+          <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.8</span>
+          <span>Jun 5, 2026</span>
+        </div>
+      </div>
+      <div class="rev-card">
+        <h3><a href="pages/product.html?id=8">MacBook Pro M4 Max: The Ultimate Creative Machine</a></h3>
+        <p>M4 Max, Liquid Retina XDR, 22-hour battery — benchmarked against the M3 generation.</p>
+        <div class="rev-meta">
+          <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.9</span>
+          <span>Jun 3, 2026</span>
+        </div>
+      </div>
+      <div class="rev-card">
+        <h3><a href="pages/product.html?id=2">Samsung Galaxy S25 Ultra: Best Android of 2026?</a></h3>
+        <p>200MP camera, S Pen, Snapdragon 8 Gen 4, Galaxy AI features put to the test.</p>
+        <div class="rev-meta">
+          <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.7</span>
+          <span>Jun 1, 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- REVIEWS -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title" style="margin-bottom:16px;">Latest Reviews & Guides</h2>
-        <div class="review-grid">
-            <article class="review-card">
-                <div class="review-badge">NEW</div>
-                <div class="review-content">
-                    <h3><a href="pages/product.html?id=iphone16-pro-max">iPhone 16 Pro Max Review: Is It Worth the Upgrade?</a></h3>
-                    <p>A18 Pro chip, 48MP camera, all-day battery. Full analysis of Apple's latest flagship.</p>
-                    <div class="review-meta">
-                        <span class="rating"><i class="fas fa-star"></i> 4.8/5</span>
-                        <span class="date">Jun 5, 2026</span>
-                    </div>
-                </div>
-            </article>
-            <article class="review-card">
-                <div class="review-content">
-                    <h3><a href="pages/product.html?id=macbook-pro-m4">MacBook Pro M4 vs M3: Should You Upgrade?</a></h3>
-                    <p>Performance, battery life, display quality compared for creative professionals.</p>
-                    <div class="review-meta">
-                        <span class="rating"><i class="fas fa-star"></i> 4.9/5</span>
-                        <span class="date">Jun 3, 2026</span>
-                    </div>
-                </div>
-            </article>
-            <article class="review-card">
-                <div class="review-content">
-                    <h3><a href="pages/product.html?id=samsung-galaxy-s25-ultra">Samsung Galaxy S25 Ultra: Best Android Phone of 2026?</a></h3>
-                    <p>S Pen, 200MP camera, Snapdragon 8 Elite, Galaxy AI features explored.</p>
-                    <div class="review-meta">
-                        <span class="rating"><i class="fas fa-star"></i> 4.7/5</span>
-                        <span class="date">Jun 1, 2026</span>
-                    </div>
-                </div>
-            </article>
-        </div>
+<!-- ====== BRANDS ====== -->
+<section class="section section-dark" style="padding:32px 0;">
+  <div class="container">
+    <div class="brand-strip">
+      <span><i class="fab fa-apple"></i>Apple</span>
+      <span><i class="fas fa-mobile-alt"></i>Samsung</span>
+      <span><i class="fas fa-mobile-alt"></i>Google</span>
+      <span><i class="fas fa-mobile-alt"></i>Xiaomi</span>
+      <span><i class="fas fa-laptop"></i>Dell</span>
+      <span><i class="fas fa-laptop"></i>HP</span>
+      <span><i class="fas fa-laptop"></i>Lenovo</span>
+      <span><i class="fas fa-laptop"></i>ASUS</span>
+      <span><i class="fas fa-headphones"></i>Sony</span>
+      <span><i class="fas fa-clock"></i>Garmin</span>
     </div>
+  </div>
 </section>
 
-<!-- BRANDS -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title" style="margin-bottom:16px;">Top Brands</h2>
-        <div class="brand-grid">
-            <div class="brand-item"><i class="fab fa-apple"></i><span>Apple</span></div>
-            <div class="brand-item"><i class="fas fa-mobile-alt"></i><span>Samsung</span></div>
-            <div class="brand-item"><i class="fas fa-mobile-alt"></i><span>Xiaomi</span></div>
-            <div class="brand-item"><i class="fas fa-laptop"></i><span>Dell</span></div>
-            <div class="brand-item"><i class="fas fa-laptop"></i><span>HP</span></div>
-            <div class="brand-item"><i class="fas fa-laptop"></i><span>Lenovo</span></div>
-            <div class="brand-item"><i class="fas fa-laptop"></i><span>ASUS</span></div>
-            <div class="brand-item"><i class="fas fa-headphones"></i><span>Sony</span></div>
-            <div class="brand-item"><i class="fas fa-headphones"></i><span>Bose</span></div>
-            <div class="brand-item"><i class="fas fa-clock"></i><span>Garmin</span></div>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
+<!-- ====== FOOTER ====== -->
 <footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div class="footer-logo">
-                    <span class="logo-icon"><i class="fas fa-globe"></i></span>
-                    <span class="logo-text">Affiliate<span class="logo-highlight">Global</span></span>
-                </div>
-                <p>Your trusted source for tech reviews, buying guides, and the best deals from top retailers worldwide. We help you make informed purchasing decisions.</p>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <a href="index.html">Home</a>
-                <a href="pages/deals.html">Best Deals</a>
-                <a href="pages/category.html?cat=smartphones">Smartphones</a>
-                <a href="pages/category.html?cat=laptops">Laptops</a>
-                <a href="pages/category.html?cat=tablets">Tablets</a>
-                <a href="pages/category.html?cat=audio">Audio</a>
-            </div>
-            <div class="footer-col">
-                <h4>Brands</h4>
-                <a href="pages/category.html?cat=apple">Apple</a>
-                <a href="pages/category.html?cat=samsung">Samsung</a>
-                <a href="pages/category.html?cat=xiaomi">Xiaomi</a>
-                <a href="pages/category.html?cat=google">Google</a>
-                <a href="pages/category.html?cat=sony">Sony</a>
-                <a href="pages/category.html?cat=bose">Bose</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p><i class="fas fa-user"></i> Mr. Quan</p>
-                <p><i class="fas fa-phone"></i> +84 972 956 137</p>
-                <p><i class="fas fa-envelope"></i> trangiaphatco@gmail.com</p>
-                <p><i class="fas fa-clock"></i> Mon-Sat: 8:00-18:00 (GMT+7)</p>
-                <a href="pages/contact.html" class="btn btn-sm btn-primary" style="margin-top:8px;">Contact Us</a>
-            </div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">
+          <a href="index.html"><i class="fas fa-globe" style="color:var(--blue-accent);"></i> AffiliateGlobal</a>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Affiliate Global. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="pages/privacy.html">Privacy</a>
-                <a href="pages/terms.html">Terms</a>
-                <a href="pages/affiliate-disclosure.html">Disclosure</a>
-            </div>
+        <p>Your trusted source for tech reviews, buying guides, and the best deals from top retailers worldwide. We help you make informed purchasing decisions.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
         </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="pages/deals.html">Best Deals</a>
+        <a href="pages/category.html?cat=smartphones">Smartphones</a>
+        <a href="pages/category.html?cat=laptops">Laptops</a>
+        <a href="pages/category.html?cat=tablets">Tablets</a>
+        <a href="pages/category.html?cat=audio">Audio</a>
+      </div>
+      <div class="footer-col">
+        <h4>Brands</h4>
+        <a href="pages/category.html?cat=apple">Apple</a>
+        <a href="pages/category.html?cat=samsung">Samsung</a>
+        <a href="pages/category.html?cat=xiaomi">Xiaomi</a>
+        <a href="pages/category.html?cat=google">Google</a>
+        <a href="pages/category.html?cat=sony">Sony</a>
+        <a href="pages/category.html?cat=bose">Bose</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="fas fa-user"></i> Mr. Quan</p>
+        <p><i class="fas fa-phone"></i> +84 972 956 137</p>
+        <p><i class="fas fa-envelope"></i> trangiaphatco@gmail.com</p>
+        <p><i class="fas fa-clock"></i> Mon-Sat: 8:00-18:00 (GMT+7)</p>
+        <a href="pages/contact.html" class="btn btn-primary btn-sm" style="margin-top:8px;">Contact Us</a>
+      </div>
     </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Affiliate Global. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="pages/privacy.html">Privacy</a>
+        <a href="pages/terms.html">Terms</a>
+        <a href="pages/affiliate-disclosure.html">Disclosure</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<!-- CART SIDEBAR -->
-<div class="cart-overlay" id="cartOverlay"></div>
-<div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header">
-        <h3>Compare Products</h3>
-        <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="cart-items" id="cartItems">
-        <p class="cart-empty">Your comparison list is empty.</p>
-    </div>
-    <div class="cart-footer">
-        <a href="pages/deals.html" class="btn btn-primary btn-block">Browse Products</a>
-    </div>
+<!-- ====== COMPARE SIDEBAR ====== -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h3><i class="fas fa-sliders-h" style="color:var(--blue-accent);"></i> Compare</h3>
+    <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="sidebar-items" id="sidebarItems">
+    <p class="sidebar-empty">Your comparison list is empty.</p>
+  </div>
+  <div class="sidebar-footer">
+    <a href="pages/deals.html" class="btn btn-primary btn-block">Browse Products</a>
+  </div>
 </div>
 
-<!-- DISCLAIMER -->
-<div class="disclaimer" id="disclaimerBanner">
-    <div class="container">
-        <i class="fas fa-info-circle"></i>
-        <span>We earn a commission from qualifying purchases at no extra cost to you. <a href="pages/affiliate-disclosure.html">Full Disclosure</a></span>
-        <button class="close-disclaimer" onclick="this.parentElement.parentElement.style.display='none'"><i class="fas fa-times"></i></button>
-    </div>
-</div>
-
-<!-- BACK TO TOP -->
-<button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+<!-- ====== BACK TO TOP ====== -->
+<button class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></button>
 
 <script src="assets/js/products.js"></script>
 <script src="assets/js/main.js"></script>
