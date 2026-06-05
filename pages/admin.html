@@ -217,10 +217,20 @@ table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
     try{
       var r=await fetch('https://api.github.com/repos/'+R+'/contents/'+F+'?ref='+B,{headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github.v3+json'}})
       if(!r.ok){t('GitHub: '+r.status,'r');return}
-      var d=await r.json();sha=d.sha
-      var rx=await fetch(d.download_url),tx=await rx.text()
-      var m=tx.match(/const\s+products\s*=\s*(\[[\s\S]*?\]);/)
-      if(m){var p=JSON.parse(m[1]);if(p.length){products=p;render();t('Loaded '+products.length+' products','g');return}}
+        var d=await r.json();sha=d.sha
+        var rx=await fetch(d.download_url),tx=await rx.text()
+        var m=tx.match(/const\s+products\s*=\s*(\[[\s\S]*?\]);/)
+        if(m){var p=JSON.parse(m[1]);if(p.length){
+          // Normalize field names from products.js format
+          p.forEach(function(x){
+            if(x.category && !x.cat)x.cat=x.category
+            if(x.originalPrice && !x.old)x.old=x.originalPrice
+            if(x.description && !x.desc)x.desc=x.description
+            if(x.image && !x.img)x.img=x.image
+            if(x.reviews && !x.rev)x.rev=x.reviews
+            if(typeof x.id==='number')x.id=String(x.id)
+          })
+          products=p;render();t('Loaded '+products.length+' products','g');return}}
     }catch(e){}
     loadLocal()
   }
@@ -231,7 +241,21 @@ table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
       sha=null
       var r=await fetch('https://api.github.com/repos/'+R+'/contents/'+F+'?ref='+B,{headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github.v3+json'}})
       if(r.ok){var d=await r.json();sha=d.sha}
-      var js='// Affiliate Global\nconst products = '+JSON.stringify(products,null,2)+';\n\nfunction getProductById(id){return products.find(function(p){return p.id===id})||null}\nfunction getProductsByCategory(cat){return products.filter(function(p){return p.category===cat})}\n'
+      var js='// Affiliate Global\nconst products = '+JSON.stringify(function(){
+        // Normalize to products.js format for compatibility
+        return products.map(function(x){
+          var o={}
+          for(var k in x){
+            if(k==='cat')o.category=x[k]
+            else if(k==='old')o.originalPrice=x[k]
+            else if(k==='desc')o.description=x[k]
+            else if(k==='img')o.image=x[k]
+            else if(k==='rev')o.reviews=x[k]
+            else o[k]=x[k]
+          }
+          return o
+        })
+      }(),null,2)+';\n\nfunction getProductById(id){return products.find(function(p){return p.id===id})||null}\nfunction getProductsByCategory(cat){return products.filter(function(p){return p.category===cat})}\n'
       var b={message:msg,content:btoa(unescape(encodeURIComponent(js))),branch:B};if(sha)b.sha=sha
       var r2=await fetch('https://api.github.com/repos/'+R+'/contents/'+F,{method:'PUT',headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(b)})
       if(r2.ok){var d2=await r2.json();sha=d2.content?d2.content.sha:null;t('Committed!','g')}
