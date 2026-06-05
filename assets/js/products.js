@@ -1,4 +1,5 @@
-// Affiliate Global - Auto-generated \n2026-06-05\n\nconst products = [
+// Affiliate Global
+const products = [
   {
     "id": 1,
     "name": "iPhone 16 Pro Max",
@@ -2476,4 +2477,7 @@
     "videoId": "",
     "affiliateLink": "https://www.amazon.com/s?k=CAI%20BAP%20MY"
   }
-];\n\nfunction getProductById(id) {\n  return products.find(function(p) { return p.id === id; }) || null;\n}\n\nfunction getProductsByCategory(cat) {\n  return products.filter(function(p) { return p.category === cat; });\n}\n
+];
+
+function getProductById(id){return products.find(function(p){return p.id===id})||null}
+function getProductsByCategory(cat){return products.filter(function(p){return p.category===cat})}
