@@ -127,7 +127,7 @@ a:hover{color:var(--orange);text-decoration:underline}
       <button id="searchBtn"><i class="fas fa-search"></i></button>
     </div>
     <div class="top-links">
-      <a href="../pages/contact.html"><small>Hello</small><strong>Contact</strong></a>
+      <a href="contact.html"><small>Hello</small><strong>Contact</strong></a>
       <a href="#" id="cartBtn" class="cart-link"><i class="fas fa-shopping-cart" style="font-size:20px"></i><span class="cart-count" id="cartCount">0</span></a>
     </div>
   </div>
@@ -1165,9 +1165,9 @@ function renderProducts(list) {
     var off = p.old ? Math.round((1 - p.price / p.old) * 100) : 0;
     var card = document.createElement('div');
     card.className = 'product-card';
-    card.innerHTML = '<div class="product-img">' + badge + '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy"></div>' +
+    card.innerHTML = '<a href="product.html?id=' + p.id + '" class="product-img">' + badge + '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy"></a>' +
       '<div class="product-body">' +
-      '<a href="../pages/product.html?id=' + p.id + '" class="product-name">' + p.name + '</a>' +
+      '<a href="product.html?id=' + p.id + '" class="product-name">' + p.name + '</a>' +
       '<div class="rating">' + stars + ' <span>' + p.rating + ' (' + (p.rev >= 1000 ? Math.round(p.rev/1000) + 'k' : p.rev) + ')</span></div>' +
       '<div class="price-row">' +
       '<span class="price-current">$' + p.price.toLocaleString() + '</span>' +
@@ -1176,7 +1176,7 @@ function renderProducts(list) {
       '</div>' +
       '<div class="product-footer">' +
       '<a href="' + p.link + '" target="_blank" class="btn-buy"><i class="fas fa-shopping-cart"></i> Buy Now</a>' +
-      '<a href="../pages/product.html?id=' + p.id + '" class="btn-detail">Details</a>' +
+      '<a href="product.html?id=' + p.id + '" class="btn-detail">Details</a>' +
       '</div></div>';
     grid.appendChild(card);
   });
