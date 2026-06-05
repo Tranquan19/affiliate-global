@@ -319,17 +319,17 @@ table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
   // INIT
   function init(){
     loadLocal();ut()
+    // Auto-load from GitHub only on first visit (localStorage empty)
+    if(!localStorage.getItem('ag_products') && token) fg()
     if(sessionStorage.getItem('ag_ad')){
       $('login').style.display='none';$('dash').style.display='block'
-      // Only load from GitHub if localStorage was empty (first visit)
-      if(token && products.length<=10 && JSON.stringify(products).indexOf('ai-tools')===-1) fg()
     }
     var pwd='admin123'
     $('lbtn').onclick=function(){
       if($('pwd').value===pwd){
         sessionStorage.setItem('ag_ad','1')
         $('login').style.display='none';$('dash').style.display='block'
-        if(token && products.length<=10 && JSON.stringify(products).indexOf('ai-tools')===-1) fg()
+        if(!localStorage.getItem('ag_products') && token) fg()
       }else{$('lerr').style.display='block'}
     }
     $('pwd').onkeydown=function(e){if(e.key==='Enter')$('lbtn').click()}
