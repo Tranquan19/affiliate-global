@@ -31,6 +31,71 @@ const products = [
     "badge": "Best Seller"
   },
   {
+    "id": "2",
+    "name": "Samsung Galaxy S25 Ultra",
+    "brand": "Samsung",
+    "category": "smartphones",
+    "price": 1399,
+    "originalPrice": 1499,
+    "image": "https://images.unsplash.com/photo-1610945415294-dfbb5b7b3e8d?w=400&h=400&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1610945415294-dfbb5b7b3e8d?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1601782591353-3e34032699a6?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1592286927505-1def25115558?w=800&h=800&fit=crop"
+    ],
+    "rating": 4.7,
+    "reviews": 9872,
+    "description": "Samsung's ultimate flagship with the Snapdragon 8 Gen 4 processor, a quad-camera system with 200MP main sensor, built-in S Pen, and Galaxy AI capabilities.",
+    "features": [
+      "Snapdragon 8 Gen 4 for Galaxy",
+      "200MP + 50MP + 12MP + 10MP quad camera",
+      "6.9\" Dynamic AMOLED 2X 120Hz",
+      "Built-in S Pen with Air Actions",
+      "Galaxy AI — Live Translate, Note Assist",
+      "5000mAh battery with 65W fast charging",
+      "Titanium frame with Gorilla Glass Victus 3",
+      "Android 16 with 7 years of updates"
+    ],
+    "specs": [
+      {
+        "label": "Display",
+        "value": "6.9\" Dynamic AMOLED 2X, 120Hz"
+      },
+      {
+        "label": "Processor",
+        "value": "Snapdragon 8 Gen 4 for Galaxy"
+      },
+      {
+        "label": "RAM",
+        "value": "12GB"
+      },
+      {
+        "label": "Storage",
+        "value": "256GB / 512GB / 1TB"
+      },
+      {
+        "label": "Battery",
+        "value": "5000mAh, 65W charging"
+      },
+      {
+        "label": "Camera",
+        "value": "200MP + 50MP + 12MP + 10MP"
+      },
+      {
+        "label": "Weight",
+        "value": "233g"
+      },
+      {
+        "label": "OS",
+        "value": "Android 16, One UI 7"
+      }
+    ],
+    "videoId": "Hw4N0X2JH_M",
+    "affiliateLink": "https://amazon.com/dp/EXAMPLE?tag=affiliateglobal-20",
+    "badge": "Best Seller"
+  },
+  {
     "id": "3",
     "name": "Google Pixel 10 Pro",
     "brand": "Google",
