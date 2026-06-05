@@ -276,19 +276,17 @@
         $('saveBtn').innerHTML = '<i class=\"fas fa-spinner fa-spin\"></i> Committing...';
         
         try {
-            // If we don't have SHA, fetch it
-            if (!fileSha) {
-                var url = 'https://api.github.com/repos/' + REPO + '/contents/' + FILE_PATH + '?ref=' + BRANCH;
-                var res = await fetch(url, {
-                    headers: {
-                        'Authorization': 'Bearer ' + githubToken,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-                if (res.ok) {
-                    var data = await res.json();
-                    fileSha = data.sha;
+            // Always fetch fresh SHA before committing
+            var url = 'https://api.github.com/repos/' + REPO + '/contents/' + FILE_PATH + '?ref=' + BRANCH;
+            var res = await fetch(url, {
+                headers: {
+                    'Authorization': 'Bearer ' + githubToken,
+                    'Accept': 'application/vnd.github.v3+json'
                 }
+            });
+            if (res.ok) {
+                var data = await res.json();
+                fileSha = data.sha;
             }
 
             // Generate JS content
