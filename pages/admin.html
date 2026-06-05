@@ -96,6 +96,7 @@ table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
           <span style="margin-left:8px">Repo: Tranquan19/affiliate-global</span>
         </p>
         <p style="color:#c45500;font-size:11px;margin:4px 0 0"><i class="fas fa-info-circle"></i> Token luu tren trinh duyet nay. Nhập lại trên điện thoại.</p>
+        <p style="font-size:11px;margin:4px 0 0"><a href="#" id="syncLink" style="color:#007185"><i class="fas fa-sync"></i> Refresh from GitHub</a></p>
       </div>
       <input type="password" id="tok" placeholder="Paste GitHub token..." autocomplete="off">
       <button class="btn btn-p btn-sm" id="stok">Set</button>
@@ -320,14 +321,15 @@ table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
     loadLocal();ut()
     if(sessionStorage.getItem('ag_ad')){
       $('login').style.display='none';$('dash').style.display='block'
-      if(token) fg()
+      // Only load from GitHub if localStorage was empty (first visit)
+      if(token && products.length<=10 && JSON.stringify(products).indexOf('ai-tools')===-1) fg()
     }
     var pwd='admin123'
     $('lbtn').onclick=function(){
       if($('pwd').value===pwd){
         sessionStorage.setItem('ag_ad','1')
         $('login').style.display='none';$('dash').style.display='block'
-        if(token) fg()
+        if(token && products.length<=10 && JSON.stringify(products).indexOf('ai-tools')===-1) fg()
       }else{$('lerr').style.display='block'}
     }
     $('pwd').onkeydown=function(e){if(e.key==='Enter')$('lbtn').click()}
@@ -337,6 +339,7 @@ table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
       token=t;localStorage.setItem(G,t);ut();$('tok').value='';t('Token saved','g');fg()
     }
     $('ctok').onclick=function(){token='';localStorage.removeItem(G);sha=null;ut();t('Token cleared','i')}
+    $('syncLink').onclick=function(e){e.preventDefault();if(token)fg();else t('Set token first','r')}
     // Add
     $('addb').onclick=function(){
       $('mt').textContent='Add New Product';$('ei').value='';$('pf').reset();$('fo').value=0
