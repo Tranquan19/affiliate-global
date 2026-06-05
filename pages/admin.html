@@ -149,7 +149,14 @@ table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
         </div>
         <div class="fg"><label>Price ($) *</label><input type="number" id="fp" step="0.01" min="0" required></div>
         <div class="fg"><label>Original ($)</label><input type="number" id="fo" step="0.01" min="0" value="0"></div>
-        <div class="fg w"><label>Image URL *</label><input type="url" id="fi" placeholder="https://images.unsplash.com/photo-..."></div>
+        <div class="fg w"><label>Image URL *</label>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input type="url" id="fi" placeholder="https://images.unsplash.com/photo-..." style="flex:1">
+            <button type="button" class="btn btn-o btn-sm" id="upImgBtn" style="white-space:nowrap"><i class="fas fa-upload"></i> Upload</button>
+          </div>
+          <div id="imgPreview" style="margin-top:6px;display:none"><img style="max-width:120px;max-height:120px;border-radius:4px;border:1px solid var(--border)"></div>
+          <input type="file" id="upImgInput" accept="image/*" style="display:none">
+        </div>
         <div class="fg w"><label>More Images (one per line)</label><textarea id="fim" rows="2" placeholder="https://..."></textarea></div>
         <div class="fg w"><label>Affiliate Link</label><input type="url" id="fal" placeholder="https://amazon.com/dp/EXAMPLE?tag=affiliateglobal-20"></div>
         <div class="fg w"><label>Description</label><textarea id="fd" rows="5" placeholder="Product description..."></textarea></div>
@@ -269,6 +276,8 @@ table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
     $('fi').value=p.img||'';$('fim').value=(p.images||[]).join('\n')
     $('fd').value=p.desc||p.description||'';$('ff').value=(p.features||[]).join('\n')
     $('fba').value=p.badge||'';$('fal').value=p.affiliateLink||''
+    var iv=$('fi').value
+    if(iv.startsWith('data:image/')){var pv=$('imgPreview');pv.style.display='';pv.querySelector('img').src=iv}else{$('imgPreview').style.display='none'}
     $('pm').classList.add('a')
   }
   function del(id){
@@ -301,10 +310,11 @@ table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
     // Add
     $('addb').onclick=function(){
       $('mt').textContent='Add New Product';$('ei').value='';$('pf').reset();$('fo').value=0
+      $('imgPreview').style.display='none'
       $('pm').classList.add('a')
     }
     // Modal close
-    function cm(){var m=$('pm');m.classList.remove('a')}
+    function cm(){var m=$('pm');m.classList.remove('a');$('imgPreview').style.display='none'}
     $('cmb').onclick=cm;$('cab').onclick=cm;$('pm').onclick=function(e){if(e.target===this)cm()}
     function cm2(){var m=$('dm');m.classList.remove('a')}
     $('cdb').onclick=cm2;$('dm').onclick=function(e){if(e.target===this)cm2()}
@@ -340,6 +350,25 @@ table img{width:40px;height:40px;object-fit:cover;border-radius:4px}
       if(ei){products=products.map(function(p){return p.id===ei?prd:p});await sc('Update: '+prd.name)}
       else{products.push(prd);await sc('Add: '+prd.name)}
       $('pm').classList.remove('a')
+    }
+
+    // Image upload from device
+    $('upImgBtn').onclick=function(){$('upImgInput').click()}
+    $('upImgInput').onchange=function(){
+      var f=this.files[0];if(!f)return
+      var r=new FileReader()
+      r.onload=function(e){
+        var d=e.target.result
+        $('fi').value=d
+        var p=$('imgPreview');p.style.display='';p.querySelector('img').src=d
+      }
+      r.readAsDataURL(f)
+    }
+    $('fi').oninput=function(){
+      var v=this.value.trim()
+      if(v.startsWith('data:image/')){
+        var p=$('imgPreview');p.style.display='';p.querySelector('img').src=v
+      }else{$('imgPreview').style.display='none'}
     }
   }
   document.addEventListener('DOMContentLoaded',init)
