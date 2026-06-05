@@ -161,71 +161,6 @@ const products = [
     "badge": null
   },
   {
-    "id": "4",
-    "name": "Xiaomi 15 Pro",
-    "brand": "Xiaomi",
-    "category": "smartphones",
-    "price": 799,
-    "originalPrice": 899,
-    "image": "https://images.unsplash.com/photo-1601782591353-3e34032699a6?w=400&h=400&fit=crop",
-    "images": [
-      "https://images.unsplash.com/photo-1601782591353-3e34032699a6?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1610945415294-dfbb5b7b3e8d?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1592286927505-1def25115558?w=800&h=800&fit=crop"
-    ],
-    "rating": 4.5,
-    "reviews": 4210,
-    "description": "Flagship killer from Xiaomi with the Snapdragon 8 Gen 4, Leica optics triple camera, and a massive 5400mAh battery with 120W HyperCharge.",
-    "features": [
-      "Snapdragon 8 Gen 4",
-      "50MP Leica Summilux + 50MP + 50MP triple",
-      "6.73\" AMOLED 120Hz LTPO",
-      "5400mAh battery with 120W wired / 80W wireless",
-      "HyperOS 2 based on Android 16",
-      "IP68 rating",
-      "In-display ultrasonic fingerprint sensor",
-      "Quad-curved display design"
-    ],
-    "specs": [
-      {
-        "label": "Display",
-        "value": "6.73\" AMOLED LTPO, 120Hz"
-      },
-      {
-        "label": "Processor",
-        "value": "Snapdragon 8 Gen 4"
-      },
-      {
-        "label": "RAM",
-        "value": "12GB / 16GB"
-      },
-      {
-        "label": "Storage",
-        "value": "256GB / 512GB"
-      },
-      {
-        "label": "Battery",
-        "value": "5400mAh, 120W charging"
-      },
-      {
-        "label": "Camera",
-        "value": "50MP + 50MP + 50MP Leica"
-      },
-      {
-        "label": "Weight",
-        "value": "213g"
-      },
-      {
-        "label": "OS",
-        "value": "HyperOS 2 (Android 16)"
-      }
-    ],
-    "videoId": "kLp0UeXNzHc",
-    "affiliateLink": "https://amazon.com/dp/EXAMPLE?tag=affiliateglobal-20",
-    "badge": "Sale"
-  },
-  {
     "id": "5",
     "name": "iPhone 16",
     "brand": "Apple",
@@ -2442,82 +2377,167 @@ const products = [
     "badge": ""
   },
   {
-    "id": 40,
+    "id": "40",
     "name": "Jasper AI",
     "brand": "Jasper",
-    "cat": "ai-tools",
+    "category": "ai-tools",
     "price": 49,
-    "img": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=400&fit=crop",
-    "images": ["https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=800&fit=crop"],
+    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=400&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=800&fit=crop"
+    ],
     "rating": 4.8,
-    "rev": 1234,
-    "desc": "Jasper is the leading AI writing assistant for businesses.",
-    "features": ["Brand Voice","50+ templates","SEO mode","Plagiarism checker","30+ languages"],
-    "specs": [{"label":"Price","value":"$49/month"},{"label":"Trial","value":"7 days"},{"label":"Best For","value":"Bloggers"}],
+    "reviews": 1234,
+    "description": "Jasper is the leading AI writing assistant for businesses.",
+    "features": [
+      "Brand Voice",
+      "50+ templates",
+      "SEO mode",
+      "Plagiarism checker",
+      "30+ languages"
+    ],
+    "specs": [
+      {
+        "label": "Price",
+        "value": "$49/month"
+      },
+      {
+        "label": "Trial",
+        "value": "7 days"
+      },
+      {
+        "label": "Best For",
+        "value": "Bloggers"
+      }
+    ],
     "affiliateLink": "#",
     "badge": "Best Seller"
   },
   {
-    "id": 41,
+    "id": "41",
     "name": "WriteSonic",
     "brand": "WriteSonic",
-    "cat": "ai-tools",
+    "category": "ai-tools",
     "price": 19,
-    "img": "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&h=400&fit=crop",
-    "images": ["https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&h=800&fit=crop"],
+    "image": "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&h=400&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&h=800&fit=crop"
+    ],
     "rating": 4.6,
-    "rev": 892,
-    "desc": "Affordable AI writing tool perfect for beginners.",
-    "features": ["ChatSonic","Blog writer SEO mode","AI art generator","Browser extension"],
-    "specs": [{"label":"Price","value":"$19/month"},{"label":"Best For","value":"Beginners"}],
+    "reviews": 892,
+    "description": "Affordable AI writing tool perfect for beginners.",
+    "features": [
+      "ChatSonic",
+      "Blog writer SEO mode",
+      "AI art generator",
+      "Browser extension"
+    ],
+    "specs": [
+      {
+        "label": "Price",
+        "value": "$19/month"
+      },
+      {
+        "label": "Best For",
+        "value": "Beginners"
+      }
+    ],
     "affiliateLink": "#",
     "badge": "Best Seller"
   },
   {
-    "id": 42,
+    "id": "42",
     "name": "Synthesia",
     "brand": "Synthesia",
-    "cat": "ai-tools",
+    "category": "ai-tools",
     "price": 29,
-    "img": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=400&fit=crop",
-    "images": ["https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&h=800&fit=crop"],
+    "image": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=400&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&h=800&fit=crop"
+    ],
     "rating": 4.7,
-    "rev": 567,
-    "desc": "Create professional AI avatar videos without camera or microphone.",
-    "features": ["120+ AI avatars","140+ languages","Custom avatars","Script-to-video"],
-    "specs": [{"label":"Price","value":"$29/month"},{"label":"Best For","value":"Marketers"}],
+    "reviews": 567,
+    "description": "Create professional AI avatar videos without camera or microphone.",
+    "features": [
+      "120+ AI avatars",
+      "140+ languages",
+      "Custom avatars",
+      "Script-to-video"
+    ],
+    "specs": [
+      {
+        "label": "Price",
+        "value": "$29/month"
+      },
+      {
+        "label": "Best For",
+        "value": "Marketers"
+      }
+    ],
     "affiliateLink": "#",
     "badge": "New"
   },
   {
-    "id": 43,
+    "id": "43",
     "name": "Notion AI",
     "brand": "Notion",
-    "cat": "ai-tools",
+    "category": "ai-tools",
     "price": 20,
-    "img": "https://images.unsplash.com/photo-1686191128892-3e1f4f6f72f6?w=400&h=400&fit=crop",
-    "images": ["https://images.unsplash.com/photo-1686191128892-3e1f4f6f72f6?w=800&h=800&fit=crop"],
+    "image": "https://images.unsplash.com/photo-1686191128892-3e1f4f6f72f6?w=400&h=400&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1686191128892-3e1f4f6f72f6?w=800&h=800&fit=crop"
+    ],
     "rating": 4.9,
-    "rev": 2345,
-    "desc": "Best workspace platform with built-in AI assistance.",
-    "features": ["AI writing in workspace","Project management","Wiki & knowledge base","AI summarization"],
-    "specs": [{"label":"Price","value":"$10+$10/month"},{"label":"Best For","value":"Teams"}],
+    "reviews": 2345,
+    "description": "Best workspace platform with built-in AI assistance.",
+    "features": [
+      "AI writing in workspace",
+      "Project management",
+      "Wiki & knowledge base",
+      "AI summarization"
+    ],
+    "specs": [
+      {
+        "label": "Price",
+        "value": "$10+$10/month"
+      },
+      {
+        "label": "Best For",
+        "value": "Teams"
+      }
+    ],
     "affiliateLink": "#",
     "badge": "Best Seller"
   },
   {
-    "id": 44,
+    "id": "44",
     "name": "Pictory AI",
     "brand": "Pictory",
-    "cat": "ai-tools",
+    "category": "ai-tools",
     "price": 19,
-    "img": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=400&fit=crop",
-    "images": ["https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&h=800&fit=crop"],
+    "image": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=400&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&h=800&fit=crop"
+    ],
     "rating": 4.5,
-    "rev": 345,
-    "desc": "Automatically convert blog posts into engaging videos.",
-    "features": ["Blog to video in 1 click","Auto-captions","Stock footage library","AI voiceover"],
-    "specs": [{"label":"Price","value":"$19/month"},{"label":"Best For","value":"Content Repurposing"}],
+    "reviews": 345,
+    "description": "Automatically convert blog posts into engaging videos.",
+    "features": [
+      "Blog to video in 1 click",
+      "Auto-captions",
+      "Stock footage library",
+      "AI voiceover"
+    ],
+    "specs": [
+      {
+        "label": "Price",
+        "value": "$19/month"
+      },
+      {
+        "label": "Best For",
+        "value": "Content Repurposing"
+      }
+    ],
     "affiliateLink": "#",
     "badge": ""
   }
