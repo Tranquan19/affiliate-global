@@ -288,29 +288,94 @@
     if (bCat) bCat.textContent = p.category.charAt(0).toUpperCase() + p.category.slice(1);
 
     const disc = p.originalPrice ? Math.round((1 - p.price / p.originalPrice) * 100) : 0;
-    detail.innerHTML = `<div class="product-detail">
-      <div class="product-detail-images">
-        <div class="product-detail-img"><img src="${p.image}" alt="${p.name}"></div>
+    const images = p.images && p.images.length ? p.images : [p.image];
+
+    // --- Image gallery with thumbnails ---
+    const thumbnails = images.map((img, i) =>
+      `<img class="product-thumb${i === 0 ? ' active' : ''}" src="${img}" alt="" data-index="${i}">`
+    ).join('');
+
+    const galleryHtml = `<div class="product-detail-images">
+      <div class="product-detail-img">
+        <img id="mainProductImage" src="${images[0]}" alt="${p.name}">
       </div>
-      <div class="product-detail-info">
-        <h1>${p.name}</h1>
-        <div class="rating-big">${stars(p.rating)} <span>${p.rating} (${p.reviews} reviews)</span></div>
-        <div class="product-detail-price">
-          <span class="current">${fmt(p.price)}</span>
-          ${p.originalPrice ? `<span class="old">${fmt(p.originalPrice)}</span>` : ''}
-          ${p.originalPrice ? `<span class="price-discount">-${disc}%</span>` : ''}
-        </div>
-        <p style="color:var(--text-light);margin-bottom:16px;line-height:1.6;">${p.description}</p>
-        <div class="product-detail-features">
-          <h3>Key Features</h3>
-          <ul>${p.features.map(f => `<li>${f}</li>`).join('')}</ul>
-        </div>
-        <div class="product-detail-actions">
-          <a href="${p.affiliateLink}" target="_blank" rel="nofollow" class="btn btn-primary">Buy on Amazon <i class="fas fa-external-link-alt"></i></a>
-          <button class="btn-compare" data-id="${p.id}"><i class="fas fa-plus-circle"></i> Compare</button>
-        </div>
+      <div class="gallery-thumbs">${thumbnails}</div>
+    </div>`;
+
+    // --- Info panel ---
+    const infoHtml = `<div class="product-detail-info">
+      <h1>${p.name}</h1>
+      <div class="rating-big">${stars(p.rating)} <span>${p.rating} (${p.reviews} reviews)</span></div>
+      <div class="product-detail-price">
+        <span class="current">${fmt(p.price)}</span>
+        ${p.originalPrice ? `<span class="old">${fmt(p.originalPrice)}</span>` : ''}
+        ${p.originalPrice ? `<span class="price-discount">-${disc}%</span>` : ''}
+      </div>
+      <p style="color:var(--text-light);margin-bottom:16px;line-height:1.6;">${p.description}</p>
+      <div class="product-detail-features">
+        <h3>Key Features</h3>
+        <ul>${p.features.map(f => `<li>${f}</li>`).join('')}</ul>
+      </div>
+      <div class="product-detail-actions">
+        <a href="${p.affiliateLink}" target="_blank" rel="nofollow" class="btn btn-primary">Buy on Amazon <i class="fas fa-external-link-alt"></i></a>
+        <button class="btn-compare" data-id="${p.id}"><i class="fas fa-plus-circle"></i> Compare</button>
       </div>
     </div>`;
+
+    detail.innerHTML = `<div class="product-detail">${galleryHtml}${infoHtml}</div>`;
+
+    // --- Thumbnail click handler ---
+    detail.querySelectorAll('.product-thumb').forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        detail.querySelectorAll('.product-thumb').forEach(function (t) { t.classList.remove('active'); });
+        this.classList.add('active');
+        document.getElementById('mainProductImage').src = this.src;
+      });
+    });
+
+    // --- YouTube video ---
+    const videoContainer = document.getElementById('productVideo');
+    if (videoContainer && p.videoId) {
+      videoContainer.innerHTML = '<div class="product-video-section">' +
+        '<h2 class="section-title">Video Review</h2>' +
+        '<div class="video-wrapper">' +
+        '<iframe src="https://www.youtube.com/embed/' + p.videoId + '" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>' +
+        '</div></div>';
+    } else if (videoContainer) {
+      videoContainer.innerHTML = '';
+    }
+
+    // --- Specs table ---
+    const specsContainer = document.getElementById('productSpecs');
+    if (specsContainer && p.specs && p.specs.length) {
+      var specsRows = '';
+      for (var i = 0; i < p.specs.length; i++) {
+        specsRows += '<tr><td class="spec-label">' + p.specs[i].label + '</td><td class="spec-value">' + p.specs[i].value + '</td></tr>';
+      }
+      specsContainer.innerHTML = '<div class="product-specs-section">' +
+        '<h2 class="section-title">Specifications</h2>' +
+        '<table class="specs-table"><tbody>' + specsRows + '</tbody></table>' +
+        '</div>';
+    } else if (specsContainer) {
+      specsContainer.innerHTML = '';
+    }
+
+    // --- Related products ---
+    var relatedContainer = document.getElementById('relatedProducts');
+    if (relatedContainer) {
+      var related = getProductsByCategory(p.category).filter(function (x) { return x.id !== p.id; }).slice(0, 4);
+      if (related.length) {
+        var cards = '';
+        for (var i = 0; i < related.length; i++) {
+          cards += productCard(related[i]);
+        }
+        relatedContainer.innerHTML = '<div class="related-products-section">' +
+          '<h2 class="section-title">Related Products</h2>' +
+          '<div class="product-grid">' + cards + '</div></div>';
+      } else {
+        relatedContainer.innerHTML = '';
+      }
+    }
   }
 
   // ---- Init ----

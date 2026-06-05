@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Affiliate Global</title>
+    <meta name="description" content="Admin panel for managing products on Affiliate Global.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .admin-section { margin: 24px 0; }
+        .admin-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+        }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .admin-table-wrap { overflow-x: auto; }
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .admin-table th {
+            background: #fafafa;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+            white-space: nowrap;
+        }
+        .admin-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: middle;
+        }
+        .admin-table tr:hover td { background: #fafafa; }
+        .admin-table .actions-col {
+            white-space: nowrap;
+            text-align: right;
+        }
+        .btn-edit {
+            background: var(--blue);
+            color: #fff;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .btn-edit:hover { background: var(--blue-dark); }
+        .btn-delete {
+            background: var(--red);
+            color: #fff;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .btn-delete:hover { background: var(--red-dark); }
+        .btn-add {
+            background: var(--green);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .btn-add:hover { opacity: 0.9; }
+        .btn-add i { margin-right: 6px; }
+        .admin-thumb {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 3px;
+            background: #fafafa;
+        }
+
+        /* Login */
+        .login-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 50vh;
+        }
+        .login-box {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .login-box h1 { font-size: 22px; margin-bottom: 8px; }
+        .login-box p { color: var(--text-light); margin-bottom: 24px; font-size: 14px; }
+        .login-box .form-group { text-align: left; }
+        .login-box .btn { width: 100%; padding: 12px; font-size: 15px; }
+        .login-error {
+            color: var(--red);
+            font-size: 13px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 16px;
+            overflow-y: auto;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: #fff;
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 600px;
+            padding: 28px;
+            position: relative;
+            animation: modalIn 0.2s ease;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-right: 30px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--text-light);
+            line-height: 1;
+        }
+        .modal-close:hover { color: var(--text); }
+        .modal .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .modal .form-row-full { grid-column: 1 / -1; }
+        .modal .form-group { margin-bottom: 14px; }
+        .modal .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: var(--text);
+        }
+        .modal .form-group input,
+        .modal .form-group select,
+        .modal .form-group textarea {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: var(--font);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .modal .form-group input:focus,
+        .modal .form-group select:focus,
+        .modal .form-group textarea:focus { border-color: var(--red); }
+        .modal .form-group textarea { resize: vertical; min-height: 80px; }
+        .modal .form-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-light);
+        }
+        .modal .form-actions .btn { padding: 10px 24px; font-size: 14px; }
+        .btn-cancel {
+            background: #f0f0f0;
+            color: var(--text);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-cancel:hover { background: #e0e0e0; }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+        }
+        .empty-state i { font-size: 48px; margin-bottom: 12px; color: var(--text-lighter); }
+        .status-msg {
+            padding: 10px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            display: none;
+            font-size: 13px;
+        }
+        .status-msg.success { display: block; background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+        .status-msg.error { display: block; background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .admin-header { flex-direction: column; align-items: stretch; }
+            .modal .form-row { grid-template-columns: 1fr; }
+            .modal { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <div class="container">
+        <div>
+            <i class="fas fa-phone"></i> +84 972 956 137
+            <a href="mailto:trangiaphatco@gmail.com"><i class="fas fa-envelope"></i> trangiaphatco@gmail.com</a>
+        </div>
+        <div>
+            <a href="contact.html"><i class="fas fa-headset"></i> Support</a>
+            <a href="admin.html"><i class="fas fa-lock"></i> Admin</a>
+        </div>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="container">
+        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        <a href="../index.html" class="logo">
+            <span class="logo-icon"><i class="fas fa-globe"></i></span>
+            <span class="logo-text">Affiliate<span class="logo-highlight">Global</span></span>
+        </a>
+        <div class="search-bar">
+            <form id="searchForm">
+                <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+        <div class="header-actions">
+            <a href="#" class="action-btn" id="cartBtn">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="badge" id="cartCount">0</span>
+                <span class="action-label">Compare</span>
+            </a>
+            <a href="contact.html" class="action-btn">
+                <i class="fas fa-user"></i>
+                <span class="action-label">Contact</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+    <div class="container">
+        <div class="nav-item"><a href="../index.html"><i class="fas fa-home"></i> Home</a></div>
+        <div class="nav-item"><a href="category.html?cat=smartphones"><i class="fas fa-mobile-alt"></i> Smartphones</a></div>
+        <div class="nav-item"><a href="category.html?cat=laptops"><i class="fas fa-laptop"></i> Laptops</a></div>
+        <div class="nav-item"><a href="category.html?cat=tablets"><i class="fas fa-tablet-alt"></i> Tablets</a></div>
+        <div class="nav-item"><a href="category.html?cat=audio"><i class="fas fa-headphones"></i> Audio</a></div>
+        <div class="nav-item"><a href="category.html?cat=wearables"><i class="fas fa-clock"></i> Wearables</a></div>
+        <div class="nav-item"><a href="category.html?cat=accessories"><i class="fas fa-plug"></i> Accessories</a></div>
+        <div class="nav-item"><a href="deals.html"><i class="fas fa-fire"></i> Best Deals</a></div>
+    </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+        <span>Menu</span>
+        <button id="closeMenu"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="mobile-nav-item"><a href="../index.html"><i class="fas fa-home"></i> Home</a></div>
+    <div class="mobile-nav-item"><a href="category.html?cat=smartphones"><i class="fas fa-mobile-alt"></i> Smartphones</a></div>
+    <div class="mobile-nav-item"><a href="category.html?cat=laptops"><i class="fas fa-laptop"></i> Laptops</a></div>
+    <div class="mobile-nav-item"><a href="category.html?cat=tablets"><i class="fas fa-tablet-alt"></i> Tablets</a></div>
+    <div class="mobile-nav-item"><a href="category.html?cat=audio"><i class="fas fa-headphones"></i> Audio</a></div>
+    <div class="mobile-nav-item"><a href="category.html?cat=wearables"><i class="fas fa-clock"></i> Wearables</a></div>
+    <div class="mobile-nav-item"><a href="category.html?cat=accessories"><i class="fas fa-plug"></i> Accessories</a></div>
+    <div class="mobile-nav-item"><a href="deals.html"><i class="fas fa-fire"></i> Best Deals</a></div>
+    <div class="mobile-nav-item"><a href="contact.html"><i class="fas fa-headset"></i> Contact</a></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+    <div class="container">
+        <div id="adminApp"></div>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <span class="logo-icon"><i class="fas fa-globe"></i></span>
+                    <span class="logo-text">Affiliate<span class="logo-highlight">Global</span></span>
+                </div>
+                <p>Your trusted source for tech reviews, buying guides, and the best deals from top retailers worldwide. We help you make informed purchasing decisions.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="../index.html">Home</a>
+                <a href="deals.html">Best Deals</a>
+                <a href="category.html?cat=smartphones">Smartphones</a>
+                <a href="category.html?cat=laptops">Laptops</a>
+                <a href="category.html?cat=tablets">Tablets</a>
+                <a href="category.html?cat=audio">Audio</a>
+            </div>
+            <div class="footer-col">
+                <h4>Brands</h4>
+                <a href="category.html?cat=apple">Apple</a>
+                <a href="category.html?cat=samsung">Samsung</a>
+                <a href="category.html?cat=xiaomi">Xiaomi</a>
+                <a href="category.html?cat=google">Google</a>
+                <a href="category.html?cat=sony">Sony</a>
+                <a href="category.html?cat=bose">Bose</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><i class="fas fa-user"></i> Mr. Quan</p>
+                <p><i class="fas fa-phone"></i> +84 972 956 137</p>
+                <p><i class="fas fa-envelope"></i> trangiaphatco@gmail.com</p>
+                <p><i class="fas fa-clock"></i> Mon-Sat: 8:00-18:00 (GMT+7)</p>
+                <a href="contact.html" class="btn btn-sm btn-primary" style="margin-top:8px;">Contact Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Affiliate Global. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="affiliate-disclosure.html">Disclosure</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer" id="disclaimerBanner">
+    <div class="container">
+        <i class="fas fa-info-circle"></i>
+        <span>We earn a commission from qualifying purchases at no extra cost to you. <a href="affiliate-disclosure.html">Full Disclosure</a></span>
+        <button class="close-disclaimer" onclick="this.parentElement.parentElement.style.display='none'"><i class="fas fa-times"></i></button>
+    </div>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="productModal">
+    <div class="modal">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <h2 id="modalTitle">Add New Product</h2>
+        <form id="productForm" onsubmit="return false;">
+            <input type="hidden" id="editId" value="">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fName">Product Name</label>
+                    <input type="text" id="fName" required>
+                </div>
+                <div class="form-group">
+                    <label for="fBrand">Brand</label>
+                    <input type="text" id="fBrand" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fCategory">Category</label>
+                    <select id="fCategory" required>
+                        <option value="">-- Select --</option>
+                        <option value="smartphones">Smartphones</option>
+                        <option value="laptops">Laptops</option>
+                        <option value="tablets">Tablets</option>
+                        <option value="audio">Audio</option>
+                        <option value="wearables">Wearables</option>
+                        <option value="accessories">Accessories</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fBadge">Badge</label>
+                    <select id="fBadge">
+                        <option value="">None</option>
+                        <option value="Sale">Sale</option>
+                        <option value="New">New</option>
+                        <option value="Best Seller">Best Seller</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fPrice">Price ($)</label>
+                    <input type="number" id="fPrice" step="0.01" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="fOrigPrice">Original Price ($) <span style="color:var(--text-lighter);font-weight:400;">(optional)</span></label>
+                    <input type="number" id="fOrigPrice" step="0.01" min="0">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group form-row-full">
+                    <label for="fImage">Image URL</label>
+                    <input type="url" id="fImage" placeholder="https://..." required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group form-row-full">
+                    <label for="fDescription">Description</label>
+                    <textarea id="fDescription" rows="3" required></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group form-row-full">
+                    <label for="fFeatures">Features <span style="color:var(--text-lighter);font-weight:400;">(one per line)</span></label>
+                    <textarea id="fFeatures" rows="4" placeholder="Feature 1&#10;Feature 2&#10;Feature 3"></textarea>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-cancel" id="btnCancel">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="btnSave">Save Product</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../assets/js/products.js"></script>
+<script>
+(function () {
+    'use strict';
+
+    const PASSWORD = 'admin123';
+    const STORAGE_KEY = 'ag_products_custom';
+    const app = document.getElementById('adminApp');
+
+    // ---- Helpers ----
+    function fmt(n) { return '$' + Number(n).toLocaleString('en-US'); }
+    function getCustomProducts() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+        catch (e) { return []; }
+    }
+    function saveCustomProducts(arr) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+    }
+    function getAllProducts() {
+        var custom = getCustomProducts();
+        if (custom.length) return custom;
+        return window.products || [];
+    }
+    function nextId(arr) {
+        if (!arr.length) return 1;
+        return Math.max.apply(null, arr.map(function (p) { return p.id; })) + 1;
+    }
+    function esc(str) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+    }
+
+    // ---- Logged-in state ----
+    var loggedIn = sessionStorage.getItem('ag_admin') === '1';
+
+    // ---- Login screen ----
+    function renderLogin() {
+        app.innerHTML =
+            '<div class="login-wrap">' +
+            '  <div class="login-box">' +
+            '    <i class="fas fa-lock" style="font-size:40px;color:var(--red);margin-bottom:12px;"></i>' +
+            '    <h1>Admin Login</h1>' +
+            '    <p>Enter your password to manage products.</p>' +
+            '    <div class="form-group">' +
+            '      <label for="adminPass">Password</label>' +
+            '      <input type="password" id="adminPass" placeholder="Enter password" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:4px;font-size:14px;outline:none;">' +
+            '    </div>' +
+            '    <button class="btn btn-primary" id="loginBtn" style="width:100%;padding:12px;font-size:15px;">Sign In</button>' +
+            '    <p class="login-error" id="loginError">Invalid password. Try again.</p>' +
+            '  </div>' +
+            '</div>';
+        document.getElementById('loginBtn').addEventListener('click', handleLogin);
+        document.getElementById('adminPass').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') handleLogin();
+        });
+        document.getElementById('adminPass').focus();
+    }
+
+    function handleLogin() {
+        var pass = document.getElementById('adminPass').value;
+        var errEl = document.getElementById('loginError');
+        if (pass === PASSWORD) {
+            sessionStorage.setItem('ag_admin', '1');
+            loggedIn = true;
+            renderDashboard();
+        } else {
+            errEl.style.display = 'block';
+            document.getElementById('adminPass').value = '';
+            document.getElementById('adminPass').focus();
+        }
+    }
+
+    // ---- Dashboard ----
+    function renderDashboard() {
+        var products = getAllProducts();
+        var rows = '';
+        if (products.length) {
+            for (var i = 0; i < products.length; i++) {
+                var p = products[i];
+                rows += '<tr>' +
+                    '<td>' + p.id + '</td>' +
+                    '<td><img src="' + esc(p.image) + '" alt="" class="admin-thumb" onerror="this.style.display=\'none\'"></td>' +
+                    '<td><strong>' + esc(p.name) + '</strong></td>' +
+                    '<td>' + esc(p.brand) + '</td>' +
+                    '<td>' + esc(p.category) + '</td>' +
+                    '<td>' + fmt(p.price) + '</td>' +
+                    '<td class="actions-col">' +
+                    '  <button class="btn-edit" data-id="' + p.id + '"><i class="fas fa-edit"></i> Edit</button> ' +
+                    '  <button class="btn-delete" data-id="' + p.id + '"><i class="fas fa-trash"></i> Delete</button>' +
+                    '</td>' +
+                    '</tr>';
+            }
+        }
+
+        var tableHtml = products.length
+            ? '<div class="admin-table-wrap"><table class="admin-table">' +
+              '<thead><tr><th>ID</th><th>Image</th><th>Name</th><th>Brand</th><th>Category</th><th>Price</th><th class="actions-col">Actions</th></tr></thead>' +
+              '<tbody>' + rows + '</tbody></table></div>'
+            : '<div class="empty-state"><i class="fas fa-box-open"></i><p>No products yet. Add your first product!</p></div>';
+
+        var isCustom = getCustomProducts().length > 0;
+        var statusMsg = isCustom
+            ? '<div class="status-msg success">Using custom products from local storage. <a href="javascript:void(0)" id="resetStorage" style="color:var(--red);">Reset to defaults</a></div>'
+            : '<div class="status-msg success">Using default product database from products.js. Add a product to create custom data.</div>';
+
+        app.innerHTML =
+            '<div class="admin-section">' +
+            '  <div class="admin-card">' +
+            '    <div class="admin-header">' +
+            '      <div>' +
+            '        <h2 style="font-size:20px;font-weight:600;"><i class="fas fa-cog" style="color:var(--red);margin-right:8px;"></i>Product Management</h2>' +
+            '        <p style="color:var(--text-light);font-size:13px;margin-top:4px;">' + products.length + ' product(s) total</p>' +
+            '      </div>' +
+            '      <div>' +
+            '        <button class="btn btn-add" id="addProductBtn"><i class="fas fa-plus"></i> Add New Product</button>' +
+            '        <button class="btn btn-cancel" id="logoutBtn" style="margin-left:8px;padding:10px 16px;"><i class="fas fa-sign-out-alt"></i> Logout</button>' +
+            '      </div>' +
+            '    </div>' +
+            '    <div id="statusMsg">' + statusMsg + '</div>' +
+            '    ' + tableHtml +
+            '  </div>' +
+            '</div>';
+
+        // Event listeners
+        document.getElementById('addProductBtn').addEventListener('click', function () { openModal(null); });
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+            sessionStorage.removeItem('ag_admin');
+            loggedIn = false;
+            renderLogin();
+        });
+
+        var resetLink = document.getElementById('resetStorage');
+        if (resetLink) {
+            resetLink.addEventListener('click', function () {
+                if (confirm('Reset to default products? Custom data will be lost.')) {
+                    localStorage.removeItem(STORAGE_KEY);
+                    renderDashboard();
+                }
+            });
+        }
+
+        // Edit buttons
+        var editBtns = document.querySelectorAll('.btn-edit');
+        for (var i = 0; i < editBtns.length; i++) {
+            editBtns[i].addEventListener('click', function () {
+                var id = parseInt(this.dataset.id);
+                var all = getAllProducts();
+                for (var j = 0; j < all.length; j++) {
+                    if (all[j].id === id) { openModal(all[j]); break; }
+                }
+            });
+        }
+
+        // Delete buttons
+        var delBtns = document.querySelectorAll('.btn-delete');
+        for (var i = 0; i < delBtns.length; i++) {
+            delBtns[i].addEventListener('click', function () {
+                var id = parseInt(this.dataset.id);
+                if (confirm('Delete product ID ' + id + '? This cannot be undone.')) {
+                    deleteProduct(id);
+                }
+            });
+        }
+    }
+
+    // ---- Modal ----
+    function openModal(product) {
+        var overlay = document.getElementById('productModal');
+        var title = document.getElementById('modalTitle');
+        var form = document.getElementById('productForm');
+        var idField = document.getElementById('editId');
+        var btnSave = document.getElementById('btnSave');
+
+        if (product) {
+            title.textContent = 'Edit Product';
+            btnSave.textContent = 'Update Product';
+            document.getElementById('fName').value = product.name || '';
+            document.getElementById('fBrand').value = product.brand || '';
+            document.getElementById('fCategory').value = product.category || '';
+            document.getElementById('fBadge').value = product.badge || '';
+            document.getElementById('fPrice').value = product.price || '';
+            document.getElementById('fOrigPrice').value = product.originalPrice || '';
+            document.getElementById('fImage').value = product.image || '';
+            document.getElementById('fDescription').value = product.description || '';
+            document.getElementById('fFeatures').value = (product.features || []).join('\n');
+            idField.value = product.id;
+        } else {
+            title.textContent = 'Add New Product';
+            btnSave.textContent = 'Save Product';
+            form.reset();
+            idField.value = '';
+        }
+        overlay.classList.add('active');
+        document.getElementById('fName').focus();
+    }
+
+    function closeModal() {
+        document.getElementById('productModal').classList.remove('active');
+    }
+
+    // ---- Save handler ----
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        var idField = document.getElementById('editId');
+        var features = document.getElementById('fFeatures').value
+            .split('\n')
+            .map(function (s) { return s.trim(); })
+            .filter(function (s) { return s.length > 0; });
+
+        var price = parseFloat(document.getElementById('fPrice').value);
+        var origPrice = document.getElementById('fOrigPrice').value;
+        origPrice = origPrice ? parseFloat(origPrice) : null;
+
+        var product = {
+            name: document.getElementById('fName').value.trim(),
+            brand: document.getElementById('fBrand').value.trim(),
+            category: document.getElementById('fCategory').value,
+            price: price,
+            originalPrice: origPrice,
+            image: document.getElementById('fImage').value.trim(),
+            description: document.getElementById('fDescription').value.trim(),
+            features: features,
+            badge: document.getElementById('fBadge').value || null,
+            // Compat fields
+            rating: 0,
+            reviews: 0,
+            affiliateLink: '#',
+            images: [document.getElementById('fImage').value.trim()],
+            specs: [],
+            videoId: ''
+        };
+
+        var custom = getCustomProducts();
+        var editId = idField.value;
+
+        if (editId) {
+            // Editing existing
+            product.id = parseInt(editId);
+            for (var i = 0; i < custom.length; i++) {
+                if (custom[i].id === product.id) {
+                    custom[i] = product;
+                    break;
+                }
+            }
+            // If product came from default set and no custom existed, add it fresh
+            var found = false;
+            for (var i = 0; i < custom.length; i++) {
+                if (custom[i].id === product.id) { found = true; break; }
+            }
+            if (!found) {
+                custom.push(product);
+            }
+        } else {
+            product.id = nextId(custom.length ? custom : (window.products || []));
+            custom.push(product);
+        }
+
+        saveCustomProducts(custom);
+        closeModal();
+        renderDashboard();
+    }
+
+    function deleteProduct(id) {
+        var custom = getCustomProducts();
+        var filtered = [];
+        for (var i = 0; i < custom.length; i++) {
+            if (custom[i].id !== id) filtered.push(custom[i]);
+        }
+        saveCustomProducts(filtered);
+        renderDashboard();
+    }
+
+    // ---- Init ----
+    function init() {
+        if (loggedIn) {
+            renderDashboard();
+        } else {
+            renderLogin();
+        }
+
+        // Modal close handlers
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        document.getElementById('btnCancel').addEventListener('click', closeModal);
+        document.getElementById('productModal').addEventListener('click', function (e) {
+            if (e.target === this) closeModal();
+        });
+        document.getElementById('productForm').addEventListener('submit', handleFormSubmit);
+
+        // Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    }
+
+    // Wait for products.js to load, then init
+    if (document.readyState === 'complete') {
+        init();
+    } else {
+        window.addEventListener('load', init);
+    }
+
+})();
+</script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
