@@ -15,6 +15,17 @@
   --blue-accent: #0071e3;
   --blue-link: #0066cc;
   --blue-link-dark: #2997ff;
+  --blue-focus: #0071e3;
+  --green: #00a650;
+  --red: #ef4444;
+  --orange: #c45500;
+  --yellow: #febd69;
+  --border: #e0e0e0;
+  --border-light: #f0f0f0;
+  --text: #0f1111;
+  --text-light: #565959;
+  --radius: 8px;
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --card-shadow: rgba(0,0,0,0.22) 3px 5px 30px 0px;
   --card-radius: 8px;
 

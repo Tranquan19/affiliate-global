@@ -512,11 +512,11 @@
                 price: parseFloat($('fPrice').value) || 0,
                 originalPrice: parseFloat($('fOriginal').value) || 0,
                 image: $('fImage').value.trim() || getDefaultImg(cat),
-                images: $('fImages').value.split('\\n').map(function(s) { return s.trim(); }).filter(Boolean),
+                images: $('fImages').value.split('\n').map(function(s) { return s.trim(); }).filter(Boolean),
                 rating: editId ? (products.find(function(x) { return x.id === editId; }) || {}).rating || 4.5 : 4.5,
                 reviews: editId ? (products.find(function(x) { return x.id === editId; }) || {}).reviews || 0 : 0,
                 description: $('fDesc').value.trim(),
-                features: $('fFeatures').value.split('\\n').map(function(s) { return s.trim(); }).filter(Boolean),
+                features: $('fFeatures').value.split('\n').map(function(s) { return s.trim(); }).filter(Boolean),
                 videoId: '',
                 affiliateLink: 'https://www.amazon.com/s?k=' + encodeURIComponent(name)
             };
