@@ -111,7 +111,7 @@ const products = [
     ],
     "rating": 4.6,
     "reviews": 8210,
-    "description": "The standard iPhone 16 delivers A18 performance, a 48MP dual-camera system, and the new Camera Control button — all at a more accessible price.",
+    "description": "Con cac The standard iPhone 16 delivers A18 performance, a 48MP dual-camera system, and the new Camera Control button — all at a more accessible price.",
     "features": [
       "A18 chip with 5-core GPU",
       "48MP + 12MP dual camera",
@@ -122,41 +122,6 @@ const products = [
       "IP68 water resistance",
       "Up to 22 hours video playback"
     ],
-    "specs": [
-      {
-        "label": "Display",
-        "value": "6.1\" Super Retina XDR OLED"
-      },
-      {
-        "label": "Processor",
-        "value": "A18 (3nm)"
-      },
-      {
-        "label": "RAM",
-        "value": "8GB"
-      },
-      {
-        "label": "Storage",
-        "value": "128GB / 256GB / 512GB"
-      },
-      {
-        "label": "Battery",
-        "value": "3561mAh, up to 22h video"
-      },
-      {
-        "label": "Camera",
-        "value": "48MP + 12MP"
-      },
-      {
-        "label": "Weight",
-        "value": "170g"
-      },
-      {
-        "label": "OS",
-        "value": "iOS 20"
-      }
-    ],
-    "videoId": "O3m0wLp8GCE",
     "affiliateLink": "https://amazon.com/dp/EXAMPLE?tag=affiliateglobal-20",
     "badge": "New"
   },
@@ -939,6 +904,71 @@ const products = [
     "videoId": "QOPGEPj2CqQ",
     "affiliateLink": "https://amazon.com/dp/EXAMPLE?tag=affiliateglobal-20",
     "badge": "New"
+  },
+  {
+    "id": "19",
+    "name": "Google Pixel Tablet 2",
+    "brand": "Google",
+    "category": "tablets",
+    "price": 599,
+    "originalPrice": 649,
+    "image": "https://images.unsplash.com/photo-1561154462-a5487f5e162b?w=400&h=400&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1561154462-a5487f5e162b?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1589739900243-4b52cd9dd8df?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1546868871-af0d0cf88c14?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1587033411391-5d9e51cce126?w=800&h=800&fit=crop"
+    ],
+    "rating": 4.3,
+    "reviews": 1450,
+    "description": "Google's second-gen tablet with Tensor G4 chip, a vibrant 11\" display, and a redesigned Charging Speaker Dock that transforms it into a smart home hub.",
+    "features": [
+      "Google Tensor G4",
+      "11\" LCD 2560×1600 at 120Hz",
+      "Charging Speaker Dock included",
+      "8GB RAM, up to 256GB storage",
+      "Hub Mode for smart home control",
+      "Quad speakers with spatial audio",
+      "8MP front and rear cameras",
+      "Up to 12 hours battery"
+    ],
+    "specs": [
+      {
+        "label": "Display",
+        "value": "11\" LCD, 2560×1600, 120Hz"
+      },
+      {
+        "label": "Processor",
+        "value": "Google Tensor G4"
+      },
+      {
+        "label": "RAM",
+        "value": "8GB"
+      },
+      {
+        "label": "Storage",
+        "value": "128GB / 256GB"
+      },
+      {
+        "label": "Battery",
+        "value": "Up to 12 hours"
+      },
+      {
+        "label": "Camera",
+        "value": "8MP front + 8MP rear"
+      },
+      {
+        "label": "Weight",
+        "value": "499g"
+      },
+      {
+        "label": "OS",
+        "value": "Android 16"
+      }
+    ],
+    "videoId": "T7CQjXu3M_Q",
+    "affiliateLink": "https://amazon.com/dp/EXAMPLE?tag=affiliateglobal-20",
+    "badge": null
   },
   {
     "id": "20",
