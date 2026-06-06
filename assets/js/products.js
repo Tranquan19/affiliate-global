@@ -111,7 +111,7 @@ const products = [
     ],
     "rating": 4.6,
     "reviews": 8210,
-    "description": "con cac ne . The standard iPhone 16 delivers A18 performance, a 48MP dual-camera system, and the new Camera Control button — all at a more accessible price.",
+    "description": "what the fuck? The standard iPhone 16 delivers A18 performance, a 48MP dual-camera system, and the new Camera Control button — all at a more accessible price.",
     "features": [
       "A18 chip with 5-core GPU",
       "48MP + 12MP dual camera",
