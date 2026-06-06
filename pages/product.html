@@ -224,7 +224,7 @@ function loadProduct() {
     document.getElementById('pFeatures').innerHTML = '<h3>Key Features</h3><ul>' + p.features.map(function(f) { return '<li>' + f + '</li>'; }).join('') + '</ul>';
   }
 
-  document.getElementById('buyBtn').href = p.affiliateLink || p.link || '#';
+  document.getElementById('buyBtn').href = p.link;
 
   // Specs
   if (p.specs && p.specs.length) {
