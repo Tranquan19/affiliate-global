@@ -16,7 +16,7 @@ const products = [
     ],
     "rating": 4.8,
     "reviews": 12453,
-    "description": "what fuck Apple's most advanced iPhone featuring the A18 Pro chip, 48MP Fusion camera system with 5x Telephoto, and a stunning 6.9-inch Super Retina XDR display with ProMotion.",
+    "description": "what the fuck Apple's most advanced iPhone featuring the A18 Pro chip, 48MP Fusion camera system with 5x Telephoto, and a stunning 6.9-inch Super Retina XDR display with ProMotion.",
     "features": [
       "A18 Pro chip with 6-core GPU",
       "48MP Fusion + 48MP Ultra Wide + 12MP 5x Telephoto",
