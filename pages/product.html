@@ -1093,6 +1093,37 @@ var PRODUCTS = [
   }
 ];
 
+
+// Load latest from GitHub (overrides inline data)
+(function(){
+  var u = 'https://raw.githubusercontent.com/Tranquan19/affiliate-global/main/assets/js/products.js';
+  var x = new XMLHttpRequest();
+  x.open('GET', u, true);
+  x.onload = function() {
+    if (x.status !== 200) return;
+    try {
+      var m = x.responseText.match(/const\s+products\s*=\s*(\[[\s\S]*?\]);/);
+      if (!m) return;
+      var d = JSON.parse(m[1]);
+      d.forEach(function(p) {
+        if (p.category !== undefined) p.cat = p.category;
+        if (p.image !== undefined) p.img = p.image;
+        if (p.originalPrice !== undefined) p.old = p.originalPrice;
+        if (p.description !== undefined) p.desc = p.description;
+        if (p.reviews !== undefined) p.rev = p.reviews;
+        if (p.affiliateLink !== undefined) p.link = p.affiliateLink;
+        if (typeof p.id === 'number') p.id = String(p.id);
+      });
+      if (d.length > 0) {
+        PRODUCTS = d;
+        if (typeof renderProducts === 'function') renderProducts(PRODUCTS);
+        if (typeof loadProduct === 'function') loadProduct();
+      }
+    } catch(e) {}
+  };
+  x.send();
+})();
+
 function getProduct(id) {
   return PRODUCTS.find(function(p) { return p.id === id; });
 }
