@@ -1,36 +1,6 @@
 // Affiliate Global
 const products = [
   {
-    "id": "1",
-    "name": "iPhone 16 Pro Max",
-    "brand": "Apple",
-    "category": "smartphones",
-    "price": 1499,
-    "originalPrice": 1599,
-    "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&h=400&fit=crop",
-    "images": [
-      "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1592286927505-1def25115558?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1610945415294-dfbb5b7b3e8d?w=800&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1601782591353-3e34032699a6?w=800&h=800&fit=crop"
-    ],
-    "rating": 4.8,
-    "reviews": 12453,
-    "description": "what the fuck you Apple's most advanced iPhone featuring the A18 Pro chip, 48MP Fusion camera system with 5x Telephoto, and a stunning 6.9-inch Super Retina XDR display with ProMotion.",
-    "features": [
-      "A18 Pro chip with 6-core GPU",
-      "48MP Fusion + 48MP Ultra Wide + 12MP 5x Telephoto",
-      "6.9\" Super Retina XDR OLED with ProMotion 120Hz",
-      "Titanium design — natural, desert, white, black",
-      "USB-C with Thunderbolt 4 support",
-      "iOS 20 with Apple Intelligence",
-      "Up to 33 hours video playback",
-      "Satellite SOS and Crash Detection"
-    ],
-    "affiliateLink": "https://amazon.com/dp/EXAMPLE?tag=affiliateglobal-20",
-    "badge": "Best Seller"
-  },
-  {
     "id": "3",
     "name": "Google Pixel 10 Pro",
     "brand": "Google",
