@@ -136,12 +136,68 @@ a:hover{color:var(--orange);text-decoration:underline}
 
 <div class="product-wrap">
 <div class="product-gallery">
-  <video controls poster="../assets/images/dyson-airwrap-poster.jpg" preload="metadata">
-    <source src="../assets/videos/dyson-airwrap-review.mp4" type="video/mp4">
-    Your browser does not support video playback.
-  </video>
-  <p style="font-size:11px;color:var(--text-light);text-align:center;margin-top:4px"><i class="fas fa-play-circle"></i> Dyson Airwrap i.d. review video — 36s</p>
+  <div class="gallery-main">
+    <video id="mainVideo" controls preload="metadata" style="display:none">
+      <source src="../assets/videos/dyson-airwrap-review.mp4" type="video/mp4">
+    </video>
+    <img id="mainImage" src="../assets/images/dyson-airwrap-1-main.png" alt="Dyson Airwrap i.d. Multi-Styler" style="width:100%;border-radius:8px;display:block;cursor:pointer" onclick="openGallery(0)">
+  </div>
+  <div class="gallery-thumbs" style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+    <div class="gallery-item" style="flex:0 0 60px;border:2px solid var(--blue);border-radius:6px;overflow:hidden;cursor:pointer" onclick="showImage(0)">
+      <img src="../assets/images/dyson-airwrap-1-main.png" alt="Dyson Airwrap main" style="width:100%;display:block">
+    </div>
+    <div class="gallery-item" style="flex:0 0 60px;border:2px solid transparent;border-radius:6px;overflow:hidden;cursor:pointer" onclick="showImage(1)">
+      <img src="../assets/images/dyson-airwrap-2-curly.png" alt="Dyson Airwrap curly hair" style="width:100%;display:block">
+    </div>
+    <div class="gallery-item" style="flex:0 0 60px;border:2px solid transparent;border-radius:6px;overflow:hidden;cursor:pointer" onclick="showImage(2)">
+      <img src="../assets/images/dyson-airwrap-3-hero.jpg" alt="Dyson Airwrap in use" style="width:100%;display:block">
+    </div>
+    <div class="gallery-item" style="flex:0 0 60px;border:2px solid transparent;border-radius:6px;overflow:hidden;cursor:pointer" onclick="showImage(3)">
+      <img src="../assets/images/dyson-airwrap-4-attachments.jpg" alt="Dyson Airwrap attachments" style="width:100%;display:block">
+    </div>
+    <div class="gallery-item" style="flex:0 0 60px;border:2px solid transparent;border-radius:6px;overflow:hidden;cursor:pointer" onclick="showVideo()">
+      <div style="width:100%;height:60px;background:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px"><i class="fas fa-play"></i></div>
+    </div>
+  </div>
+  <p style="font-size:11px;color:var(--text-light);text-align:center;margin-top:4px"><i class="fas fa-play-circle"></i> Click to view gallery · Scroll for more · Watch video</p>
 </div>
+
+<script>
+var galleryImages = [
+  "../assets/images/dyson-airwrap-1-main.png",
+  "../assets/images/dyson-airwrap-2-curly.png",
+  "../assets/images/dyson-airwrap-3-hero.jpg",
+  "../assets/images/dyson-airwrap-4-attachments.jpg"
+];
+var currentIdx = 0;
+
+function showImage(idx) {
+  currentIdx = idx;
+  var img = document.getElementById("mainImage");
+  var vid = document.getElementById("mainVideo");
+  img.style.display = "block";
+  vid.style.display = "none";
+  img.src = galleryImages[idx];
+  document.querySelectorAll(".gallery-item").forEach(function(el, i) {
+    el.style.borderColor = i === idx ? "var(--blue)" : "transparent";
+  });
+}
+
+function showVideo() {
+  var img = document.getElementById("mainImage");
+  var vid = document.getElementById("mainVideo");
+  img.style.display = "none";
+  vid.style.display = "block";
+  vid.play();
+  document.querySelectorAll(".gallery-item").forEach(function(el) {
+    el.style.borderColor = "transparent";
+  });
+}
+
+function openGallery(idx) {
+  showImage(idx);
+}
+</script>
 <div class="product-info">
   <h1>Dyson Airwrap i.d. Multi-Styler</h1>
   <div class="brand"><a href="https://amzn.to/dyson-airwrap-2026" target="_blank" rel="noopener">Visit Dyson Store on Amazon →</a></div>
